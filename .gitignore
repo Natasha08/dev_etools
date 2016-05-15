@@ -1,15 +1,10 @@
 ## Node ##
 #Logs /dump files#
-*.log
-*.msu
-*.sql
+../../*.*
+../../*
 
 #js files/modules#
-use.js
-flightplan.js
-require.*
 node_modules/
-secret.*
 
 ## sublime ##
 *.sublime-project
