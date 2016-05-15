@@ -1,7 +1,5 @@
 ## Node ##
 #Logs /dump files#
-../../*.*
-../../*
 
 #js files/modules#
 node_modules/

@@ -61,7 +61,6 @@ plan.remote(function(remote) {
 
   remote.log('Reload application');
   remote.sudo('ln -snf ~/' + tmpDir + ' ~/'+appName, {user: username});
-  remote.exec('forever stop ~/' + appName+ '/' +startFile, {user: username}, {failsafe: true});
-  remote.exec('forever start ~/' +appName+ '/' +startFile), {user: username};
- // forever start --sourceDir /deploy/etools/bin/www
- //home/deploy/etools/bin/www
+  remote.exec('forever stop ~/' + appName+ '/' +startFile,  {failsafe: true});
+  remote.exec('forever start ~/' +appName+ '/' +startFile);
+});
