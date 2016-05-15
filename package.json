@@ -36,12 +36,12 @@
   "description": "Node Express project with mysql. A tool to create meals and track workouts.",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Natasha08/linuxproject.git"
+    "url": "git://github.com/Natasha08/dev_etools.git"
   },
   "author": "Natasha Osborne <natasha08@me.com> (http://www.natashaosborne.com/)",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/Natasha08/linuxproject/issues"
+    "url": "https://github.com/Natasha08/dev_etools/issues"
   },
   "main": "./bin/www"
 }
