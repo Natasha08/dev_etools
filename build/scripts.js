@@ -74,19 +74,17 @@ var pool = require('../public/javascripts/require');
 
 // });
 
-
-
 router.get('/efridge', function(req, res, next) {
 
 var efridge;
 
 pool.getConnection(function(err,connection) {
 //	('select * from  efridge', 
-pool.query('select * from  efridge', function (err,rows) {
+if (!err) {
+
+connection.query('select * from  efridge', function (err,rows) {
 
 	efridge = rows;
-
-	if (!err) {
 
   res.render('efridge', {
 
@@ -95,13 +93,10 @@ pool.query('select * from  efridge', function (err,rows) {
   	data: efridge
   	 
   });
+	
+});
 
-} if (err) {
-		console.log(err);
-	}	
-});
-connection.release();
-});
+}});
 });
 
 
@@ -125,7 +120,7 @@ var efridge = {
 	total_grams: req.body.total_grams
 };
 
- pool.query('insert into efridge set ?', efridge, function (err, result) {
+ connection.query('insert into efridge set ?', efridge, function (err, result) {
 	if (err) {
 		console.error(err);
 		return;
@@ -133,7 +128,7 @@ var efridge = {
 
 	res.redirect('/my_etools');
 });
- connection.release();
+
 });	
 
 });
@@ -152,7 +147,7 @@ router.get('/egym', function(req, res, next) {
 
 	var egym;
 pool.getConnection(function(err,connection) {
-	pool.query('select * from  egym', function (err, rows) {
+	connection.query('select * from  egym', function (err, rows) {
 
 	egym = rows;
 
@@ -305,4 +300,6 @@ var pool = mysql.createPool({
 });
 
 module.exports = pool;
+
+
 

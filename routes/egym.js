@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
-var connection = require('../public/javascripts/require');
+var pool = require('../public/javascripts/require');
 
 
 router.get('/egym', function(req, res, next) {
 
 	var egym;
-connection.getConnection(function(err,connection) {
+pool.getConnection(function(err,connection) {
 	connection.query('select * from  egym', function (err, rows) {
 
 	egym = rows;
