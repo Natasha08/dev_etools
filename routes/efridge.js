@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
-var connection = require('../public/javascripts/require');
+var pool = require('../public/javascripts/require');
 
 // router.get('/', function(req, res, next) {
 // 	res.render('index', {title: 'NuColo'});
@@ -12,16 +12,13 @@ router.get('/efridge', function(req, res, next) {
 
 var efridge;
 
-connection.getConnection(function(err,connection) {
+pool.getConnection(function(err,connection) {
 //	('select * from  efridge', 
-if (err) {
-	console.log(err);
-} else{
+if (!err) {
+
 connection.query('select * from  efridge', function (err,rows) {
 
 	efridge = rows;
-
-	if (!err) {
 
   res.render('efridge', {
 
@@ -30,10 +27,7 @@ connection.query('select * from  efridge', function (err,rows) {
   	data: efridge
   	 
   });
-
-} if (err) {
-		console.log(err);
-	}	
+	
 });
 
 }});
@@ -60,7 +54,7 @@ var efridge = {
 	total_grams: req.body.total_grams
 };
 
- pool.query('insert into efridge set ?', efridge, function (err, result) {
+ connection.query('insert into efridge set ?', efridge, function (err, result) {
 	if (err) {
 		console.error(err);
 		return;
