@@ -16,7 +16,7 @@ var efridge;
 
 pool.getConnection(function(err,connection) {
 //	('select * from  efridge', 
-connection.query('select * from  efridge', function (err,rows) {
+pool.query('select * from  efridge', function (err,rows) {
 
 	efridge = rows;
 

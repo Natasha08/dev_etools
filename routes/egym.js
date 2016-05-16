@@ -8,7 +8,7 @@ router.get('/egym', function(req, res, next) {
 
 	var egym;
 pool.getConnection(function(err,connection) {
-	connection.query('select * from  egym', function (err, rows) {
+	pool.query('select * from  egym', function (err, rows) {
 
 	egym = rows;
 
