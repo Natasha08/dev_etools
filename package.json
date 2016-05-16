@@ -5,7 +5,7 @@
   "scripts": {
     "build1": "browserify public/javascripts/buttons.js -o public/javascripts/bundle.js",
     "build2": "browserify public/javascripts/buttons2.js -o public/javascripts/bundle2.js",
-    "build3": "browserify public/javascripts/buttons2.js -o public/javascripts/bundle3.js",
+    "build3": "browserify public/javascripts/buttons3.js -o public/javascripts/bundle3.js",
     "lesscon": "lessc public/stylesheets/concat.less build/styles.css"
   },
   "dependencies": {
