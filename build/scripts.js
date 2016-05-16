@@ -291,15 +291,13 @@ showWorkout.addEventListener('click', exerciseForm, false);
 module.exports = exerciseForm;
 },{}]},{},[1]);
 
-var mysql      = require('mysql');
+var mysql = require('mysql');
 var pool = mysql.createPool({
-  host     : 'localhost',
-  user     : 'tulsi',
-  password : 'Yoni3454!',
-  database : 'freetools'
+  connectionLimit : '100',
+  host            : 'localhost',
+  user            : 'tulsi',
+  password        : 'Vala2114!',
+  database        : 'freetools'
 });
 
 module.exports = pool;
-
-
-
