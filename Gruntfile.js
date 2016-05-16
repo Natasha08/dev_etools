@@ -37,7 +37,7 @@ concat: {
     files: ['app.js', 'routes/*.js', 'public/javascripts/*.js'],
     tasks: ['concat'],
   },  
-},
+
 
  uglify: {
     my_target: {

@@ -43,5 +43,4 @@ showFood.addEventListener('click', createFood, false);
 module.exports = shownutritiontable;
 module.exports = createFood;
 module.exports = showFood;
-
 },{}]},{},[1]);
