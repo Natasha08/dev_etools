@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
-var pool = require('../public/javascripts/require');
+var connection = require('../public/javascripts/require');
 
 
 router.get('/egym', function(req, res, next) {
 
 	var egym;
-pool.getConnection(function(err,connection) {
-	pool.query('select * from  egym', function (err, rows) {
+connection.getConnection(function(err,connection) {
+	connection.query('select * from  egym', function (err, rows) {
 
 	egym = rows;
 
@@ -21,10 +21,10 @@ pool.getConnection(function(err,connection) {
 
 	}	if (err) {
 			console.log(err);
-			connection.release();
+
 		}
 });		
-		connection.release();
+
 });
 });
 module.exports = router;

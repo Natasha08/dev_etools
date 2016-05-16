@@ -82,7 +82,7 @@ var efridge;
 
 pool.getConnection(function(err,connection) {
 //	('select * from  efridge', 
-connection.query('select * from  efridge', function (err,rows) {
+pool.query('select * from  efridge', function (err,rows) {
 
 	efridge = rows;
 
@@ -152,7 +152,7 @@ router.get('/egym', function(req, res, next) {
 
 	var egym;
 pool.getConnection(function(err,connection) {
-	connection.query('select * from  egym', function (err, rows) {
+	pool.query('select * from  egym', function (err, rows) {
 
 	egym = rows;
 
@@ -165,10 +165,10 @@ pool.getConnection(function(err,connection) {
 
 	}	if (err) {
 			console.log(err);
-			connection.release();
+
 		}
 });		
-		connection.release();
+
 });
 });
 module.exports = router;
@@ -298,7 +298,6 @@ module.exports = exerciseForm;
 
 var mysql      = require('mysql');
 var pool = mysql.createPool({
-  connectionLimit : 100,
   host     : 'localhost',
   user     : 'tulsi',
   password : 'Yoni3454!',

@@ -1,22 +1,23 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
-var pool = require('../public/javascripts/require');
+var connection = require('../public/javascripts/require');
 
 // router.get('/', function(req, res, next) {
 // 	res.render('index', {title: 'NuColo'});
 
 // });
 
-
-
 router.get('/efridge', function(req, res, next) {
 
 var efridge;
 
-pool.getConnection(function(err,connection) {
+connection.getConnection(function(err,connection) {
 //	('select * from  efridge', 
-pool.query('select * from  efridge', function (err,rows) {
+if (err) {
+	console.log(err);
+} else{
+connection.query('select * from  efridge', function (err,rows) {
 
 	efridge = rows;
 
@@ -34,8 +35,8 @@ pool.query('select * from  efridge', function (err,rows) {
 		console.log(err);
 	}	
 });
-connection.release();
-});
+
+}});
 });
 
 
@@ -67,7 +68,7 @@ var efridge = {
 
 	res.redirect('/my_etools');
 });
- connection.release();
+
 });	
 
 });
