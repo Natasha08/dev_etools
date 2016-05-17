@@ -1,10 +1,10 @@
 var express = require('express');
-var router = express.Router();
+var routerg = express.Router();
 var mysql = require('mysql');
 var pool = require('../public/javascripts/require');
 
 
-router.get('/egym', function(req, res, next) {
+routerg.get('/egym', function(req, res, next) {
 
 	var egym;
 pool.getConnection(function(err,connection) {
@@ -27,4 +27,4 @@ pool.getConnection(function(err,connection) {
 
 });
 });
-module.exports = router;
+module.exports = routerg;

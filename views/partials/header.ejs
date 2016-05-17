@@ -15,10 +15,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li id="home"><a href="./">Home</a></li>
-         <form class="navbar-form navbar-left">
+         <form method="post" action="/login" class="navbar-form navbar-left">
            <div class="form-group">
-             <input id="userName" type="text" class="form-control" placeholder="Username">
-             <input id="userPass" type="text" class="form-control" placeholder="Password">
+             <input id="username" name="username" type="text" class="form-control" placeholder="Username">
+             <input id="password" name="password" type="text" class="form-control" placeholder="Password">
            </div>
            <button type="submit" class="btn btn-default" id="response">Login</button>
          </form>  

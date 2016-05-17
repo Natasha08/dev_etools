@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.Router();
+var routerf = express.Router();
 var mysql = require('mysql');
 var pool = require('../public/javascripts/require');
 
@@ -8,7 +8,7 @@ var pool = require('../public/javascripts/require');
 
 // });
 
-router.get('/efridge', function(req, res, next) {
+routerf.get('/efridge', function(req, res, next) {
 
 var efridge;
 
@@ -34,10 +34,10 @@ connection.query('select * from  efridge', function (err,rows) {
 });
 
 
-router.post('/efridge', function(req, res, next) {
+routerf.post('/efridge', function(req, res, next) {
 pool.getConnection(function(err,connection) {
 	if (err) {
-		console.error(err);
+		console.error('What is this' + err);
 		return;
 	} else {
 		console.log(connection);
@@ -58,9 +58,10 @@ var efridge = {
 	if (err) {
 		console.error(err);
 		return;
-	} else
+	} else {
 
-	res.redirect('/my_etools');
+	res.redirect('/efridge');
+}
 });
 
 });	
@@ -68,5 +69,5 @@ var efridge = {
 });
 
 
-module.exports = router;
+module.exports = routerf;
 

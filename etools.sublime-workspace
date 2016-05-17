@@ -1,0 +1,360 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"test",
+				"testtable"
+			],
+			[
+				"showtblc",
+				"showtblclick"
+			],
+			[
+				"shown",
+				"shownutritiontable"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 80,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 142.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/natasha/expresst2/etools",
+		"/home/natasha/expresst2/etools/views"
+	],
+	"file_history":
+	[
+		"/home/natasha/expresst2/eatApp/bin/www",
+		"/home/natasha/expresst2/etools/public/javascripts/require.js",
+		"/home/natasha/expresst2/etools/Gruntfile.js",
+		"/home/natasha/expresst2/etools/flightplan.js",
+		"/home/natasha/expresst2/etools/README.md",
+		"/home/natasha/expresst2/etools/bin/www",
+		"/home/natasha/expresst2/etools/package.json",
+		"/home/natasha/expresst2/eatApp/package.json",
+		"/home/natasha/expresst2/eatApp/flightplan.js",
+		"/home/natasha/expresst2/etools/cheatsheet.msu",
+		"/home/natasha/expresst2/etools/secret.js",
+		"/home/natasha/expresst2/etools/.gitignore",
+		"/home/natasha/expresst2/etools/schema.sql",
+		"/home/natasha/expresst2/etools/meal.sql",
+		"/home/natasha/expresst2/etools/workoutSchema.sql",
+		"/home/natasha/expresst2/eatApp/public/stylesheets/style.less",
+		"/home/natasha/expresst2/eatApp/.gitignore",
+		"/home/natasha/expresst2/eatApp/routes/index.js",
+		"/home/natasha/expresst2/eatApp/Gruntfile.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/bundle3.js",
+		"/home/natasha/expresst2/eatApp/views/partials/exercise_table.ejs",
+		"/home/natasha/expresst2/eatApp/views/egym.ejs",
+		"/home/natasha/expresst2/eatApp/app.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/bundle.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/buttons.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/buttons2.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/buttons3.js",
+		"/home/natasha/expresst2/eatApp/views/efridge.ejs",
+		"/home/natasha/expresst2/eatApp/routes/egym.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/buttonsall.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/buttonfactory.js",
+		"/home/natasha/expresst2/eatApp/views/index.ejs",
+		"/home/natasha/expresst2/eatApp/public/javascripts/bundle2.js",
+		"/home/natasha/expresst2/eatApp/build/scripts.js",
+		"/home/natasha/expresst2/eatApp/views/email.ejs",
+		"/home/natasha/expresst2/eatApp/cheatsheet.msu",
+		"/home/natasha/expresst2/eatApp/node_modules/sendgrid/README.md",
+		"/home/natasha/expresst2/eatApp/secret.js",
+		"/home/natasha/expresst2/eatApp/routes/bundle.js",
+		"/home/natasha/expresst2/eatApp/README.md",
+		"/home/natasha/expresst2/eatApp/public/javascripts/require.js",
+		"/home/natasha/expresst2/eatApp/routes/efridge.js",
+		"/home/natasha/expresst2/eatApp/public/stylesheets/footer.less",
+		"/home/natasha/expresst2/eatApp/build/styles.css",
+		"/home/natasha/expresst2/eatApp/build/output.min.css",
+		"/home/natasha/expresst2/eatApp/public/stylesheets/style.css",
+		"/home/natasha/expresst2/natasha/public/stylesheets/style.less",
+		"/home/natasha/expresst2/natasha/bin/www",
+		"/home/natasha/expresst2/eatApp/public/stylesheets/footer.css",
+		"/home/natasha/expresst2/eatApp/build/output.min.js",
+		"/home/natasha/.cache/.fr-7aoABV/1_natashaosborne.com_bundle.crt",
+		"/home/natasha/Downloads/natashaosborne.com.pem",
+		"/home/natasha/Downloads/1_natashaosborne.com_bundle.crt",
+		"/home/natasha/Downloads/1_Intermediate.crt",
+		"/home/natasha/Downloads/2_natashaosborne@otstudy.com.crt",
+		"/home/natasha/expresst2/eatApp/views/partials/register.ejs",
+		"/home/natasha/expresst2/eatApp/views/partials/foodform.ejs",
+		"/home/natasha/expresst2/eatApp/workoutSchema.sql",
+		"/home/natasha/expresst2/eatApp/node_modules/.bin/fly",
+		"/home/natasha/expresst2/eatApp/public/javascripts/select.js",
+		"/home/natasha/expresst2/eatApp/views/partials/header.ejs",
+		"/home/natasha/expresst2/eatApp/.git/.gitignore",
+		"/home/natasha/expresst2/eatApp/meal.sql",
+		"/home/natasha/expresst2/eatApp/views/partials/exercise.ejs",
+		"/home/natasha/expresst2/eatApp/routes/workouts.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/buttonsg.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/requireg.js",
+		"/home/natasha/expresst2/eatApp/views/my_etools.ejs",
+		"/home/natasha/expresst2/eatApp/public/javascripts/insert.js",
+		"/home/natasha/expresst2/eatApp/views/partials/exercise.js",
+		"/home/natasha/expresst2/eatApp/views/partials/exercise_table.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/submit.js",
+		"/home/natasha/expresst2/eatApp/views/partials/food_table.ejs",
+		"/home/natasha/expresst2/eatApp/views/my_efridge.ejs",
+		"/home/natasha/expresst2/eatApp/public/javascripts/client-app.js",
+		"/home/natasha/expresst2/eatApp/main.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/nav.js",
+		"/home/natasha/expresst2/eatApp/planofday.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/showtables.js",
+		"/home/natasha/expresst2/eatApp/public/javascripts/selectg.js",
+		"/home/natasha/Downloads/css/style.css",
+		"/home/natasha/expresst2/eatApp/routes/my_efridge.js",
+		"/home/natasha/expresst2/eatApp/views/partials/head.ejs",
+		"/home/natasha/expresst2/eatApp/views/error.ejs",
+		"/home/natasha/expresst2/eatApp/schema.sql",
+		"/home/natasha/expresst2/eatApp/routes/nutrition.js",
+		"/home/natasha/expresst2/eatApp/routes/dbcon.js",
+		"/home/natasha/expresst2/eatApp/routes/users.js",
+		"/home/natasha/expresst2/eatApp/public/querytest.js",
+		"/home/natasha/expresst2/eatApp/node_modules/mysql/lib/ConnectionConfig.js",
+		"/etc/mysql/my.cnf",
+		"/home/natasha/expresst/MyEats/package.json",
+		"/home/natasha/expresst/ejsApp/Nutrition/package.json",
+		"/home/natasha/expresst/MyEats/views/layout.jade",
+		"/home/natasha/Desktop/mysqlhelp",
+		"/home/natasha/expresst/MyEats/views/index.jade",
+		"/home/natasha/expresst/MyEats/app.js",
+		"/home/natasha/expresst/MyEats/routes/index.js",
+		"/home/natasha/expresst/MyEats/public/stylesheets/normalize.css",
+		"/home/natasha/expresst/MyEats/public/stylesheets/normalize",
+		"/home/natasha/expresst/MyEats/Gruntfile.js",
+		"/home/natasha/Desktop/aso_ticket.txt",
+		"/home/natasha/.bash_profile",
+		"/home/natasha/.profile",
+		"/home/natasha/expresst/MyEats/Gruntfile",
+		"/home/natasha/.bashrc",
+		"/home/natasha/expresst/--hogan/package.json",
+		"/home/natasha/MyApp/servers/server.js",
+		"/home/natasha/MyApp/servers/basicserver.js",
+		"/home/natasha/Downloads/ssag.sh",
+		"/home/natasha/MyApp/.git/config",
+		"/home/natasha/MyApp/public/index.html",
+		"/home/natasha/MyApp/Gruntfile.js",
+		"/home/natasha/MyApp/public/server.js",
+		"/home/natasha/MyApp/public/basicserver.js",
+		"/home/natasha/MyApp/server.js",
+		"/home/natasha/MyApp/servertest.js",
+		"/home/natasha/MyApp/css/footer.css",
+		"/home/natasha/MyApp/css/header.css",
+		"/home/natasha/MyApp/css/main.css",
+		"/usr/bin/node",
+		"/usr/bin/nodejs",
+		"/home/natasha/MyApp/js/test1.js",
+		"/home/natasha/MyApp/js/test2.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"/**",
+			"workout",
+			"require",
+			"black",
+			"workoutData",
+			"workout",
+			"ECIMAL",
+			"food",
+			"foodData",
+			"foodd",
+			">\n",
+			"    "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/home/natasha/expresst2/etools"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 80,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								79,
+								79
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 198.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
