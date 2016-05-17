@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
-var pool = require('../public/javascripts/require');
+var connection = require('../public/javascripts/require');
+var expressSession = require('express-session');
 var passport = require('passport');
+//var passportp = require('../passport');
 var passportLocal = require('passport-local');
 
 // var natskey = require('../secret');
@@ -11,6 +13,10 @@ var passportLocal = require('passport-local');
 // var fs = require('fs');
 
 //read file
+router.get('/logout', function(req, res) {
+	req.logout();
+	res.redirect('/');
+});
 
 router.get('/', function(req, res, next) {
 
@@ -21,27 +27,27 @@ router.get('/', function(req, res, next) {
 	 });
 });
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login' }),
+router.post('/login', passport.authenticate('local-login', { failureRedirect: '/' }),
       function(req, res) {
         res.redirect('/');
       });
 
 router.post('/register', function(req, res, next) {
-pool.getConnection(function(err,connection) {
-	if (err) {
-		console.error(err);
-		return;
-	} else {
-		console.log(connection);
+//uncomment this for pool connection //pool.getConnection(function(err,connection) {
+	// if (err) {
+	// 	console.error(err);
+	// 	return;
+	// } else {
+	// 	console.log(connection);
 
-	}
+	// }
 
 var users = {
-	email: req.body.email,
-	firstname: req.body.firstname,
-	lastname: req.body.lastname,
-	username: req.body.username,
-	password: req.body.password
+	email: req.body.userEmail,
+	firstname: req.body.firstName,
+	lastname: req.body.lastName,
+	username: req.body.userName,
+	password: req.body.passWord
 };
 
  connection.query('insert into users set ?', users, function (err, result) {
@@ -59,7 +65,10 @@ var users = {
 
 });
 });
-});
+
+
+
+//uncomment this for pool //connection});
 
 module.exports = router;	
 

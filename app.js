@@ -7,9 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var passport = require('passport');
-var passportLocal = require('passport-local');
-var pool = require('./public/javascripts/require');
-
+var LocalStrategy   = require('passport-local').Strategy;
+var connection = require('./public/javascripts/require.js');
 
 var routes = require('./routes/index');
 var routesg = require('./routes/egym');
@@ -40,41 +39,45 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//create local passport strategy
-passport.use(new passportLocal.Strategy(function(username, password, done) {
-  pool.getConnection(function(err,connection) {
-    if (err) {
-      console.error(err);
-      return;
-  } else {
-     console.log('it worked!');
+//creates a new strategy for passport. Note username (default) changed to email 
 
-  }
+passport.use('local-login', new LocalStrategy({
+        // by default, local strategy uses username and password, we will override with email
+    usernameField : 'email',
+    passwordField : 'password',
+    passReqToCallback : true // allows us to pass back the entire request to the callback
+},
+    function(req, email, password, done) { // callback with email and password from our form
 
-  //get user from the database
-  connection.query('select username, password from users', function (err, rows) {
-    var user = rows;
-    for (var i = 0; i< user.length; i++) {
-      username: user[i].username;
-      password: user[i].password
-    }
-      if (!err) {
-        console.log(username);
-      } else {  
-          console.error(err);
-        }
+         connection.query("SELECT * FROM `users` WHERE `email` = '" + email + "'",function(err,rows){
+            if (err)
+                return done(err);
+             if (!rows.length) {
+                return done(null, false);//, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+            } 
+            
+            // if the user is found but the password is wrong
+            if (!( rows[0].password == password))
+                return done(null, false);//, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
+            
+            // all is well, return successful user
+            return done(null, rows[0]);         
+        });
+        
 
-    //compare db user to user input
-    if (username === username && password === password) {
-      done(null, {username: username, password: password});
 
-  } else {
-      done(null, null);
-  }
+    }));
 
-});
-});
-}));
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+    });
+
+// used to deserialize the user
+passport.deserializeUser(function(id, done) {
+    connection.query("select * from users where id = "+id,function(err,rows){   
+          done(err, rows[0]);
+        });
+    });
 
 app.use('/', routes);
 app.use('/', routesg);
