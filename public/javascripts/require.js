@@ -1,9 +1,9 @@
 var mysql = require('mysql');
 var pool = mysql.createPool({
-  connectionLimit : '100',
+  connectionLimit : 10,
   host            : 'localhost',
   user            : 'tulsi',
-  password        : 'Vala2114!',
+  password        : 'Yoni3454!',
   database        : 'freetools'
 });
 
