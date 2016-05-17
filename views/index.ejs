@@ -7,12 +7,16 @@
     <% include ./partials/header %>                
   </header>
   <body class="container-fluid" class="col-md-12">
-
-      <div>
+       <div>
       <div class="jumbotron">
         <div class="container">
           <h1>Colorado e-tools</h1>
           <h2>for Health</h2>
+          <% if (!isAuthenticated) { %>
+            <a href="/">Log in here</a>
+            <% } else { %>
+              Hello, <%= user.firstname %>
+           <% } %>
         </div>  
       </div>
       </div> 

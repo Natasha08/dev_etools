@@ -12,6 +12,11 @@
       <div class="jumbotron">
         <div class="container">
           <h1>My e-fridge</h1>
+          <% if (!isAuthenticated) { %>
+            <a href="/">Log in here</a>
+            <% } else { %>
+              Hello, <%= user.firstname %>
+           <% } %>          
         </div>  
       </div>
       <div id="dataSearch" class="well" hidden>
