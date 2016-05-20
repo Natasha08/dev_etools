@@ -39,9 +39,11 @@ p.instruct {
 					Nav Bar
 **********************************************/
 .navbar-default {
-    background-color: @translucent;
+    background-color: @plainColor;
 }
-
+.navStyle {
+    background-color: @prime_color;
+}
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-default .navbar-nav > .active > a:focus {
@@ -53,6 +55,12 @@ p.instruct {
 #userPass:focus {
 border: 2px solid @accent_color;
 
+}
+
+a, 
+li,
+ul {
+	color: black;
 }
 
 /**********************************************
@@ -88,6 +96,9 @@ border: 2px solid @accent_color;
 #registerSubmit:hover {
 	background-color: @main_color;
 	border: 2px solid @accent_color;
+}
+#response {
+	background-color: @plainColor
 }
 
 /**********************************************
