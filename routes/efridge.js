@@ -6,10 +6,6 @@ var expressSession = require('express-session');
 var passport = require('passport');
 var passportLocal = require('passport-local');
 
-// router.get('/', function(req, res, next) {
-// 	res.render('index', {title: 'NuColo'});
-
-// });
 routerf.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/');
@@ -18,29 +14,52 @@ routerf.get('/logout', function(req, res) {
 
 routerf.get('/efridge', function(req, res, next) {
 
+//pool.getConnection(function(err,connection) {
+	var user = {
+isAuthenticated: req.isAuthenticated(),
+	 	   user: req.user 	
+	 	};
+      if (!user.isAuthenticated) { 
+          res.redirect('/login');
+         } else {	 	
+
 var efridge;
 
-//pool.getConnection(function(err,connection) {
-//	('select * from  efridge', 
-//if (!err) {
-
-connection.query('select * from  efridge', function (err,rows) {
-
+connection.query('select * from  efridge where user_id = '+user.user.user_id, function (err,rows) {
 	efridge = rows;
 
-  res.render('efridge', {
+		res.render('efridge', {
 
   		  title: 'My e-tools',
   	description: 'Enter the name of the food in your e-fridge that you want to add to today\'s meal.',
   		   data: efridge,
-isAuthenticated: req.isAuthenticated(),
-	 	   user: req.user  	 
-  });
-	
+  		   isAuthenticated: req.isAuthenticated(),
+	 	   user: req.user 
+ 	 });
 });
+};});
 
-});
-//});
+
+
+
+// connection.query('select * from  efridge where user_id = '+user.user.user_id, function (err,rows) {
+
+// 	efridge = rows;
+
+//   res.render('efridge', {
+
+//   		  title: 'My e-tools',
+//   	description: 'Enter the name of the food in your e-fridge that you want to add to today\'s meal.',
+//   		   data: efridge,
+//   		   isAuthenticated: req.isAuthenticated(),
+// 	 	   user: req.user 
+ 	 
+//   });
+	
+// });
+
+// });
+// //});
 
 
 routerf.post('/efridge', function(req, res, next) {
@@ -52,7 +71,14 @@ routerf.post('/efridge', function(req, res, next) {
 // 		console.log(connection);
 
 // 	}
+
+var user ={
+	isAthenticated: req.isAuthenticated(),
+	user: req.user
+};
+
 var efridge = {
+
  			 food_name: req.body.food_name,
  				 brand: req.body.brand,
 	 	  serving_size: req.body.serving_size,
@@ -60,7 +86,8 @@ var efridge = {
 	   		 fat_grams: req.body.fat_grams,
 	carbohydrate_grams: req.body.carbohydrate_grams,
 		 protein_grams: req.body.protein_grams,
-		   total_grams: req.body.total_grams
+		   total_grams: req.body.total_grams,
+		   	   user_id: user.user.user_id
 };
 
  connection.query('insert into efridge set ?', efridge, function (err, result) {

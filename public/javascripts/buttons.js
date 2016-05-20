@@ -1,18 +1,23 @@
-function registerUser() {
+var showRegister = document.getElementById('btntest4');
+showRegister.addEventListener('click', registerUser, false);
 
-var registerDiv = document.getElementById('registerDiv');
 
 
- if (registerDiv.hasAttribute('hidden')) {
- registerDiv.removeAttribute('hidden');
- } 
- else {
+function registerUser(formid, attribute) {
+
+if(document.getElementById('formid')) {
+
+   if (registerDiv.hasAttribute('attribute')) {
+   registerDiv.removeAttribute('attribute');
+   } 
+   else {
  	console.log('err');
 }
 };	
 
-var showRegister = document.getElementById('btntest4');
-showRegister.addEventListener('click', registerUser, false);
+registerUser('registerDiv', 'hidden');
+
+
 
 module.exports = registerUser;
 module.exports = showRegister;

@@ -7,6 +7,13 @@ var passport = require('passport');
 var passportLocal = require('passport-local');
 
 routerg.get('/egym', function(req, res, next) {
+		var user = {
+		isAuthenticated: req.isAuthenticated(),
+		user: req.user
+	};
+      if (!user.isAuthenticated) { 
+          res.redirect('/login');
+         } else {
 
 	var egym;
 //pool.getConnection(function(err,connection) {
@@ -29,7 +36,7 @@ routerg.get('/egym', function(req, res, next) {
 		}
 });		
 
-});
+}});
 
 routerg.get('/logout', function(req, res) {
 	req.logout();

@@ -19,14 +19,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 80,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -61,25 +53,49 @@
 	"expanded_folders":
 	[
 		"/home/natasha/expresst2/etools",
-		"/home/natasha/expresst2/etools/views"
+		"/home/natasha/expresst2/etools/bin",
+		"/home/natasha/expresst2/etools/build",
+		"/home/natasha/expresst2/etools/public",
+		"/home/natasha/expresst2/etools/public/javascripts",
+		"/home/natasha/expresst2/etools/routes",
+		"/home/natasha/expresst2/etools/views",
+		"/home/natasha/expresst2/etools/views/partials"
 	],
 	"file_history":
 	[
-		"/home/natasha/expresst2/eatApp/bin/www",
-		"/home/natasha/expresst2/etools/public/javascripts/require.js",
-		"/home/natasha/expresst2/etools/Gruntfile.js",
+		"/home/natasha/expresst2/etools/ALTER TABLE efridge",
+		"/home/natasha/expresst2/etools/app.js",
+		"/home/natasha/expresst2/etools/routes/login.js",
+		"/home/natasha/expresst2/etools/routes/index.js",
+		"/home/natasha/expresst2/etools/views/partials/loginheader.ejs",
+		"/home/natasha/expresst2/etools/views/partials/header.ejs",
+		"/home/natasha/expresst2/etools/users.sql",
+		"/home/natasha/expresst2/etools/schema.sql",
+		"/home/natasha/expresst2/etools/workoutSchema.sql",
+		"/home/natasha/expresst2/etools/views/partials/foodform.ejs",
+		"/home/natasha/expresst2/etools/views/efridge.ejs",
+		"/home/natasha/expresst2/etools/public/javascripts/buttons.js",
+		"/home/natasha/expresst2/etools/routes/efridge.js",
+		"/home/natasha/expresst2/etools/views/login.ejs",
+		"/home/natasha/expresst2/etools/routes/egym.js",
+		"/home/natasha/expresst2/etools/views/index.ejs",
+		"/home/natasha/expresst2/etools/views/partials/register.ejs",
+		"/home/natasha/expresst2/etools/passport.js",
+		"/home/natasha/expresst2/etools/letsencrypt-auto certonly -a webroot --webroot-p",
 		"/home/natasha/expresst2/etools/flightplan.js",
+		"/home/natasha/expresst2/etools/package.json",
+		"/home/natasha/expresst2/etools/public/javascripts/require.js",
+		"/home/natasha/expresst2/etools/views/egym.ejs",
+		"/home/natasha/expresst2/etools/.gitignore",
+		"/home/natasha/expresst2/etools/Gruntfile.js",
+		"/home/natasha/expresst2/eatApp/bin/www",
 		"/home/natasha/expresst2/etools/README.md",
 		"/home/natasha/expresst2/etools/bin/www",
-		"/home/natasha/expresst2/etools/package.json",
 		"/home/natasha/expresst2/eatApp/package.json",
 		"/home/natasha/expresst2/eatApp/flightplan.js",
 		"/home/natasha/expresst2/etools/cheatsheet.msu",
 		"/home/natasha/expresst2/etools/secret.js",
-		"/home/natasha/expresst2/etools/.gitignore",
-		"/home/natasha/expresst2/etools/schema.sql",
 		"/home/natasha/expresst2/etools/meal.sql",
-		"/home/natasha/expresst2/etools/workoutSchema.sql",
 		"/home/natasha/expresst2/eatApp/public/stylesheets/style.less",
 		"/home/natasha/expresst2/eatApp/.gitignore",
 		"/home/natasha/expresst2/eatApp/routes/index.js",
@@ -174,25 +190,11 @@
 		"/home/natasha/expresst/--hogan/package.json",
 		"/home/natasha/MyApp/servers/server.js",
 		"/home/natasha/MyApp/servers/basicserver.js",
-		"/home/natasha/Downloads/ssag.sh",
-		"/home/natasha/MyApp/.git/config",
-		"/home/natasha/MyApp/public/index.html",
-		"/home/natasha/MyApp/Gruntfile.js",
-		"/home/natasha/MyApp/public/server.js",
-		"/home/natasha/MyApp/public/basicserver.js",
-		"/home/natasha/MyApp/server.js",
-		"/home/natasha/MyApp/servertest.js",
-		"/home/natasha/MyApp/css/footer.css",
-		"/home/natasha/MyApp/css/header.css",
-		"/home/natasha/MyApp/css/main.css",
-		"/usr/bin/node",
-		"/usr/bin/nodejs",
-		"/home/natasha/MyApp/js/test1.js",
-		"/home/natasha/MyApp/js/test2.js"
+		"/home/natasha/Downloads/ssag.sh"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 71.0
 	},
 	"find_in_files":
 	{
@@ -206,6 +208,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"remote",
+			"/var",
+			"logout",
+			"log",
+			"username",
+			"select",
+			"user",
+			"pool",
 			"/**",
 			"workout",
 			"require",
@@ -241,37 +251,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": ".gitignore",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 80,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								79,
-								79
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],

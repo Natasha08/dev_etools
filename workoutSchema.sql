@@ -1,5 +1,5 @@
 CREATE TABLE egym (
-  id   INT PRIMARY KEY AUTO_INCREMENT,
+  workout_id   INT PRIMARY KEY AUTO_INCREMENT,
   date DATE NOT NULL,
   workout_day VARCHAR(50) NOT NULL,
   key_lift1 VARCHAR(50) NOT NULL,
@@ -25,8 +25,13 @@ CREATE TABLE egym (
   weight8 DECIMAL(5,2) NOT NULL,
   reps10  DECIMAL(5,2) NOT NULL,
   reps11  DECIMAL(7,2) NOT NULL,
-  reps12  DECIMAL(7,2) NOT NULL
-);
+  reps12  DECIMAL(7,2) NOT NULL,
+  user_id INT NOT NULL,
+  FOREIGN KEY fk_users(user_id)
+  REFERENCES users(user_id)
+  ON UPDATE CASCADE
+  ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 //inserted into the root database for my the machine\'s mysql on Friday. Use this database 
 //to work with the app. If this works, move onto the digital ocean server. 
