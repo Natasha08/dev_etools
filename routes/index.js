@@ -28,7 +28,7 @@ router.get('/', function(req, res, next) {
          } else {
       
 	 res.render('index', {
-	 	title: 'MyColo',
+	 	title: 'My e-tools',
 	 	isAuthenticated: req.isAuthenticated(),
 	 	user: req.user
 	 });

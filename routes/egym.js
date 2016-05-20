@@ -23,7 +23,7 @@ routerg.get('/egym', function(req, res, next) {
 
 	if (!err) {
 		res.render('egym', {
-			   title: 'My e-tools',
+			   title: 'My e-gym',
 		 description: 'Checkout your workouts!',
 				data: egym,
 	 isAuthenticated: req.isAuthenticated(),

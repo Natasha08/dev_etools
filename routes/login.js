@@ -14,7 +14,7 @@ routerl.get('/logout', function(req, res) {
 routerl.get('/login', function(req, res, next) {
 
 	 res.render('login', {
-	 	title: 'MyColo',
+	 	title: 'MyColoFitness',
 	 });
 });
 

@@ -30,7 +30,7 @@ connection.query('select * from  efridge where user_id = '+user.user.user_id, fu
 
 		res.render('efridge', {
 
-  		  title: 'My e-tools',
+  		  title: 'My e-fridge',
   	description: 'Enter the name of the food in your e-fridge that you want to add to today\'s meal.',
   		   data: efridge,
   		   isAuthenticated: req.isAuthenticated(),

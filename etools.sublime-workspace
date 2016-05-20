@@ -57,29 +57,35 @@
 		"/home/natasha/expresst2/etools/build",
 		"/home/natasha/expresst2/etools/public",
 		"/home/natasha/expresst2/etools/public/javascripts",
+		"/home/natasha/expresst2/etools/public/stylesheets",
 		"/home/natasha/expresst2/etools/routes",
 		"/home/natasha/expresst2/etools/views",
 		"/home/natasha/expresst2/etools/views/partials"
 	],
 	"file_history":
 	[
+		"/home/natasha/expresst2/etools/views/partials/header.ejs",
+		"/home/natasha/expresst2/etools/views/partials/loginheader.ejs",
+		"/home/natasha/expresst2/etools/views/partials/head.ejs",
+		"/home/natasha/expresst2/etools/public/javascripts/buttons.js",
+		"/home/natasha/expresst2/etools/public/javascripts/bundle.js",
+		"/home/natasha/expresst2/etools/views/partials/register.ejs",
+		"/home/natasha/expresst2/etools/views/login.ejs",
+		"/home/natasha/expresst2/etools/public/javascripts/ninja.js",
+		"/home/natasha/expresst2/etools/public/stylesheets/style.less",
+		"/home/natasha/expresst2/etools/public/stylesheets/footer.less",
+		"/home/natasha/expresst2/etools/routes/index.js",
+		"/home/natasha/expresst2/etools/routes/egym.js",
+		"/home/natasha/expresst2/etools/routes/efridge.js",
+		"/home/natasha/expresst2/etools/views/index.ejs",
+		"/home/natasha/expresst2/etools/routes/login.js",
+		"/home/natasha/expresst2/etools/views/efridge.ejs",
 		"/home/natasha/expresst2/etools/ALTER TABLE efridge",
 		"/home/natasha/expresst2/etools/app.js",
-		"/home/natasha/expresst2/etools/routes/login.js",
-		"/home/natasha/expresst2/etools/routes/index.js",
-		"/home/natasha/expresst2/etools/views/partials/loginheader.ejs",
-		"/home/natasha/expresst2/etools/views/partials/header.ejs",
 		"/home/natasha/expresst2/etools/users.sql",
 		"/home/natasha/expresst2/etools/schema.sql",
 		"/home/natasha/expresst2/etools/workoutSchema.sql",
 		"/home/natasha/expresst2/etools/views/partials/foodform.ejs",
-		"/home/natasha/expresst2/etools/views/efridge.ejs",
-		"/home/natasha/expresst2/etools/public/javascripts/buttons.js",
-		"/home/natasha/expresst2/etools/routes/efridge.js",
-		"/home/natasha/expresst2/etools/views/login.ejs",
-		"/home/natasha/expresst2/etools/routes/egym.js",
-		"/home/natasha/expresst2/etools/views/index.ejs",
-		"/home/natasha/expresst2/etools/views/partials/register.ejs",
 		"/home/natasha/expresst2/etools/passport.js",
 		"/home/natasha/expresst2/etools/letsencrypt-auto certonly -a webroot --webroot-p",
 		"/home/natasha/expresst2/etools/flightplan.js",
@@ -185,16 +191,11 @@
 		"/home/natasha/Desktop/aso_ticket.txt",
 		"/home/natasha/.bash_profile",
 		"/home/natasha/.profile",
-		"/home/natasha/expresst/MyEats/Gruntfile",
-		"/home/natasha/.bashrc",
-		"/home/natasha/expresst/--hogan/package.json",
-		"/home/natasha/MyApp/servers/server.js",
-		"/home/natasha/MyApp/servers/basicserver.js",
-		"/home/natasha/Downloads/ssag.sh"
+		"/home/natasha/expresst/MyEats/Gruntfile"
 	],
 	"find":
 	{
-		"height": 71.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
