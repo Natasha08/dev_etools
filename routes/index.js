@@ -15,20 +15,27 @@ var passportLocal = require('passport-local');
 //read file
 router.get('/logout', function(req, res) {
 	req.logout();
-	res.redirect('/');
+	res.redirect('/login');
 });
 
 router.get('/', function(req, res, next) {
-
+	var user = {
+		isAuthenticated: req.isAuthenticated(),
+		user: req.user
+	};
+      if (!user.isAuthenticated) { 
+          res.redirect('/login');
+         } else {
+      
 	 res.render('index', {
 	 	title: 'MyColo',
 	 	isAuthenticated: req.isAuthenticated(),
 	 	user: req.user
 	 });
-});
+}});
 
-router.post('/login', passport.authenticate('local-login', { failureRedirect: '/' }),
-      function(req, res) {
+router.post('/', passport.authenticate('local-login', { failureRedirect: '/login' }),
+		function(req, res) {
         res.redirect('/');
       });
 
@@ -60,7 +67,7 @@ var users = {
 		});
 		return;
 	} else {
-	res.redirect('/');
+	res.redirect('/login');
 }
 
 });

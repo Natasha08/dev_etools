@@ -10,9 +10,10 @@ var passport = require('passport');
 var LocalStrategy   = require('passport-local').Strategy;
 var connection = require('./public/javascripts/require.js');
 
-var routes = require('./routes/index');
-var routesg = require('./routes/egym');
 var routesf = require('./routes/efridge');
+var routesg = require('./routes/egym');
+var routes = require('./routes/index');
+var routesl = require('./routes/login');
 
 var app = express();
 
@@ -42,7 +43,7 @@ app.use(passport.session());
 //creates a new strategy for passport. Note username (default) changed to email 
 
 passport.use('local-login', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
+    // by default, local strategy uses username and password, the following will override with email [change the name on the form also]
     usernameField : 'email',
     passwordField : 'password',
     passReqToCallback : true // allows us to pass back the entire request to the callback
@@ -58,7 +59,7 @@ passport.use('local-login', new LocalStrategy({
             
             // if the user is found but the password is wrong
             if (!( rows[0].password == password))
-                return done(null, false);//, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
+                return done(null, false), console.log('Oops! Wrong password.'); // create the loginMessage and save it to session as flashdata
             
             // all is well, return successful user
             return done(null, rows[0]);         
@@ -69,12 +70,12 @@ passport.use('local-login', new LocalStrategy({
     }));
 
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user.user_id);
     });
 
 // used to deserialize the user
-passport.deserializeUser(function(id, done) {
-    connection.query("select * from users where id = "+id,function(err,rows){   
+passport.deserializeUser(function(user_id, done) {
+    connection.query("select * from users where user_id = "+user_id,function(err,rows){   
           done(err, rows[0]);
         });
     });
@@ -82,6 +83,7 @@ passport.deserializeUser(function(id, done) {
 app.use('/', routes);
 app.use('/', routesg);
 app.use('/', routesf);
+app.use('/', routesl);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

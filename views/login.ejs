@@ -4,7 +4,7 @@
     <% include ./partials/head %>
   </head> 
   <header>
-    <% include ./partials/header %>                
+    <% include ./partials/loginheader %>                
   </header>
   <body class="container-fluid" class="col-md-12">
        <div>
@@ -12,16 +12,14 @@
         <div class="container">
           <h1>Colorado e-tools</h1>
           <h2>for Health</h2>
-          <% if (!isAuthenticated) { %>
-            <a href="/login">Log in here</a>
-            <% } else { %>
-              Hello, <%= user.username %>
-           <% } %>
         </div>  
       </div>
       </div> 
       <div class="well container-fluid">
-      <p class = "instruct">Click on the 'My e-tools' dropdown on the navigation bar to begin building your e-fridge and e-gym</p>
+           <button type="button" class="btn btn-lg" id="btntest4">Register</button> 
       </div>
+              <% include ./partials/register.ejs %>
+            <script type="text/javascript" src="./javascripts/bundle.js"></script>
+ 
   </body>
 </html>
