@@ -54,8 +54,8 @@
 	[
 		"/home/natasha/expresst2/etools",
 		"/home/natasha/expresst2/etools/bin",
-		"/home/natasha/expresst2/etools/build",
 		"/home/natasha/expresst2/etools/public",
+		"/home/natasha/expresst2/etools/public/images",
 		"/home/natasha/expresst2/etools/public/javascripts",
 		"/home/natasha/expresst2/etools/public/stylesheets",
 		"/home/natasha/expresst2/etools/routes",
@@ -64,16 +64,18 @@
 	],
 	"file_history":
 	[
+		"/home/natasha/expresst2/etools/public/javascripts/buttons.js",
+		"/home/natasha/expresst2/etools/public/stylesheets/style.less",
+		"/home/natasha/expresst2/etools/Gruntfile.js",
+		"/home/natasha/expresst2/etools/views/login.ejs",
+		"/home/natasha/expresst2/etools/public/javascripts/ninja.js",
+		"/home/natasha/expresst2/etools/public/stylesheets/footer.less",
+		"/home/natasha/expresst2/etools/views/partials/footer.ejs",
+		"/home/natasha/expresst2/etools/public/javascripts/bundle.js",
 		"/home/natasha/expresst2/etools/views/partials/header.ejs",
 		"/home/natasha/expresst2/etools/views/partials/loginheader.ejs",
 		"/home/natasha/expresst2/etools/views/partials/head.ejs",
-		"/home/natasha/expresst2/etools/public/javascripts/buttons.js",
-		"/home/natasha/expresst2/etools/public/javascripts/bundle.js",
 		"/home/natasha/expresst2/etools/views/partials/register.ejs",
-		"/home/natasha/expresst2/etools/views/login.ejs",
-		"/home/natasha/expresst2/etools/public/javascripts/ninja.js",
-		"/home/natasha/expresst2/etools/public/stylesheets/style.less",
-		"/home/natasha/expresst2/etools/public/stylesheets/footer.less",
 		"/home/natasha/expresst2/etools/routes/index.js",
 		"/home/natasha/expresst2/etools/routes/egym.js",
 		"/home/natasha/expresst2/etools/routes/efridge.js",
@@ -93,7 +95,6 @@
 		"/home/natasha/expresst2/etools/public/javascripts/require.js",
 		"/home/natasha/expresst2/etools/views/egym.ejs",
 		"/home/natasha/expresst2/etools/.gitignore",
-		"/home/natasha/expresst2/etools/Gruntfile.js",
 		"/home/natasha/expresst2/eatApp/bin/www",
 		"/home/natasha/expresst2/etools/README.md",
 		"/home/natasha/expresst2/etools/bin/www",
@@ -190,12 +191,11 @@
 		"/home/natasha/expresst/MyEats/Gruntfile.js",
 		"/home/natasha/Desktop/aso_ticket.txt",
 		"/home/natasha/.bash_profile",
-		"/home/natasha/.profile",
-		"/home/natasha/expresst/MyEats/Gruntfile"
+		"/home/natasha/.profile"
 	],
 	"find":
 	{
-		"height": 42.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -209,6 +209,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"a",
 			"remote",
 			"/var",
 			"logout",
@@ -259,7 +260,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 34.0
+		"height": 32.0
 	},
 	"input":
 	{
@@ -296,7 +297,7 @@
 	"project": "",
 	"replace":
 	{
-		"height": 64.0
+		"height": 60.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -334,7 +335,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 198.0,
+	"side_bar_width": 316.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

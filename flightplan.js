@@ -10,7 +10,7 @@ var tmpDir = appName+'-' + new Date().getTime();
 // configuration
 plan.target('dev', [
   {
-    host: '159.203.235.132',
+    host: '104.131.146.45',
     username: username,
     agent: process.env.SSH_AUTH_SOCK
   }
@@ -61,6 +61,5 @@ plan.remote(function(remote) {
 
   remote.log('Reload application');
   remote.sudo('ln -snf ~/' + tmpDir + ' ~/'+appName, {user: username});
-  remote.exec('forever stop ~/' + appName+ '/' +startFile,  {failsafe: true});
-  remote.exec('forever start ~/' +appName+ '/' +startFile);
+  remote.exec('sudo restart etools');
 });

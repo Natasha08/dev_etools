@@ -1,6 +1,6 @@
 // To show the food profiles stored in the database.
 
-function shownutritiontable() {
+function showNutritionTable() {
 var foodData = document.getElementById('foodData');
 var dataSearch = document.getElementById('dataSearch');
 
@@ -17,12 +17,12 @@ var dataSearch = document.getElementById('dataSearch');
 };	
 
 var showtblclick = document.getElementById('btntest3');
-showtblclick.addEventListener('click', shownutritiontable, false);
+showtblclick.addEventListener('click', showNutritionTable, false);
 
 
 //to show the food profile FORM for the user. 
 
-function createFood() {
+function foodForm() {
 var foodProfile = document.getElementById('foodProfile');
 
  if (foodProfile.hasAttribute('hidden')) {
@@ -37,8 +37,8 @@ var foodProfile = document.getElementById('foodProfile');
 };	
 
 var showFood = document.getElementById('btntest1');
-showFood.addEventListener('click', createFood, false);
+showFood.addEventListener('click', foodForm, false);
 
-module.exports = shownutritiontable;
-module.exports = createFood;
+module.exports = showNutritionTable;
+module.exports = foodForm;
 module.exports = showFood;
