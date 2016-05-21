@@ -20,8 +20,12 @@ grunt.initConfig({
 //uncomment concat for PRODUCTION
 concat: {
     client_js: {
-    src: ['public/javascripts/bundle.js', 'public/javascripts/bundle2.js'], 
+    src: ['public/javascripts/bundle.js', 'public/javascripts/bundle2.js', 'public/javascripts/bundle3.js'], 
     dest: 'public/javascripts/buttonsAll.js',
+  },
+    less: {
+    src: ['public/stylesheets/style.less', 'public/stylesheets/footer.less'], 
+    dest: 'public/stylesheets/concat.less',
   },
   js: {
     src: ['app.js', 'routes/*.js', 'public/javascripts/buttonsAll.js', 'public/javascripts/require.js'], 

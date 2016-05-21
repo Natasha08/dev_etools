@@ -20,8 +20,18 @@
         </div>  
       </div>
       </div> 
+      <div id="workSearch" class="well" hidden>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input id="workSearch" type="text" class="form-control" placeholder="Search my e-gym">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+               <p><strong><%= description %></strong></p>
+      </div>
       <div class="well">
-        <button type="button" class="btn btn-default" id="btntest5">Workouts</button> 
+        <button type="button" class="btn btn-default" id="btnworkpos">Create Workout</button>
+        <button type="button" class="btn btn-default" id="btnworkget">Database</button> 
       </div>
         <% include ./partials/exercise_table.ejs %> 
         <% include ./partials/exercise.ejs %>

@@ -3,7 +3,7 @@ var connection = mysql.createConnection({
 
   host            : 'localhost',
   user            : 'tulsi',
-  password        : 'Yoni3454!',
+  password        : 'owei93ihr9h$',
   database        : 'freetools'
 
 });

@@ -1,9 +1,3 @@
-.well {
-  background-color: #562583;
-}
-.page {
-  background-color: #562583;
-}
 /**********************************************
 				General Styles
 **********************************************/
@@ -20,11 +14,19 @@ body {
 .hideit {
   display: none;
 }
+p.instruct {
+  background-color: white;
+  padding: 10px;
+  display: inline-block;
+}
 /**********************************************
 					Nav Bar
 **********************************************/
 .navbar-default {
-  background-color: rgba(239, 239, 239, 0.3);
+  background-color: white;
+}
+.navStyle {
+  background-color: #efefc8;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -35,6 +37,11 @@ body {
 #userName:focus,
 #userPass:focus {
   border: 2px solid #7f4659;
+}
+a,
+li,
+ul {
+  color: black;
 }
 /**********************************************
 					Buttons 
@@ -53,10 +60,7 @@ body {
 .btn:hover {
   border: 2px solid #efefc8;
 }
-/**button disabled until authentication learned**/
-#foodSubmit {
-  display: none;
-}
+/**button disabled until authentication learned --update--Today is the day! May 16th**/
 #foodSubmit,
 #registerSubmit {
   border: 2px solid #7f4659;
@@ -64,6 +68,9 @@ body {
 #foodSubmit:hover #registerSubmit:hover {
   background-color: #6a877b;
   border: 2px solid #7f4659;
+}
+#response {
+  background-color: white;
 }
 /**********************************************
 				Jumbotron 
@@ -120,3 +127,14 @@ tr:hover td {
 div.row {
   padding: 5px;
 }
+/**********************************************
+				Footer
+**********************************************/
+.footer {
+  background-color: #efefc8;
+  list-style: none;
+  width: 100%;
+}
+/**********************************************
+				Footer
+**********************************************/
