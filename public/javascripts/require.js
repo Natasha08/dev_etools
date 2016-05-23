@@ -3,7 +3,7 @@ var connection = mysql.createConnection({
 
   host            : 'localhost',
   user            : 'tulsi',
-  password        : 'owei93ihr9h$',
+  password        : 'Yoni3454!',
   database        : 'freetools'
 
 });
@@ -23,3 +23,4 @@ module.exports = connection;
 // });
 
 // module.exports = pool;
+//password        : 'owei93ihr9h$',

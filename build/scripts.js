@@ -9,6 +9,8 @@ var expressSession = require('express-session');
 var passport = require('passport');
 var LocalStrategy   = require('passport-local').Strategy;
 var connection = require('./public/javascripts/require.js');
+var easyPbkdf2 = require ('easy-pbkdf2')();
+const crypto = require('crypto');
 
 var routesf = require('./routes/efridge');
 var routesg = require('./routes/egym');
@@ -43,26 +45,48 @@ app.use(passport.session());
 //creates a new strategy for passport. Note username (default) changed to email 
 
 passport.use('local-login', new LocalStrategy({
-    // by default, local strategy uses username and password, the following will override with email [change the name on the form also]
+
+// by default, local strategy uses username and password, the following will override with email [change the name on the form also]
     usernameField : 'email',
     passwordField : 'password',
     passReqToCallback : true // allows us to pass back the entire request to the callback
 },
+
     function(req, email, password, done) { // callback with email and password from our form
 
-         connection.query("SELECT * FROM `users` WHERE `email` = '" + email + "'",function(err,rows){
-            if (err)
-                return done(err);
-             if (!rows.length) {
-                return done(null, false);//, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+
+  connection.query("SELECT * FROM `users` WHERE `email` = '" + email + "'",function(err,rows){
+  
+//temporary user object
+      var users = {
+      
+        password: req.body.password,
+        salt: rows[0].user_salt,
+
+      }
+//create key with password from user input and orginal salt
+      const key = crypto.pbkdf2Sync(users.password, users.salt, 100000, 512, 'sha512');
+      var passbuf2 = (key.toString('hex'));
+
+// if (key) {
+//     console.log('passbuf2:  '+ passbuf2);
+// };
+
+//if not connected to a users db
+        if (err)
+            return done(err); 
+          if (!rows.length) {
+              return done(null, false), console.log('no error, and no user either!'); //req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
             } 
             
-            // if the user is found but the password is wrong
-            if (!( rows[0].password == password))
-                return done(null, false), console.log('Oops! Wrong password.'); // create the loginMessage and save it to session as flashdata
-            
-            // all is well, return successful user
-            return done(null, rows[0]);         
+// if the user is found but the password is wrong
+          if (!(rows[0].password == passbuf2))
+                return done(null, false), console.log('something is wrong with the buffers!'+ rows[0].password); // create the loginMessage and save it to session as flashdata
+//if the salt does not match up
+          if (!( rows[0].user_salt == users.salt))
+                return done(null, false), console.log('saltless');
+// all is well, return successful user
+            return done(null, rows[0]), console.log('You are successfully logged in!');         
         });
         
 
@@ -80,6 +104,7 @@ passport.deserializeUser(function(user_id, done) {
         });
     });
 
+//use the routes specified earlier
 app.use('/', routes);
 app.use('/', routesg);
 app.use('/', routesf);
@@ -282,20 +307,17 @@ var mysql = require('mysql');
 var connection = require('../public/javascripts/require');
 var expressSession = require('express-session');
 var passport = require('passport');
-//var passportp = require('../passport');
 var passportLocal = require('passport-local');
+var easyPbkdf2 = require ('easy-pbkdf2')();
+const crypto = require('crypto');
 
-// var natskey = require('../secret');
-// var sendgrid  = require('sendgrid')(natskey);
-// var ejs = require('ejs');
-// var fs = require('fs');
-
-//read file
+//logout
 router.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/login');
 });
 
+//home page after successful login
 router.get('/', function(req, res, next) {
 	var user = {
 		isAuthenticated: req.isAuthenticated(),
@@ -312,29 +334,40 @@ router.get('/', function(req, res, next) {
 	 });
 }});
 
+//home page redirect to login if not authenticated with local strategy
 router.post('/', passport.authenticate('local-login', { failureRedirect: '/login' }),
 		function(req, res) {
         res.redirect('/');
       });
 
+//registration route
 router.post('/register', function(req, res, next) {
-//uncomment this for pool connection //pool.getConnection(function(err,connection) {
-	// if (err) {
-	// 	console.error(err);
-	// 	return;
-	// } else {
-	// 	console.log(connection);
 
-	// }
+//grab password and generate salt function from easyPbkdf2 package
+var password = req.body.passWord;
+var salt = easyPbkdf2.generateSalt();
 
+//create key using crypto module and convert to hex
+const key = crypto.pbkdf2Sync(password, salt, 100000, 512, 'sha512');
+var passwordHash = key.toString('hex'); 
+//console.log(passwordHash);
+
+//unsure if I should use buffer 
+//const passbuf = Buffer.alloc(64, key, 'binary');
+
+//temporary user object
 var users = {
 	email: req.body.userEmail,
 	firstname: req.body.firstName,
 	lastname: req.body.lastName,
 	username: req.body.userName,
-	password: req.body.passWord
+	password: req.body.passWord,
+	user_salt: salt,
+	password: passwordHash
+
 };
 
+//create new user in mysql database based on temporary user object
  connection.query('insert into users set ?', users, function (err, result) {
 
 	if (err) {
@@ -346,16 +379,21 @@ var users = {
 		return;
 	} else {
 	res.redirect('/login');
-}
+};
 
 });
 });
-
-
 
 //uncomment this for pool //connection});
 
 module.exports = router;	
+
+//uncomment vars to send mail using sendgrid
+// var natskey = require('../secret');
+// var sendgrid  = require('sendgrid')(natskey);
+// var ejs = require('ejs');
+// var fs = require('fs');
+
 
 // var email     = new sendgrid.Email(); 
 // email.setTos('');
@@ -601,7 +639,7 @@ var connection = mysql.createConnection({
 
   host            : 'localhost',
   user            : 'tulsi',
-  password        : 'owei93ihr9h$',
+  password        : 'Yoni3454!',
   database        : 'freetools'
 
 });
@@ -621,3 +659,4 @@ module.exports = connection;
 // });
 
 // module.exports = pool;
+//password        : 'owei93ihr9h$',

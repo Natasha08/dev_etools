@@ -9,6 +9,8 @@ var expressSession = require('express-session');
 var passport = require('passport');
 var LocalStrategy   = require('passport-local').Strategy;
 var connection = require('./public/javascripts/require.js');
+var easyPbkdf2 = require ('easy-pbkdf2')();
+const crypto = require('crypto');
 
 var routesf = require('./routes/efridge');
 var routesg = require('./routes/egym');
@@ -43,26 +45,48 @@ app.use(passport.session());
 //creates a new strategy for passport. Note username (default) changed to email 
 
 passport.use('local-login', new LocalStrategy({
-    // by default, local strategy uses username and password, the following will override with email [change the name on the form also]
+
+// by default, local strategy uses username and password, the following will override with email [change the name on the form also]
     usernameField : 'email',
     passwordField : 'password',
     passReqToCallback : true // allows us to pass back the entire request to the callback
 },
+
     function(req, email, password, done) { // callback with email and password from our form
 
-         connection.query("SELECT * FROM `users` WHERE `email` = '" + email + "'",function(err,rows){
-            if (err)
-                return done(err);
-             if (!rows.length) {
-                return done(null, false);//, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+
+  connection.query("SELECT * FROM `users` WHERE `email` = '" + email + "'",function(err,rows){
+  
+//temporary user object
+      var users = {
+      
+        password: req.body.password,
+        salt: rows[0].user_salt,
+
+      }
+//create key with password from user input and orginal salt
+      const key = crypto.pbkdf2Sync(users.password, users.salt, 100000, 512, 'sha512');
+      var passbuf2 = (key.toString('hex'));
+
+// if (key) {
+//     console.log('passbuf2:  '+ passbuf2);
+// };
+
+//if not connected to a users db
+        if (err)
+            return done(err); 
+          if (!rows.length) {
+              return done(null, false), console.log('no error, and no user either!'); //req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
             } 
             
-            // if the user is found but the password is wrong
-            if (!( rows[0].password == password))
-                return done(null, false), console.log('Oops! Wrong password.'); // create the loginMessage and save it to session as flashdata
-            
-            // all is well, return successful user
-            return done(null, rows[0]);         
+// if the user is found but the password is wrong
+          if (!(rows[0].password == passbuf2))
+                return done(null, false), console.log('something is wrong with the buffers!'+ rows[0].password); // create the loginMessage and save it to session as flashdata
+//if the salt does not match up
+          if (!( rows[0].user_salt == users.salt))
+                return done(null, false), console.log('saltless');
+// all is well, return successful user
+            return done(null, rows[0]), console.log('You are successfully logged in!');         
         });
         
 
@@ -80,6 +104,7 @@ passport.deserializeUser(function(user_id, done) {
         });
     });
 
+//use the routes specified earlier
 app.use('/', routes);
 app.use('/', routesg);
 app.use('/', routesf);
