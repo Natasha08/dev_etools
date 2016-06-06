@@ -1,23 +1,57 @@
 
-var registerDiv = document.getElementById('registerDiv');
+
+// function Tetes(registerDiv, btntest4){
+
+// 	btnId = document.getElementById('btntest4');
+// 	 elId = document.getElementById('registerDiv');
+// 	  has = elId.hasAttribute('hidden');
+//    remove = elId.removeAttribue('hidden');
+//    	  add = btnId.addEventListener('click', tretes, false)
+
+// };
+
+// testes.btnId.add;
+
+// };
+// function tretes(testes) {
+// 	if (testes.elId.has) {
+// 		testes.elId.remove;
+// 	} else {
+// 		console.log(errorrrrr!);
+// 	}
+// };
+
+// };
+
+// module.exports = Tetes;
 
 
-function registerUser() {
 
- if (registerDiv.hasAttribute('hidden')) {
- registerDiv.removeAttribute('hidden');
- } 
- else {
- 	console.log('err');
 
-};	
-};
-var showRegister = document.getElementById('btntest4');
 
-showRegister.addEventListener('click', registerUser, false);
 
-module.exports = registerUser;
-module.exports = showRegister;
+
+
+
+// var registerDiv = document.getElementById('registerDiv');
+
+
+// function registerUser() {
+
+//  if (registerDiv.hasAttribute('hidden')) {
+//  registerDiv.removeAttribute('hidden');
+//  } 
+//  else {
+//  	console.log('err');
+
+// };	
+// };
+// var showRegister = document.getElementById('btntest4');
+
+// showRegister.addEventListener('click', registerUser, false);
+
+// module.exports = registerUser;
+// module.exports = showRegister;
 
 
 

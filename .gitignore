@@ -8,6 +8,7 @@ authUser.js
 newSalt.js
 password.js
 *.sql
+*.msu
 updateUser.js
 test.js
 users.js

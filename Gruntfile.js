@@ -8,7 +8,7 @@ grunt.initConfig({
 
   // concat: {
   //   js: {
-  //     src: ['app.js', 'routes/*.js','public/javascripts/bundle.js', 'public/javascripts/bundle2.js', 'public/javascripts/bundle3.js'],
+  //     src: ['app.js', 'routes/*.js','public/login/bundle.js', 'public/javascripts/bundle2.js', 'public/javascripts/bundle3.js'],
   //     dest: 'build/scripts.js',
   //   },
   // },
@@ -20,7 +20,7 @@ grunt.initConfig({
 //uncomment concat for PRODUCTION
 concat: {
     client_js: {
-    src: ['public/javascripts/bundle.js', 'public/javascripts/bundle2.js', 'public/javascripts/bundle3.js'], 
+    src: ['public/login/bundle.js', 'public/javascripts/bundle2.js', 'public/javascripts/bundle3.js'], 
     dest: 'public/javascripts/buttonsAll.js',
   },
     less: {
@@ -42,7 +42,7 @@ concat: {
 //     tasks: ['concat'],
 //   },
   js: {
-    files: ['app.js', 'routes/*.js', 'public/javascripts/*.js'],
+    files: ['app.js', 'routes/*.js', 'public/*/*.js'],
     tasks: ['concat'],
   },  
 
