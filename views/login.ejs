@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html>
+<!-- <!DOCTYPE html>
+<html data-ng-app>
   <head>  
     <% include ./partials/head %>
+
   </head> 
   <header>
     <% include ./partials/loginheader %>                
   </header>
-  <body class="container-fluid" class="col-md-12">
+  <body class="container-fluid" class="col-md-12" data-ng-controller="AppCtrl">
        <div>
       <div class="jumbotron">
         <div class="container">
@@ -19,10 +20,16 @@
            <button type="button" class="btn btn-lg" id="btntest4">Register</button> 
       </div>
       <% include ./partials/register.ejs %>
-
-       <div>
-       <% include ./partials/footer.ejs %>
-       </div>
-          <script type="text/javascript" src="./javascripts/bundle.js"></script>
+      <div class="well container-fluid">
+      <div class="typingWell"><br><br>
+      Daily Calories: <input type="number" data-ng-model="DailyCal" />  <span> {{ DailyCal }} </span><br>
+      Fat (g): <input type="number" data-ng-model="Fat" />  <span> {{ Fat }} </span><br> 
+      Carbs (g): <input type="number" data-ng-model="Carbs" />  <span> {{ Carbs }} </span><br> 
+      Protein (g): <input type="number" data-ng-model="Protein" />  <span> {{ Protein }} </span><br> 
+      Macro Ratio: <input type="number" data-ng-model="Macro" />  <span> {{ Macro }} </span><br> 
+      </div>
+      </div>
+          <script type="text/javascript" src="javascripts/bundle.js"></script>
   </body>
 </html>
+ -->
