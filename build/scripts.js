@@ -60,12 +60,12 @@ passport.use('local-login', new LocalStrategy({
 //temporary user object
       var users = {
       
-        password: req.body.password,
-        salt: rows[0].user_salt,
+        //password: req.body.password,
+        salt: rows[0].user_salt
 
       }
 //create key with password from user input and orginal salt
-      const key = crypto.pbkdf2Sync(users.password, users.salt, 100000, 512, 'sha512');
+      const key = crypto.pbkdf2Sync(password, users.salt, 100000, 512, 'sha512');
       var passbuf2 = (key.toString('hex'));
 
 // if (key) {
@@ -298,7 +298,7 @@ routerg.get('/egym', function(req, res, next) {
 routerg.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/');
-});
+})
 //});
 module.exports = routerg;
 var express = require('express');
@@ -314,8 +314,8 @@ const crypto = require('crypto');
 //logout
 router.get('/logout', function(req, res) {
 	req.logout();
-	res.redirect('/login');
-});
+	res.redirect('/');
+})
 
 //home page after successful login
 router.get('/', function(req, res, next) {
@@ -424,8 +424,7 @@ var passportLocal = require('passport-local');
 routerl.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/');
-});
-
+})
 routerl.get('/login', function(req, res, next) {
 
 	 res.render('login', {
@@ -638,9 +637,11 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
 
   host            : 'localhost',
-  user            : 'tulsi',
-  password        : 'Yoni3454!',
-  database        : 'freetools'
+  // user            : 'tulsi',
+  // password        : 'Yoni3454!',
+ user            : 'trinity',
+ password        : 'sG1^j84eL;'
+
 
 });
 
@@ -660,3 +661,6 @@ module.exports = connection;
 
 // module.exports = pool;
 //password        : 'owei93ihr9h$',
+
+  //   user            : 'tulsi',
+  // password        : 'Yoni3454!'
