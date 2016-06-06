@@ -8,51 +8,61 @@ var passportLocal = require('passport-local');
 var easyPbkdf2 = require ('easy-pbkdf2')();
 const crypto = require('crypto');
 
-//logout
-router.get('/logout', function(req, res) {
+
+// router.post('/login', passport.authenticate('local-login', { failureRedirect: '/login' }),
+// 		function(req, res) {
+// 		//req.login();
+//         res.redirect('/');
+//       });
+
+// router.post('/login', passport.authenticate('local-login', { failureRedirect: '/login' }),
+// 		function(err, req, res) {
+// 			if(!err)
+//         res.redirect('/');
+
+// });
+
+  router.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/login');
 });
+    router.get('*', function(req, res) {
 
-//home page after successful login
-router.get('/', function(req, res, next) {
-	var user = {
-		isAuthenticated: req.isAuthenticated(),
-		user: req.user
-	};
-      if (!user.isAuthenticated) { 
-          res.redirect('/login');
-         } else {
-      
-	 res.render('index', {
-	 	title: 'My e-tools',
-	 	isAuthenticated: req.isAuthenticated(),
-	 	user: req.user
-	 });
-}});
+	res.render('index', { user: req.user });
+	
+});
+
+// router.get('/login', function(req, res, next) {
+
+// 	 res.render('login', {
+// 	 	title: 'MyColoFitness',
+// 	 });
+// });
 
 //home page redirect to login if not authenticated with local strategy
-router.post('/', passport.authenticate('local-login', { failureRedirect: '/login' }),
-		function(req, res) {
-        res.redirect('/');
-      });
+// router.post('/', passport.authenticate('local-login', { failureRedirect: '/login' }),
+// 		function(req, res) {
+//         res.redirect('/');
+//       });
+
+
 
 //registration route
 router.post('/register', function(req, res, next) {
 
-//grab password and generate salt function from easyPbkdf2 package
+// //grab password and generate salt function from easyPbkdf2 package
 var password = req.body.passWord;
 var salt = easyPbkdf2.generateSalt();
 
-//create key using crypto module and convert to hex
+// //create key using crypto module and convert to hex
 const key = crypto.pbkdf2Sync(password, salt, 100000, 512, 'sha512');
 var passwordHash = key.toString('hex'); 
-//console.log(passwordHash);
+// //console.log(passwordHash);
 
-//unsure if I should use buffer 
-//const passbuf = Buffer.alloc(64, key, 'binary');
+// //unsure if I should use buffer 
+// //const passbuf = Buffer.alloc(64, key, 'binary');
 
-//temporary user object
+// //temporary user object
 var users = {
 	email: req.body.userEmail,
 	firstname: req.body.firstName,
@@ -64,18 +74,15 @@ var users = {
 
 };
 
-//create new user in mysql database based on temporary user object
- connection.query('insert into users set ?', users, function (err, result) {
+// //create new user in mysql database based on temporary user object
+  connection.query('insert into users set ?', users, function (err, result) {
 
-	if (err) {
-		console.error(err);
-		res.render('index', {
-			title: 'MyColo',
-			erobj: 'Please enter a valid and unique email address.'
-		});
-		return;
-	} else {
-	res.redirect('/login');
+	if (!err) {
+		console.log('It worked!');
+
+		} else {
+
+	console.log('Did not work');
 };
 
 });
@@ -84,6 +91,72 @@ var users = {
 //uncomment this for pool //connection});
 
 module.exports = router;	
+
+
+
+// router.post('/login', passport.authenticate('local-login', { failureRedirect: '/login'}),
+// 		function(req, res) {
+//         res.redirect('/');
+//       });
+
+// router.post('/register', function(req, res, next) {
+// //uncomment this for pool connection //pool.getConnection(function(err,connection) {
+// 	// if (err) {
+// 	// 	console.error(err);
+// 	// 	return;
+// 	// } else {
+// 	// 	console.log(connection);
+
+// 	// }
+
+// var users = {
+// 	email: req.body.userEmail,
+// 	firstname: req.body.firstName,
+// 	lastname: req.body.lastName,
+// 	username: req.body.userName,
+// 	password: req.body.passWord
+// };
+
+//  connection.query('insert into users set ?', users, function (err, result) {
+
+// 	if (err) {
+// 		console.error(err);
+// 		res.render('index', {
+// 			title: 'MyColo',
+// 			erobj: 'Please enter a valid and unique email address.'
+// 		});
+// 		return;
+// 	} else {
+// 	res.redirect('/login');
+// }
+
+// });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //logout
+// router.get('/logout', function(req, res) {
+// 	req.logout();
+// 	res.redirect('/');
+// })
+
+
+
+
 
 //uncomment vars to send mail using sendgrid
 // var natskey = require('../secret');
