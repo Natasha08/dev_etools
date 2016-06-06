@@ -1,0 +1,28 @@
+ <div class="typingWell"><br><br>
+
+
+  <h3>Looping with the ng-repeat Directive</h3>
+   Amount: <br />
+    <input type = "text" data-ng-model="filter.name" />
+  <ul>
+      <li data-ng-repeat = "macro in macros | filter:filter.name | orderBy: 'macro'">{{ macro.name }} - {{macro.amount}} </li>
+  </ul>
+ New Macro Name:<br />
+  <input type = "text" data-ng-model="newMacro.name" />
+  <br />
+  New Macro Amount:<br />
+  <input type = "text" data-ng-model="newMacro.amount" />
+ <button class="btn btn-primary" data-ng-click="addMacro()">New Macro</button>
+
+  </div> 
+
+
+        <!-- <p class = "instruct">Click on the 'My e-tools' dropdown on the navigation bar to begin building your e-fridge and e-gym</p> -->
+<!--                   <div class="typingWell"><br><br>
+      Daily Calories: <input type="text" data-ng-model="DailyCal" />  <span> {{ DailyCal }} </span><br>
+      Fat (g): <input type="text" data-ng-model="Fat" />  <span> {{ Fat }} </span><br> 
+      Carbs (g): <input type="text" data-ng-model="Carbs" />  <span> {{ Carbs }} </span><br> 
+      Protein (g): <input type="text" data-ng-model="Protein" />  <span> {{ Protein }} </span><br> 
+      Macro Ratio: <input type="text" data-ng-model="Macro" />  <span> {{ Macro }} </span><br> 
+      Message: <input type="text" data-ng-model="Macro" />  <span> {{ Message }} </span><br> 
+      </div> -->
