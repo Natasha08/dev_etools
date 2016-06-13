@@ -19,10 +19,10 @@ grunt.initConfig({
 
 //uncomment concat for PRODUCTION
 concat: {
-    js: {
-    src: ['public/javascripts/*.js', 'public/app.js', 'public/templates/*.js', 'app.js', 'routes/index.js'], 
-    dest: 'build/scripts.js',
-  },
+  //   js: {
+  //   src: ['public/javascripts/controllers.js',  'public/javascripts/interceptors.js', 'public/javascripts/services.js', 'public/app.js', 'public/templates/*.js'], 
+  //   dest: 'public/javascripts/scripts.js',
+  // },
     less: {
     src: ['public/stylesheets/style.less', 'public/stylesheets/footer.less'], 
     dest: 'public/stylesheets/concat.less',
@@ -43,13 +43,13 @@ concat: {
   // },  
 
 
- uglify: {
-    my_target: {
-      files: {
-        'public/javascripts/output.min.js': ['build/scripts.js'],
-      },
-    },
-  },
+ // uglify: {
+ //    my_target: {
+ //      files: {
+ //        'public/javascripts/output.min.js': ['build/scripts.js'],
+ //      },
+ //    },
+ //  },
   cssmin: {
   target: {
     files: {
@@ -68,7 +68,7 @@ grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 //select and uncomment correct concat concat above per task
 //production grunt default 
-grunt.registerTask('default', ['concat', 'uglify', 'cssmin']);
+grunt.registerTask('default', ['concat', 'cssmin']);
 grunt.registerTask('production', ['concat', 'uglify', 'cssmin']);
 
 //dev build
