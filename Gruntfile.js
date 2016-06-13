@@ -53,7 +53,7 @@ concat: {
   cssmin: {
   target: {
     files: {
-      'public/javascripts/output.min.css': ['build/styles.css'],
+      'public/stylesheets/output.min.css': ['build/styles.css'],
     }
   }
 }
