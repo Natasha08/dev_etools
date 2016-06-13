@@ -19,17 +19,13 @@ grunt.initConfig({
 
 //uncomment concat for PRODUCTION
 concat: {
-    client_js: {
-    src: ['public/login/bundle.js', 'public/javascripts/bundle2.js', 'public/javascripts/bundle3.js'], 
-    dest: 'public/javascripts/buttonsAll.js',
+    js: {
+    src: ['public/javascripts/*.js', 'public/app.js', 'public/templates/*.js', 'app.js', 'routes/index.js'], 
+    dest: 'build/scripts.js',
   },
     less: {
     src: ['public/stylesheets/style.less', 'public/stylesheets/footer.less'], 
     dest: 'public/stylesheets/concat.less',
-  },
-  js: {
-    src: ['app.js', 'routes/*.js', 'public/javascripts/buttonsAll.js', 'public/javascripts/require.js'], 
-    dest: 'build/scripts.js',
   },
   },
 //   css: {
@@ -41,23 +37,23 @@ concat: {
 //     files: ['public/stylesheets/*.css'],
 //     tasks: ['concat'],
 //   },
-  js: {
-    files: ['app.js', 'routes/*.js', 'public/*/*.js'],
-    tasks: ['concat'],
-  },  
+  // js: {
+  //   files: ['app.js', 'routes/*.js', 'public/*/*.js'],
+  //   tasks: ['concat'],
+  // },  
 
 
  uglify: {
     my_target: {
       files: {
-        'build/output.min.js': ['build/scripts.js'],
+        'public/javascripts/output.min.js': ['build/scripts.js'],
       },
     },
   },
   cssmin: {
   target: {
     files: {
-      'build/output.min.css': ['build/styles.css'],
+      'public/javascripts/output.min.css': ['build/styles.css'],
     }
   }
 }

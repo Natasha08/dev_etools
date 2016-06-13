@@ -1,50 +1,165 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
-var connection = require('../public/javascripts/require');
+var pool = require('../public/javascripts/require');
 var expressSession = require('express-session');
 var passport = require('passport');
 var passportLocal = require('passport-local');
 var easyPbkdf2 = require ('easy-pbkdf2')();
+var jwt = require('jsonwebtoken');
+var secretKey = require('../secret');
 const crypto = require('crypto');
+// var user = require('../app');
+
+// working endpoint for ng (test working) 
+// will add http-bearer to endpoint
 
 
-// router.post('/login', passport.authenticate('local-login', { failureRedirect: '/login' }),
-// 		function(req, res) {
-// 		//req.login();
-//         res.redirect('/');
+
+// router.post('/login', passport.authenticate('local-login', { session: true, successRedirect: '/', failureRedirect: '/login' }),
+//       function(req, res) {
+//         //res.redirect('/');//+req.user.firstname);
+//        res.send({user : req.user});
 //       });
 
-// router.post('/login', passport.authenticate('local-login', { failureRedirect: '/login' }),
-// 		function(err, req, res) {
-// 			if(!err)
-//         res.redirect('/');
-
+// app.use(function (req, res, next) {
+//     if (req.isAuthenticated()) 
+//       var userTest = req.user;
+//     console.log(userTest);
+//     next ();
 // });
 
-  router.get('/logout', function(req, res) {
+
+
+router.get('/fridgeTest', function(req, res) {
+
+  pool.getConnection(function(err,connection) {
+ 
+
+    if (err) {
+     console.log(err);
+  
+    } else {
+
+      connection.query('select email from  users', function (err,rows) {
+
+          if (!err) {
+            res.json(rows);
+          } else {
+            console.log(err);
+
+          }
+
+      });
+
+    }}); 
+
+ });
+
+
+   // router.get('/api/*', function(req, res){
+   //   if (req.isAuthenticated()) { 
+   //     var user = req.user; 
+   //   }else{
+   //     res.redirect('/login');
+   //   }
+   // });
+
+router.get('/apiTest', function(err, res) {
+  res.json([
+    {value: 'efridge'},
+    {value: 'efridge'},
+    {value: 'efridge'},
+    {value: 'efridge'}
+    
+  ]); 
+
+});
+
+router.get('/efridge', function(req, res) {
+
+  pool.getConnection(function(err,connection) {
+ 	//var	user_id = req.user.user_id;
+ 
+
+    if (err) {
+     console.log(err);
+  
+    } else {
+      console.log('Well efridge is connected!');
+//where user_id = '+user_id,
+      connection.query('select * from  efridge', function (err,rows) {
+        res.json(rows);
+
+      });
+
+    }}); 
+
+ });
+
+// router.get('*', function(req, res) {
+
+// 	res.render('index', {user: req.user});
+
+	
+// });
+
+
+
+
+
+//logout
+
+router.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/login');
 });
+
     router.get('*', function(req, res) {
 
-	res.render('index', { user: req.user });
+	res.render('index');
 	
 });
 
-// router.get('/login', function(req, res, next) {
 
-// 	 res.render('login', {
-// 	 	title: 'MyColoFitness',
-// 	 });
-// });
 
-//home page redirect to login if not authenticated with local strategy
-// router.post('/', passport.authenticate('local-login', { failureRedirect: '/login' }),
-// 		function(req, res) {
-//         res.redirect('/');
-//       });
+//add a food profile
+router.post('/foodform', function(req, res) {
+  pool.getConnection(function(err,connection) {
+	if (err) {
+		console.error( err);
+		return;
+	} else {
+		console.log('Successful Connection!');
 
+       var efridge = {
+
+ 			 food_name: req.body.food_name,
+ 				 brand: req.body.brand,
+	 	  serving_size: req.body.serving_size,
+   		total_calories: req.body.total_calories,
+	   		 fat_grams: req.body.fat_grams,
+	carbohydrate_grams: req.body.carbohydrate_grams,
+		 protein_grams: req.body.protein_grams,
+		   total_grams: req.body.total_grams,
+		   	   user_id: req.user.user_id
+};
+
+       connection.query('insert into efridge set ?', efridge, function (err, result) {
+	     if (err) {
+		   console.error();
+
+	     } else {
+
+	     res.redirect('/efridge');
+}
+
+});
+
+}});	
+
+
+});
 
 
 //registration route
@@ -68,9 +183,10 @@ var users = {
 	firstname: req.body.firstName,
 	lastname: req.body.lastName,
 	username: req.body.userName,
-	password: req.body.passWord,
+	password: passwordHash,
 	user_salt: salt,
-	password: passwordHash
+	token: jwt.sign({ username: this.username, email: this.email }, secretKey)
+
 
 };
 
@@ -78,7 +194,7 @@ var users = {
   connection.query('insert into users set ?', users, function (err, result) {
 
 	if (!err) {
-		console.log('It worked!');
+		res.render('index', console.log('It worked!'));
 
 		} else {
 
@@ -91,70 +207,6 @@ var users = {
 //uncomment this for pool //connection});
 
 module.exports = router;	
-
-
-
-// router.post('/login', passport.authenticate('local-login', { failureRedirect: '/login'}),
-// 		function(req, res) {
-//         res.redirect('/');
-//       });
-
-// router.post('/register', function(req, res, next) {
-// //uncomment this for pool connection //pool.getConnection(function(err,connection) {
-// 	// if (err) {
-// 	// 	console.error(err);
-// 	// 	return;
-// 	// } else {
-// 	// 	console.log(connection);
-
-// 	// }
-
-// var users = {
-// 	email: req.body.userEmail,
-// 	firstname: req.body.firstName,
-// 	lastname: req.body.lastName,
-// 	username: req.body.userName,
-// 	password: req.body.passWord
-// };
-
-//  connection.query('insert into users set ?', users, function (err, result) {
-
-// 	if (err) {
-// 		console.error(err);
-// 		res.render('index', {
-// 			title: 'MyColo',
-// 			erobj: 'Please enter a valid and unique email address.'
-// 		});
-// 		return;
-// 	} else {
-// 	res.redirect('/login');
-// }
-
-// });
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// //logout
-// router.get('/logout', function(req, res) {
-// 	req.logout();
-// 	res.redirect('/');
-// })
-
-
 
 
 

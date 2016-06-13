@@ -33,12 +33,6 @@ plan.target('production', [
 // run commands on localhost
 plan.local(function(local) {
   // uncomment these if you need to run a build on your machine first
-   local.log('build bundle.js');
-   local.exec('npm run build1');
-   local.log('Build bundle2.js');
-   local.exec('npm run build2');
-   local.log('Build bundle3.js');
-   local.exec('npm run build3');
    local.log('Converting less files');
    local.exec('npm run lesscon');
    local.log('Run grunt production build');
