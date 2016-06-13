@@ -1,16 +1,20 @@
 var mysql = require('mysql');
-var db = require('./db_secret.js');
+var db_secret = require('./db_secret.js');
 //var connection = mysql.createConnection({
 
-var pool = mysql.createPool(db, {
+var db = new db_secret();
+
+var pool = mysql.createPool({
   connectionLimit : 100,	
 
   host            : 'localhost',
   user            : db.user,
-  password        : db.password
+  password        : db.password,
+  database		  : 'freetools'
 });
 
-pool.query('USE freetools'); 
+//pool.query('USE freetools'); 
+//console.log(pool);
 
 
 module.exports = pool;

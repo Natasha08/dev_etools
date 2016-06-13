@@ -1,4 +1,10 @@
-<div class="well" id="workProfile" IsHidden="true">
+<!-- toggle button for workout form -->
+<div class="well container-fluid">
+      <button type="button" class="btn btn-lg" id="btnGym" data-ng-click="ShowHide()">Log Workout</button> 
+</div>
+
+<!-- workout form -->
+<div class="well" id="workProfile" data-ng-hide="IsHidden">
 	<form action="/egym" method="post" id="registerForm">
 	<h2>Good job on your workout! Create a workout entry and track your progress</h2>
 		<div class="form-group row">
@@ -48,19 +54,6 @@
            <input type="text" class="form-control textInput" id="keylift2" name="keylift2"></input>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <div class="form-group row">
         <div class="col-sm-offset-2 col-sm-10">

@@ -37,7 +37,8 @@
 // 	firstname: req.body.firstName,
 // 	lastname: req.body.lastName,
 // 	username: req.body.userName,
-// 	password: req.body.passWord
+// 	password: req.body.passWord,
+//		token: token
 // };
 
 //  connection.query('insert into users set ?', users, function (err, result) {

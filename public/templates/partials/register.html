@@ -1,4 +1,13 @@
-<div class="well container-fluid" id="registerDiv">
+<!-- toggle button for form -->
+<div class="well container-fluid">
+    <button type="button" class="btn btn-lg" id="btnReg" data-ng-click="ShowHide()">Register</button>
+
+</div>
+
+
+
+<!-- registration form -->
+<div class="well container-fluid" id="registerDiv" data-ng-hide="IsHidden">
 	<form action="/register" method="post" id="registerForm">
 	<h2>Please enter the requested information as accurately as possible</h2>
     <div class="form-group row">
