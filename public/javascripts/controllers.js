@@ -87,7 +87,7 @@ if ($http.get('efridge')) {
 					//console.log(response);
 					//$scope.userTest = response;
 					$scope.UserF = response.data;
-					$scope.UserFIdFood = $scope.User.user_id;
+					//$scope.UserFIdFood = $scope.User.user_id;
 
 					//console.log($scope.userTests.user_id);
 
@@ -152,8 +152,8 @@ $scope.IsHidden = true;
         $scope.IsHidden = !$scope.IsHidden;
     }
 
-//currently not working
-if ($http.post('/login')) {
+
+function login() {
 		$http({
 
 				method:'POST',
