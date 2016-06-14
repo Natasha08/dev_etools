@@ -76,26 +76,26 @@ router.get('/apiTest', function(err, res) {
 
 });
 
-router.get('/efridge', function(req, res) {
+// router.get('/efridge', function(req, res) {
 
-  pool.getConnection(function(err,connection) {
- 	//var	user_id = req.user.user_id;
+//   pool.getConnection(function(err,connection) {
+//  	//var	user_id = req.user.user_id;
  
 
-    if (err) {
-     console.log(err);
+//     if (err) {
+//      console.log(err);
   
-    } else {
-      console.log('Well efridge is connected!');
-//where user_id = '+user_id,
-      connection.query('select * from  efridge', function (err,rows) {
-        res.json(rows);
+//     } else {
+//       console.log('Well efridge is connected!');
+// //where user_id = '+user_id,
+//       connection.query('select * from  efridge', function (err,rows) {
+//         res.json(rows);
 
-      });
+//       });
 
-    }}); 
+//     }}); 
 
- });
+//  });
 
 // router.get('*', function(req, res) {
 
