@@ -56,12 +56,11 @@ myApp.controller('EfridgeController', ['$scope', '$rootScope', '$http', '$log', 
         $scope.IsHiddenMeal = true;
     }
 
-if ($http.get('efridge')) {
 		$http({
 
 				method:'GET',
 				url:'https://mycolofitness.com/efridge'})
-				//data:{email:$scope.email, password:$scope.password}
+				data:{email:$scope.email, password:$scope.password}
 				.then(function (response) {
 					//console.log(response);
 					//$scope.userTest = response;
@@ -69,12 +68,11 @@ if ($http.get('efridge')) {
 					//console.log($scope.foodItems);
 						$scope.checkModel = {
     					value1 : true,
-    					value2 : true
     				}
   
    						
 });
-}
+
 
 	function foodForm()  {
 
