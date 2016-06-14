@@ -210,7 +210,7 @@ if ($http.post('/login')) {
 
 
 
-function registerUser {
+function registerUser() {
 		$http({
 
 				method:'POST',
