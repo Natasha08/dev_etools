@@ -60,7 +60,7 @@ if ($http.get('efridge')) {
 		$http({
 
 				method:'GET',
-				url:'http://localhost:3000/efridge'})
+				url:'https://mycolofitness.com/efridge'})
 				//data:{email:$scope.email, password:$scope.password}
 				.then(function (response) {
 					//console.log(response);
@@ -81,7 +81,7 @@ if ($http.get('efridge')) {
 		$http({
 
 				method:'POST',
-				url:'http://localhost:3000/foodform'})
+				url:'https://mycolofitness.com/foodform'})
 				//data:{email:$scope.email, password:$scope.password}
 				.then(function (response) {
 					//console.log(response);
@@ -146,14 +146,75 @@ myApp.controller('EgymController', ['$scope', '$rootScope', '$http', '$log', '$c
 
 myApp.controller('AuthController', ['$scope', '$rootScope', '$http', '$log', '$cookies', function($scope, $rootScope, $http, $log, $cookies) {
 
-
+$scope.IsHidden = true;
+    $scope.ShowHide = function () {
+        //If DIV is hidden it will be visible and vice versa.
+        $scope.IsHidden = !$scope.IsHidden;
+    }
 
 //currently not working
 if ($http.post('/login')) {
 		$http({
 
 				method:'POST',
-				url:'http://localhost:3000/login',
+				url:'https://mycolofitness.com/login',
+				data:{email:$scope.email, password:$scope.password}})
+				.then(function (response) {
+					//console.log(response);
+					$scope.apiTest = JSON.stringify(response.data);
+					//console.log($scope.apiTest);
+
+	 },
+				function (data) {
+					//console.log(response);
+					//console.log(data);
+
+	 
+				}
+				)
+
+}
+
+
+// study this 
+
+    // var app = angular.module("app", []);
+    // app.controller("HttpGetController", function ($scope, $http) {
+
+    //     $scope.SendData = function () {
+    //        // use $.param jQuery function to serialize data from JSON 
+    //         var data = $.param({
+    //             fName: $scope.firstName,
+    //             lName: $scope.lastName
+    //         });
+        
+    //         var config = {
+    //             headers : {
+    //                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+    //             }
+    //         }
+
+    //         $http.post('/ServerRequest/PostDataResponse', data, config)
+    //         .success(function (data, status, headers, config) {
+    //             $scope.PostDataResponse = data;
+    //         })
+    //         .error(function (data, status, header, config) {
+    //             $scope.ResponseDetails = "Data: " + data +
+    //                 "<hr />status: " + status +
+    //                 "<hr />headers: " + header +
+    //                 "<hr />config: " + config;
+    //         });
+    //     };
+
+    // });
+
+
+
+if ($http.post('/register')) {
+		$http({
+
+				method:'POST',
+				url:'https://mycolofitness.com/register',
 				data:{email:$scope.email, password:$scope.password}})
 				.then(function (response) {
 					//console.log(response);
@@ -179,21 +240,21 @@ function checkLoggedin ($q, $timeout, $http, $location, $rootScope) {
         $http({
 
 				method:'GET',
-				url:'http://localhost:3000/loggedin'})
+				url:'https://mycolofitness.com/loggedin'})
 				//data:{email:$scope.email, password:$scope.password}
 				.then(function (user) {
 					//console.log(user);
 					 //Authenticated
     			  if (user !== '0') {
       			  deferred.resolve();
-      			  $rootScope.authed = 'You are authorized';
+      			  $scope.authed = 'You are authorized';
 
     			  //console.log(user);
 			     }
 
 				//Not Authenticated
 				    else {
-				      $rootScope.message = 'You need to log in.';
+				      $scope.message = 'You need to log in.';
 				      deferred.reject();
 				      $location.url('/login');
 				    }
@@ -206,7 +267,7 @@ function getAccount() {
 		$http({
 
 				method:'GET',
-				url:'http://localhost:3000/account'})
+				url:'https://mycolofitness.com/account'})
 				//data:{email:$scope.email, password:$scope.password}
 				.then(function (response) {
 					//console.log(response);

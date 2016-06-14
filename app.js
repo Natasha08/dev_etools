@@ -11,7 +11,7 @@ var easyPbkdf2 = require ('easy-pbkdf2')();
 const crypto = require('crypto');
 var secretKey = require('./secret');
 var sessionKey = require('./secret');
-var userFactory = require('./userFactory');
+//var userFactory = require('./userFactory');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
 var passport = require('passport');
@@ -47,11 +47,11 @@ app.use(express.static(path.join(__dirname, 'public')));
  app.use(passport.session());
 
 //header config 
-
+var origins = ['https://mycolofitness.com', 'https://mycolofitness.com/login', 'https://mycolofitness.com/register']
 
 app.use(function(req, res, next) {
-       res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+       res.setHeader('Access-Control-Allow-Origin', origins);
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     next();

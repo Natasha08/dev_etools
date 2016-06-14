@@ -165,6 +165,14 @@ router.post('/foodform', function(req, res) {
 //registration route
 router.post('/register', function(req, res, next) {
 
+
+pool.getConnection(function(err,connection) {
+  if (err) {
+    console.error( err);
+    return;
+  } else {
+    console.log('Successful Connection!');
+
 // //grab password and generate salt function from easyPbkdf2 package
 var password = req.body.passWord;
 var salt = easyPbkdf2.generateSalt();
@@ -188,21 +196,24 @@ var users = {
 	token: jwt.sign({ username: this.username, email: this.email }, secretKey)
 
 
-};
+}
 
 // //create new user in mysql database based on temporary user object
   connection.query('insert into users set ?', users, function (err, result) {
+       if (err) {
+       console.error(err);
 
-	if (!err) {
-		res.render('index', console.log('It worked!'));
+       } else {
 
-		} else {
+       res.redirect('/login');
 
-	console.log('Did not work');
 };
 
 });
+}
 });
+});
+
 
 //uncomment this for pool //connection});
 
