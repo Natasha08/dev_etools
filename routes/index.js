@@ -6,7 +6,7 @@ var expressSession = require('express-session');
 var passport = require('passport');
 var passportLocal = require('passport-local');
 var easyPbkdf2 = require ('easy-pbkdf2')();
-var jwt = require('jsonwebtoken');
+//var jwt = require('jsonwebtoken');
 var secretKey = require('../secret');
 const crypto = require('crypto');
 // var user = require('../app');
@@ -193,7 +193,7 @@ var users = {
 	username: req.body.userName,
 	password: passwordHash,
 	user_salt: salt,
-	token: jwt.sign({ username: this.username, email: this.email }, secretKey)
+	//token: jwt.sign({ username: this.username, email: this.email }, secretKey)
 
 
 }
