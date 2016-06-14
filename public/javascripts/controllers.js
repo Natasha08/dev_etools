@@ -59,7 +59,7 @@ myApp.controller('EfridgeController', ['$scope', '$rootScope', '$http', '$log', 
 		$http({
 
 				method:'GET',
-				url:'https://mycolofitness.com/efridge'
+				url:'https://mycolofitness.com/efridge',
 				data:{email:$scope.email, password:$scope.password}})
 				.then(function (response) {
 					//console.log(response);
