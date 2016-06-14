@@ -69,7 +69,7 @@ grunt.loadNpmTasks('grunt-contrib-cssmin');
 //select and uncomment correct concat concat above per task
 //production grunt default 
 grunt.registerTask('default', ['concat', 'cssmin']);
-grunt.registerTask('production', ['concat', 'uglify', 'cssmin']);
+grunt.registerTask('production', ['concat', 'cssmin']);
 
 //dev build
 grunt.registerTask('dev', ['concat', 'uglify','cssmin', 'watch']);

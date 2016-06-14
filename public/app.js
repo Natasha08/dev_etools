@@ -65,7 +65,7 @@ myApp.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$htt
       },      
       'form': {
         templateUrl: 'templates/partials/register.html',
-        controller: 'EgymController'
+        controller: 'AuthController'
    }
 
 	}})
