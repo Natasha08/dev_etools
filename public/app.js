@@ -1,12 +1,74 @@
+(function(){
+
+"use strict";
+
+var EfridgeController = function($timeout, efridgeService) {
+  this.foodItems = foodItems;
+};
 
 
- var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngCookies'])
+EfridgeController.resolve = {
 
-myApp.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', function($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {
-	 //$urlRouterProvider.otherwise('/login');  
+foodItems: [
+      'efridgeService',
+      function(efridgeService) {
+        return efridgeService.getAll()
+    .then(function(response) {
+      var newResponse = response.data;
+      return newResponse
+    });
+  }
+]
+}
 
+// var AuthController = function($timeout, authService) {
+//   this.account = account;
+//   console.log('var Auth: '+this.account);
+// };
+
+
+// AuthController.resolve = {
+
+// account: [
+//       'authService',
+//       function(authService) {
+//         return authService.getAll()
+//     .then(function(response) {
+//       var newResponse = response.data;
+//       console.log('resolve-response: '+newResponse);
+//       //UserName = newResponse;
+//       //console.log('this.UserName as newResponse: '+UserName);
+//       return newResponse
+//     });
+//   }
+// ]
+// }
+
+var EgymController = function($timeout, egymService) {
+  this.workouts = workouts;
+};
+
+
+EgymController.resolve = {
+
+workouts: [
+      'egymService',
+      function(egymService) {
+        return egymService.getAll()
+    .then(function(response) {
+      return response
+    });
+  }
+]
+}
+
+ angular
+ .module('myApp', ['checklist-model', 'ui.router', 'ui.bootstrap', 'ngCookies'])
+
+.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', function($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {
+	  
+    $urlRouterProvider.otherwise('/login');  
     $httpProvider.defaults.withCredentials = true;
-
 
 
 	$stateProvider
@@ -14,42 +76,17 @@ myApp.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$htt
     url: '/',
     views: {
       'nav': {
-        templateUrl: 'templates/partials/nav.html',
-        controller: 'AuthController'
+        templateUrl: '/templates/partials/nav.html',
+        // controllerAs: 'authcontroller',
+        controller: 'AuthController' //,
+        // resolve: AuthController.resolve   
+ 
       },
       'btnpanel': {
-        templateUrl: 'templates/partials/daily.html',
+        templateUrl: '/templates/partials/daily.html',
+        controllerAs: 'homecontroller',
         controller: 'HomeController'
-      }//,      
-//       'form': {
-//         templateUrl: 'templates/loggedin.html',
-//         controller: 'MainController',
-//         resolve: {
-//           loggedin: 
-//           //promise
-// function($q, $timeout, $http, $location, $rootScope) {
-//  //initialize a new promise
-//  var deferred = $q.defer();
-
-//  //Make an AJAX call to check if the user if logged in
-//  $http.get('/loggedin').success(function(user) {
-//    //Authenticated
-//    if (user !== '0')
-//      deferred.resolve();
-
-//    //Not Authenticated
-//    else {
-//      $rootScope.message = 'You need to log in.';
-//      deferred.reject();
-//      $location.url('/login');
-//    }
-//  });
-//   //console.log(deferred.promise);
-//  return deferred.promise;
-
-// }
-//         }
- //       }
+      },
       }  
   })
 
@@ -57,73 +94,119 @@ myApp.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$htt
 		url: '/login',	
     views: {
       'nav': {
-        templateUrl: 'templates/view2.html',
-        controller: 'AuthController'
+        templateUrl: '/templates/partials/loginheader.html',
+        controller: 'LoginController'
       },
       'btnpanel': {
-        templateUrl: 'templates/view1.html'
+        templateUrl: '/templates/view1.html'
       },      
       'form': {
-        templateUrl: 'templates/partials/register.html',
-        controller: 'AuthController'
+        templateUrl: '/templates/partials/register.html',
+        controller: 'RegisterController'
    }
 
-	}})
+	}
+})
 
 
-		.state('egym', {
-		url: '/egym',	
+		.state('exercise', {
+		url: '/exercise',	
     views: {
       'nav': {
-        templateUrl: 'templates/partials/nav.html',
-        controller: 'AuthController'
+        templateUrl: '/templates/partials/nav.html',
+        controller: 'NavController'
       },
       'btnpanel': {
-        templateUrl: 'templates/partials/btnGym.html',
+        templateUrl: '/templates/partials/btnGym.html',
         controller: 'HomeController'
       },      
       'form': {
-        templateUrl: 'templates/partials/exercise.html',
-        controller: 'EgymController'
+        templateUrl: '/templates/partials/exercise.html',
+        controllerAs: 'egymcontroller',
+        controller: 'EgymController',
+        resolve: EgymController.resolve
       }
 	}
 
 	})
 
-		.state('efridge', {
-		url: '/efridge',	
+		.state('nutrition', {
+		url: '/nutrition',	
     views: {
       'nav': {
-        templateUrl: 'templates/partials/nav.html',
-         controller: 'AuthController'
+        templateUrl: '/templates/partials/nav.html',
+        // controllerAs: 'authcontroller',
+        controller: 'AuthController' //,
+        // resolve: AuthController.resolve   
+ 
       },
       'btnpanel': {
-        templateUrl: 'templates/partials/btnFridge.html',
+        templateUrl: '/templates/partials/btnFridge.html',
          controller: 'HomeController'
       },             
       'form': {
-        templateUrl: 'templates/partials/foodtable.html',
-         controller: 'EfridgeController'
+        templateUrl: '/templates/partials/foodindex.html',
+        controllerAs: 'efridgecontroller',
+         controller: 'EfridgeController',
+         resolve: EfridgeController.resolve
       }
 	}
 
 	})
 
+    .state('nutrition.foodprofile', {  
+    url: '/foodprofile',  
+    views: {             
+      'FoodData': {
+        templateUrl: '/templates/partials/foodform.html' //,
+         // controller: 'FoodFormController'
+    
+      }
+  }
+
+  })    
+
+    .state('nutrition.foodlist', {  
+    url: '/foodlist',  
+    views: {             
+      'FoodData': {
+        templateUrl: '/templates/partials/foodlist.html',
+         controllerAs: 'efridgecontroller',
+         controller: 'EfridgeController',
+         resolve: EfridgeController.resolve
+    
+      }
+  }
+
+  }) 
+
+    .state('nutrition.meals', {  
+    url: '/meals',  
+    views: {             
+      'FoodData': {
+        templateUrl: '/templates/partials/meals.html',
+         controllerAs: 'efridgecontroller',
+         controller: 'EfridgeController',
+         resolve: EfridgeController.resolve
+    
+      }
+  }
+
+  })    
 
       .state('account', {
     url: '/account',  
     views: {
       'nav': {
-        templateUrl: 'templates/partials/nav.html',
-        controller: 'AuthController'
+        templateUrl: '/templates/partials/nav.html',
+        controller: 'NavController'
       },
       'btnpanel': {
-        templateUrl: 'templates/partials/btnGym.html',
+        templateUrl: '/templates/partials/btnGym.html',
         controller: 'HomeController'
       },      
       'form': {
-        templateUrl: 'templates/partials/foodform.html',
-        controller: 'AuthController'
+        templateUrl: '/templates/partials/foodform.html'
       }
   }
 
@@ -148,8 +231,6 @@ myApp.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$htt
 
 
 
-
-
-
  }]);
 
+})();

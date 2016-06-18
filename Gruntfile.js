@@ -19,19 +19,16 @@ grunt.initConfig({
 
 //uncomment concat for PRODUCTION
 concat: {
-  //   js: {
-  //   src: ['public/javascripts/controllers.js',  'public/javascripts/interceptors.js', 'public/javascripts/services.js', 'public/app.js', 'public/templates/*.js'], 
-  //   dest: 'public/javascripts/scripts.js',
-  // },
+    js: {
+    src: ['public/app.js', 'public/javascripts/services.js', 'public/javascripts/constants.js', 'public/javascripts/controller.js', 'public/javascripts/controller2.js'], 
+    dest: 'public/javascripts/scripts.js',
+  },
     less: {
     src: ['public/stylesheets/style.less', 'public/stylesheets/footer.less'], 
     dest: 'public/stylesheets/concat.less',
   },
   },
-//   css: {
-//     src: ['public/stylesheets/*.css'],
-//     dest: 'build/styles.css',
-//   },    
+   
 // watch: {
 //   css: {
 //     files: ['public/stylesheets/*.css'],
@@ -43,17 +40,17 @@ concat: {
   // },  
 
 
- // uglify: {
- //    my_target: {
- //      files: {
- //        'public/javascripts/output.min.js': ['build/scripts.js'],
- //      },
- //    },
- //  },
+ uglify: {
+    my_target: {
+      files: {
+        'public/javascripts/output.min.js': ['public/javascripts/scripts.js'],
+      },
+    },
+  },
   cssmin: {
   target: {
     files: {
-      'public/stylesheets/output.min.css': ['build/styles.css'],
+      'public/stylesheets/output.min.css': ['public/stylesheets/styles.css'],
     }
   }
 }
@@ -68,9 +65,9 @@ grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 //select and uncomment correct concat concat above per task
 //production grunt default 
-grunt.registerTask('default', ['concat', 'cssmin']);
+grunt.registerTask('cat', 'concat');
 grunt.registerTask('production', ['concat', 'cssmin']);
-
+grunt.registerTask('default', ['concat', 'cssmin']);
 //dev build
 grunt.registerTask('dev', ['concat', 'uglify','cssmin', 'watch']);
 };
