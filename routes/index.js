@@ -29,26 +29,57 @@ const crypto = require('crypto');
 //     next ();
 // });
 
+var ensureAuth = function(req, res, next) {
+  if(!req.isAuthenticated()) 
+    res.sendStatus(401);
+  else {
+    next();
+  }
+};
+
+router.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/login');
+});
 
 
-router.get('/fridgeTest', function(req, res) {
+router.get('/efridge', ensureAuth, function(req, res) {
 
   pool.getConnection(function(err,connection) {
+ 	var	getId = req.user.user_id;
  
 
     if (err) {
      console.log(err);
   
     } else {
+      console.log('Well efridge is connected!');
+//where user_id = '+user_id,
+      connection.query('select * from  efridge where user_id = '+getId, function (err,rows) {
 
-      connection.query('select email from  users', function (err,rows) {
+        res.status(200).send({data: rows});
 
-          if (!err) {
-            res.json(rows);
-          } else {
-            console.log(err);
+      });
 
-          }
+    }}); 
+
+ });
+
+router.get('/egym',ensureAuth, function(req, res, next) {
+
+  pool.getConnection(function(err,connection) {
+var getId = req.user.user_id;
+ 
+
+    if (err) {
+     console.log(err);
+  
+    } else {
+      console.log('Well egym is connected!');
+//where user_id = '+user_id,
+      connection.query('select * from  egym where user_id = '+getId, function (err,rows) {
+
+        res.status(200).send({data: rows});
 
       });
 
@@ -57,52 +88,13 @@ router.get('/fridgeTest', function(req, res) {
  });
 
 
-   // router.get('/api/*', function(req, res){
-   //   if (req.isAuthenticated()) { 
-   //     var user = req.user; 
-   //   }else{
-   //     res.redirect('/login');
-   //   }
-   // });
 
-router.get('/apiTest', function(err, res) {
-  res.json([
-    {value: 'efridge'},
-    {value: 'efridge'},
-    {value: 'efridge'},
-    {value: 'efridge'}
-    
-  ]); 
+router.get('*', function(req, res) {
 
-});
-
-// router.get('/efridge', function(req, res) {
-
-//   pool.getConnection(function(err,connection) {
-//  	//var	user_id = req.user.user_id;
- 
-
-//     if (err) {
-//      console.log(err);
-  
-//     } else {
-//       console.log('Well efridge is connected!');
-// //where user_id = '+user_id,
-//       connection.query('select * from  efridge', function (err,rows) {
-//         res.json(rows);
-
-//       });
-
-//     }}); 
-
-//  });
-
-// router.get('*', function(req, res) {
-
-// 	res.render('index', {user: req.user});
+	res.render('index', {user: req.user});
 
 	
-// });
+});
 
 
 
@@ -110,10 +102,7 @@ router.get('/apiTest', function(err, res) {
 
 //logout
 
-router.get('/logout', function(req, res) {
-	req.logout();
-	res.redirect('/login');
-});
+
 
     router.get('*', function(req, res) {
 
