@@ -2,13 +2,12 @@
 #Logs /dump files#
 
 #js files/modules#
+
 node_modules/
 
 authUser.js
 newSalt.js
 password.js
-*.sql
-*.msu
 updateUser.js
 test.js
 users.js
@@ -16,5 +15,13 @@ hashes.js
 secret.*
 db_secret.*
 *.secret
+
 ## sublime ##
 .sublime-workspace
+
+#.sql files#
+*.sql
+
+*.msu
+*.conf
+testscripts/*
