@@ -71,14 +71,14 @@ workouts: [
 		url: '/login',	
     views: {
       'nav': {
-        templateUrl: '/login/loginheader.html',
+        templateUrl: '/login/partials/loginheader.html',
         controller: 'LoginController'
       },
       'btnpanel': {
-        templateUrl: '/login/view1.html'
+        templateUrl: '/login/partials/view1.html'
       },      
       'form': {
-        templateUrl: '/login/register.html',
+        templateUrl: '/login/partials/register.html',
         controller: 'RegisterController'
    }
 
@@ -94,7 +94,7 @@ workouts: [
         controller: 'NavController'
       },     
     'form': {
-       templateUrl: '/egym/exercise.html',
+       templateUrl: '/egym/partials/exercise.html',
        controllerAs: 'egymcontroller',
        controller: 'EgymController',
        resolve: EgymController.resolve
@@ -114,7 +114,7 @@ workouts: [
  
       },           
       'form': {
-        templateUrl: '/efridge/foodindex.html',
+        templateUrl: '/efridge/partials/foodindex.html',
         controllerAs: 'efridgecontroller',
          controller: 'EfridgeController',
          resolve: EfridgeController.resolve
@@ -127,7 +127,7 @@ workouts: [
     url: '/foodprofile',  
     views: {             
       'FoodData': {
-        templateUrl: '/efridge/foodform.html' //,
+        templateUrl: '/efridge/partials/foodform.html' //,
          // controller: 'FoodFormController'
     
       }
@@ -139,7 +139,7 @@ workouts: [
     url: '/foodlist',  
     views: {             
       'FoodData': {
-        templateUrl: 'efridge/foodlist.html',
+        templateUrl: '/efridge/partials/foodlist.html',
          controllerAs: 'efridgecontroller',
          controller: 'EfridgeController',
          resolve: EfridgeController.resolve
@@ -153,7 +153,7 @@ workouts: [
     url: '/meals',  
     views: {             
       'FoodData': {
-        templateUrl: '/efridge/meals.html',
+        templateUrl: '/efridge/partials/meals.html',
          controllerAs: 'efridgecontroller',
          controller: 'EfridgeController',
          resolve: EfridgeController.resolve
@@ -175,7 +175,7 @@ workouts: [
         controller: 'HomeController'
       },      
       'form': {
-        templateUrl: '/efridge/foodform.html'
+        templateUrl: '/efridge/partials/foodform.html'
       }
   }
 
