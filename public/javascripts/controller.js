@@ -52,12 +52,6 @@ console.log('Just workouts: '+workouts);
  }])
 
 
-.controller('LoginController', ['$scope', '$http', '$log', function($scope, $http, $log) {
-
-
-}])
-
-
 
 .controller('AuthController', ['$scope', '$http', 'authService', 'UserName', function($scope, $http, authService, UserName) {
 this.UserName = UserName;

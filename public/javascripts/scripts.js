@@ -21,29 +21,6 @@ foodItems: [
 ]
 }
 
-// var AuthController = function($timeout, authService) {
-//   this.account = account;
-//   console.log('var Auth: '+this.account);
-// };
-
-
-// AuthController.resolve = {
-
-// account: [
-//       'authService',
-//       function(authService) {
-//         return authService.getAll()
-//     .then(function(response) {
-//       var newResponse = response.data;
-//       console.log('resolve-response: '+newResponse);
-//       //UserName = newResponse;
-//       //console.log('this.UserName as newResponse: '+UserName);
-//       return newResponse
-//     });
-//   }
-// ]
-// }
-
 var EgymController = function($timeout, egymService) {
   this.workouts = workouts;
 };
@@ -94,14 +71,14 @@ workouts: [
 		url: '/login',	
     views: {
       'nav': {
-        templateUrl: '/login/loginheader.html',
+        templateUrl: '/login/partials/loginheader.html',
         controller: 'LoginController'
       },
       'btnpanel': {
-        templateUrl: '/login/view1.html'
+        templateUrl: '/login/partials/view1.html'
       },      
       'form': {
-        templateUrl: '/login/register.html',
+        templateUrl: '/login/partials/register.html',
         controller: 'RegisterController'
    }
 
@@ -137,7 +114,7 @@ workouts: [
  
       },           
       'form': {
-        templateUrl: '/efridge/foodindex.html',
+        templateUrl: '/efridge/partials/foodindex.html',
         controllerAs: 'efridgecontroller',
          controller: 'EfridgeController',
          resolve: EfridgeController.resolve
@@ -150,7 +127,7 @@ workouts: [
     url: '/foodprofile',  
     views: {             
       'FoodData': {
-        templateUrl: '/efridge/foodform.html' //,
+        templateUrl: '/efridge/partials/foodform.html' //,
          // controller: 'FoodFormController'
     
       }
@@ -162,7 +139,7 @@ workouts: [
     url: '/foodlist',  
     views: {             
       'FoodData': {
-        templateUrl: 'efridge/foodlist.html',
+        templateUrl: '/efridge/partials/foodlist.html',
          controllerAs: 'efridgecontroller',
          controller: 'EfridgeController',
          resolve: EfridgeController.resolve
@@ -176,7 +153,7 @@ workouts: [
     url: '/meals',  
     views: {             
       'FoodData': {
-        templateUrl: '/efridge/meals.html',
+        templateUrl: '/efridge/partials/meals.html',
          controllerAs: 'efridgecontroller',
          controller: 'EfridgeController',
          resolve: EfridgeController.resolve
@@ -198,7 +175,7 @@ workouts: [
         controller: 'HomeController'
       },      
       'form': {
-        templateUrl: '/efridge/foodform.html'
+        templateUrl: '/efridge/partials/foodform.html'
       }
   }
 
@@ -226,6 +203,31 @@ workouts: [
  }]);
 
 })();
+
+//delete after learning promises
+
+// var AuthController = function($timeout, authService) {
+//   this.account = account;
+//   console.log('var Auth: '+this.account);
+// };
+
+
+// AuthController.resolve = {
+
+// account: [
+//       'authService',
+//       function(authService) {
+//         return authService.getAll()
+//     .then(function(response) {
+//       var newResponse = response.data;
+//       console.log('resolve-response: '+newResponse);
+//       //UserName = newResponse;
+//       //console.log('this.UserName as newResponse: '+UserName);
+//       return newResponse
+//     });
+//   }
+// ]
+// }
 (function(){
 
 "use strict";
@@ -272,39 +274,10 @@ var egymServiceVar = function($http) {
  }
 
 
-var authServiceVar = function($http) {
 
-
-	//$http.get('http://localhost:3000/efridge').then(successCallback, errorCallback);
-	 var logId = {};
-
- 	 logId.getAll = function() {
-	
-	   	return	$http({
-
-				  method:'GET',
-				  url:'http://localhost:3000/account'})
-				  //data:{email:$scope.email, password:$scope.password}})
-				 .then(function(response) {
-        		var newResponse = response.data;
-      			var username = JSON.stringify(newResponse.username);
-      			console.log('$http username'+username);
-      			return {
-      			username: username
-      			}	
-   				 });
-	
-	}
-    return logId;           // <--------- do not go on a new line after return
  
 
- 	}
- 
 
-//login service
-angular
-  .module('myApp')
-   .service('authService',['$http', authServiceVar]) 
 
 //egym service
 angular
@@ -346,28 +319,7 @@ foodItems: [
 
 
 
-function login() {
-		$http({
 
-				method:'POST',
-				//url:'https://mycolofitness.com/login',
-				url:'http://localhost:3000/login',
-				data:{email:$scope.email, password:$scope.password}})
-				.then(function (response) {
-					//console.log(response);
-					$scope.apiTest = JSON.stringify(response.data);
-					console.log($scope.apiTest);
-
-	 },
-				function (data) {
-					//console.log(response);
-					//console.log(data);
-
-	 
-				}
-				)
-
-}
 })();
 
 //data:{email:$scope.email, password:$scope.password}})
@@ -438,12 +390,6 @@ console.log('Just workouts: '+workouts);
     	//$rootScope.testRoot = 'This root works!';
 
  }])
-
-
-.controller('LoginController', ['$scope', '$http', '$log', function($scope, $http, $log) {
-
-
-}])
 
 
 
@@ -526,6 +472,7 @@ $scope.UserName = this.UserName;
  }]);
 
 })();
+
 (function(){
 
 "use strict";
@@ -533,8 +480,86 @@ $scope.UserName = this.UserName;
 angular
   .module('myApp')
 
+.controller('LoginController', ['$scope', '$http', '$log', function($scope, $http, $log) {
 
-.controller('EfridgeController', ['$scope', '$rootScope', '$http', '$log', '$cookies' , 'efridgeService', 'foodItems', 'UserName', function($scope, $rootScope, $http, $log, $cookies, efridgeService, foodItems, UserName) {
+
+
+
+}])
+
+})();
+(function(){
+
+"use strict";
+
+
+var authServiceVar = function($http) {
+
+
+	//$http.get('http://localhost:3000/efridge').then(successCallback, errorCallback);
+	 var logId = {};
+
+ 	 logId.getAll = function() {
+	
+	   	return	$http({
+
+				  method:'GET',
+				  url:'http://localhost:3000/account'})
+				  //data:{email:$scope.email, password:$scope.password}})
+				 .then(function(response) {
+        		var newResponse = response.data;
+      			var username = JSON.stringify(newResponse.username);
+      			console.log('$http username'+username);
+      			return {
+      			username: username
+      			}	
+   				 });
+	
+	}
+    return logId;           // <--------- do not go on a new line after return
+ 
+
+ 	}
+
+
+
+//login service
+angular
+  .module('myApp')
+   .service('authService',['$http', authServiceVar]) 
+
+
+function login() {
+		$http({
+
+				method:'POST',
+				//url:'https://mycolofitness.com/login',
+				url:'http://localhost:3000/login',
+				data:{email:$scope.email, password:$scope.password}})
+				.then(function (response) {
+					//console.log(response);
+					$scope.apiTest = JSON.stringify(response.data);
+					console.log($scope.apiTest);
+
+	 },
+				function (data) {
+					//console.log(response);
+					//console.log(data);
+
+	 
+				})
+				
+
+}
+
+})();
+(function(){
+
+"use strict";
+
+angular
+  .module('myApp')
+  .controller('EfridgeController', ['$scope', '$rootScope', '$http', '$log', '$cookies' , 'efridgeService', 'foodItems', 'UserName', function($scope, $rootScope, $http, $log, $cookies, efridgeService, foodItems, UserName) {
 
 $scope.UserName = this.UserName;
 this.foodItems = foodItems.data;

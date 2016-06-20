@@ -20,7 +20,7 @@ grunt.initConfig({
 //uncomment concat for PRODUCTION
 concat: {
     js: {
-    src: ['public/app.js', 'public/javascripts/services.js', 'public/javascripts/constants.js', 'public/javascripts/controller.js', 'public/javascripts/controller2.js'], 
+    src: ['public/app.js', 'public/javascripts/services.js', 'public/javascripts/constants.js', 'public/javascripts/controller.js', 'public/javascripts/controller2.js', 'public/login/LoginController.js', 'public/login/providers/*.js', 'public/efridge/EfridgeController.js', 'public/efridge/providers/*.js'], 
     dest: 'public/javascripts/scripts.js',
   },
     less: {
