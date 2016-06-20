@@ -53,14 +53,14 @@ workouts: [
     url: '/',
     views: {
       'nav': {
-        templateUrl: '/templates/partials/nav.html',
+        templateUrl: '/common/partials/nav.html',
         // controllerAs: 'authcontroller',
         controller: 'AuthController' //,
         // resolve: AuthController.resolve   
  
       },
       'btnpanel': {
-        templateUrl: '/templates/partials/daily.html',
+        templateUrl: '/common/partials/daily.html',
         controllerAs: 'homecontroller',
         controller: 'HomeController'
       },
@@ -90,7 +90,7 @@ workouts: [
 		url: '/exercise',	
     views: {
       'nav': {
-        templateUrl: '/templates/partials/nav.html',
+        templateUrl: '/common/partials/nav.html',
         controller: 'NavController'
       },     
     'form': {
@@ -107,7 +107,7 @@ workouts: [
 		url: '/nutrition',	
     views: {
       'nav': {
-        templateUrl: '/templates/partials/nav.html',
+        templateUrl: '/common/partials/nav.html',
         // controllerAs: 'authcontroller',
         controller: 'AuthController' //,
         // resolve: AuthController.resolve   
@@ -167,7 +167,7 @@ workouts: [
     url: '/account',  
     views: {
       'nav': {
-        templateUrl: '/templates/partials/nav.html',
+        templateUrl: '/common/partials/nav.html',
         controller: 'NavController'
       },
       'btnpanel': {
