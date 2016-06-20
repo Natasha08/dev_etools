@@ -94,14 +94,14 @@ workouts: [
 		url: '/login',	
     views: {
       'nav': {
-        templateUrl: '/templates/partials/loginheader.html',
+        templateUrl: '/login/loginheader.html',
         controller: 'LoginController'
       },
       'btnpanel': {
-        templateUrl: '/templates/view1.html'
+        templateUrl: '/login/view1.html'
       },      
       'form': {
-        templateUrl: '/templates/partials/register.html',
+        templateUrl: '/login/register.html',
         controller: 'RegisterController'
    }
 
@@ -115,16 +115,12 @@ workouts: [
       'nav': {
         templateUrl: '/templates/partials/nav.html',
         controller: 'NavController'
-      },
-      'btnpanel': {
-        templateUrl: '/templates/partials/btnGym.html',
-        controller: 'HomeController'
-      },      
-      'form': {
-        templateUrl: '/templates/partials/exercise.html',
-        controllerAs: 'egymcontroller',
-        controller: 'EgymController',
-        resolve: EgymController.resolve
+      },     
+    'form': {
+       templateUrl: '/egym/exercise.html',
+       controllerAs: 'egymcontroller',
+       controller: 'EgymController',
+       resolve: EgymController.resolve
       }
 	}
 
@@ -139,13 +135,9 @@ workouts: [
         controller: 'AuthController' //,
         // resolve: AuthController.resolve   
  
-      },
-      'btnpanel': {
-        templateUrl: '/templates/partials/btnFridge.html',
-         controller: 'HomeController'
-      },             
+      },           
       'form': {
-        templateUrl: '/templates/partials/foodindex.html',
+        templateUrl: '/efridge/foodindex.html',
         controllerAs: 'efridgecontroller',
          controller: 'EfridgeController',
          resolve: EfridgeController.resolve
@@ -158,7 +150,7 @@ workouts: [
     url: '/foodprofile',  
     views: {             
       'FoodData': {
-        templateUrl: '/templates/partials/foodform.html' //,
+        templateUrl: '/efridge/foodform.html' //,
          // controller: 'FoodFormController'
     
       }
@@ -170,7 +162,7 @@ workouts: [
     url: '/foodlist',  
     views: {             
       'FoodData': {
-        templateUrl: '/templates/partials/foodlist.html',
+        templateUrl: 'efridge/foodlist.html',
          controllerAs: 'efridgecontroller',
          controller: 'EfridgeController',
          resolve: EfridgeController.resolve
@@ -184,7 +176,7 @@ workouts: [
     url: '/meals',  
     views: {             
       'FoodData': {
-        templateUrl: '/templates/partials/meals.html',
+        templateUrl: '/efridge/meals.html',
          controllerAs: 'efridgecontroller',
          controller: 'EfridgeController',
          resolve: EfridgeController.resolve
@@ -206,7 +198,7 @@ workouts: [
         controller: 'HomeController'
       },      
       'form': {
-        templateUrl: '/templates/partials/foodform.html'
+        templateUrl: '/efridge/foodform.html'
       }
   }
 
