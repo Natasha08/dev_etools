@@ -81,25 +81,4 @@ foodItems: [
 }
 
 
-
-
-
-
-
-
-
-
-
 })();
-
-//data:{email:$scope.email, password:$scope.password}})
-// 				  .then(function (response) {
-
-//                //set variables and sessionStorage...works!						
-// 				  var foodItems = response.data;
-					
-//                // Save data to sessionStorage
-				
-//    			  sessionStorage.setItem('foodItems', JSON.stringify(foodItems));
-
-// })
