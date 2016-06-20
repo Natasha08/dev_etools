@@ -20,8 +20,8 @@ grunt.initConfig({
 //uncomment concat for PRODUCTION
 concat: {
     js: {
-    src: ['public/app.js', 'public/javascripts/controller.js', 'public/login/LoginController.js', 'public/login/providers/*.js', 'public/efridge/EfridgeController.js', 'public/efridge/providers/*.js', 'public/egym/EgymController.js', 'public/egym/providers/*.js',], 
-    dest: 'public/javascripts/scripts.js',
+    src: ['public/app.js', 'public/common/javascripts/controller.js', 'public/login/LoginController.js', 'public/login/providers/*.js', 'public/efridge/EfridgeController.js', 'public/efridge/providers/*.js', 'public/egym/EgymController.js', 'public/egym/providers/*.js',], 
+    dest: 'public/common/javascripts/scripts.js',
   },
     less: {
     src: ['public/stylesheets/style.less', 'public/stylesheets/footer.less'], 
@@ -43,7 +43,7 @@ concat: {
  uglify: {
     my_target: {
       files: {
-        'public/javascripts/output.min.js': ['public/javascripts/scripts.js'],
+        'public/common/javascripts/output.min.js': ['public/common/javascripts/scripts.js'],
       },
     },
   },
