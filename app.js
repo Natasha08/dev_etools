@@ -150,21 +150,6 @@ app.get('/account', ensureAuth, function(req, res){
 });
 
 
-
-// app.use(function (req, res, next) {
-//     if (req.isAuthenticated()) 
-//       var userTest = req.user;
-//     console.log(userTest);
-//     next ();
-// });
-
-    // app.get('/efridge', passport.authenticate('local-login', { session: true, failureRedirect: '/login' }),
-    //   function(req, res) {
-    //     res.render('index');
-    //   });
-
-
-
 //use the routes specified earlier
 app.use('/', routes);
 

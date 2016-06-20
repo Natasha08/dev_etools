@@ -10,7 +10,7 @@ var pool = mysql.createPool({
   host            : 'localhost',
   user            : db.user,
   password        : db.password,
-  database		  : 'freetools'
+  database		  : db.name
 });
 
 //pool.query('USE freetools'); 

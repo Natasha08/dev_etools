@@ -21,29 +21,6 @@ foodItems: [
 ]
 }
 
-// var AuthController = function($timeout, authService) {
-//   this.account = account;
-//   console.log('var Auth: '+this.account);
-// };
-
-
-// AuthController.resolve = {
-
-// account: [
-//       'authService',
-//       function(authService) {
-//         return authService.getAll()
-//     .then(function(response) {
-//       var newResponse = response.data;
-//       console.log('resolve-response: '+newResponse);
-//       //UserName = newResponse;
-//       //console.log('this.UserName as newResponse: '+UserName);
-//       return newResponse
-//     });
-//   }
-// ]
-// }
-
 var EgymController = function($timeout, egymService) {
   this.workouts = workouts;
 };
@@ -226,3 +203,28 @@ workouts: [
  }]);
 
 })();
+
+//delete after learning promises
+
+// var AuthController = function($timeout, authService) {
+//   this.account = account;
+//   console.log('var Auth: '+this.account);
+// };
+
+
+// AuthController.resolve = {
+
+// account: [
+//       'authService',
+//       function(authService) {
+//         return authService.getAll()
+//     .then(function(response) {
+//       var newResponse = response.data;
+//       console.log('resolve-response: '+newResponse);
+//       //UserName = newResponse;
+//       //console.log('this.UserName as newResponse: '+UserName);
+//       return newResponse
+//     });
+//   }
+// ]
+// }
