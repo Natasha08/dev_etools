@@ -1,35 +1,34 @@
 
 # linuxproject
-<code>git clone git@github.com:Natasha08/dev_etools.git</code>
-<code>cd dev_etools</code>
-<code>npm install</code>
+
+<p>#clone repo</p>
+<code>git clone git@github.com:Natasha08/dev_etools.git</code><br />
+<p>#cd & install dependencies</p>
+<code>cd dev_etools && npm install</code><br />
 <p>#create a secret.js file</p>
-<p>#example</p>
-<code>
-var secretKey = 'very long string';
-var sessionKey = 'second very long string';
+<h5>#example</h5>
+<p>db_secret.js</p>
+<code>var secretKey = 'very long string';</code><br />
+<code>var sessionKey = 'second very long string';</code><br />
 
-module.exports = sessionKey;
-module.exports = secretKey;
-</code>
+<code>module.exports = sessionKey;</code><br />
+<code>module.exports = secretKey;</code><br />
+
 <p>#create a db_secret.js file</p>
-<p>#example</p>
-<code>
-function db_secret() {
-	var db = {};
-	db.user = '';
-	db.password = '';
-	db.name = '';
-
-	return db;
-}
-
-module.exports = db_secret;
-</code>
+<h5>#example</h5>
+<p>db_secret.js</p>
+<code>function db_secret() {</code><br />
+	<code>var db = {};</code><br />
+	<code>db.user = '';</code><br />
+	<code>db.password = '';</code><br />
+	<code>db.name = '';</code><br />
+<code></code>
+<code>return db;</code><br />
+<code>}</code><br />
+<code></code>
+<code>module.exports = db_secret;</code><br />
 <p>#start the app</p>
-<code>
-node ./bin/www
-</code>
+<code>node ./bin/www</code><br />
 
 <p>#navigate to /url:3000/login</p>
 
