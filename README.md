@@ -1,7 +1,39 @@
 
 # linuxproject
-<p>A nodejs express app for tracking calories and strength gains. Future description to come.</p>
+<code>git clone git@github.com:Natasha08/dev_etools.git</code>
+<code>cd dev_etools</code>
+<code>npm install</code>
+<p>#create a secret.js file</p>
+<p>#example</p>
+<code>
+var secretKey = 'very long string';
+var sessionKey = 'second very long string';
 
+module.exports = sessionKey;
+module.exports = secretKey;
+</code>
+<p>#create a db_secret.js file</p>
+<p>#example</p>
+<code>
+function db_secret() {
+	var db = {};
+	db.user = '';
+	db.password = '';
+	db.name = '';
+
+	return db;
+}
+
+module.exports = db_secret;
+</code>
+<p>#start the app</p>
+<code>
+node ./bin/www
+</code>
+
+<p>#navigate to /url:3000/login</p>
+
+<p>#example</p>
 <h4>Grunt commands</h4>
 <h5>[production]</h5>
 <code>grunt</code>
