@@ -1,14 +1,24 @@
 <div class="well" id="foodData">
-      <input type="text" data-ng-model="filter.foodItem"/><br /><br />
+
       <!-- <button data-ng-click="addMacro()" class="btn btn primary">Add</button><br /><br /> -->
+      <li data-ng-model = "u.foodItems" data-ng-repeat = "u in user.foodItems | orderBy: 'u.food_name'">
+      <input type="text" value ="{{ u.food_name }}" ></input>
+      <input type="text" value ="{{ u.total_calories }}" ></input>
+      <input type="text" value ="{{ u.fat_grams }}" ></input>
+      <input type="text" value ="{{ u.carbohydrate_grams }}" ></input>
+      <input type="text" value ="{{ u.protein_grams }}" ></input>
+      <input type="text" value ="{{ u.total_grams }}" ></input>
 
 
+
+      </li>
  <div>
-      <button id="foodSubmit" type="submit" class="btn btn-secondary" data-ng-click="macroForm()">Submit</button><br /><br />
+<!--       <button id="foodSubmit" type="submit" class="btn btn-secondary" data-ng-click="checkBox()">Submit</button><br /><br /> -->
+<br /><br />
+Search Bar:<input type="text" data-ng-model="filter.foodItem"/><button type="submit" data-ng-click="addMacro()" class="btn btn primary">Add</button><br /><br />
  </div>
-
-
-<form action="/foodform" method="post" id="foodForm">
+<button type="submit" data-ng-click="checkAll()" class="btn btn primary">Check All</button>
+<button type="submit" data-ng-click="uncheckAll()" class="btn btn primary">Uncheck All</button>
       <table class="table table-bordered table-hover">
       <tr class="table_header">
           <!-- <th>Add</th> -->
@@ -23,22 +33,21 @@
           <th>Total (g)[macros]</th>
           
       </tr>        
-      <tr data-ng-repeat = "foodItem in foodItems | filter:filter.foodItem | orderBy: 'foodItem.food_name'">
+      <tr data-ng-repeat = "foodItem in foodItems | filter:filter.foodItem | orderBy: 'foodItem'">
           
           <td><input type="checkbox" checklist-model="user.foodItems" checklist-value="foodItem" class="btn btn-primary"/></td>
 
           <td data-ng-true-value="{{ foodItem.food_name }}" data-ng-model=" foodItem.food_name "> {{ foodItem.food_name }} </td>
-          <td data-ng-true-value="{{ foodItem.brand }}" data-ng-model=" foodItem.food_name ">{{ foodItem.brand }}</td>
-          <td data-ng-true-value="{{ foodItem.serving_size }}" data-ng-model=" foodItem.food_name ">{{ foodItem.serving_size }}</td>
-          <td data-ng-true-value="{{ foodItem.total_calories }}" data-ng-model=" foodItem.food_name ">{{ foodItem.total_calories }}</td>
-          <td data-ng-true-value="{{ foodItem.fat_grams }}" data-ng-model=" foodItem.food_name ">{{ foodItem.fat_grams }}</td>
-          <td data-ng-true-value="{{ foodItem.carbohydrate_grams }}" data-ng-model=" foodItem.food_name ">{{ foodItem.carbohydrate_grams }}</td>
-          <td data-ng-true-value="{{ foodItem.protein_grams }}" data-ng-model=" foodItem.food_name ">{{ foodItem.protein_grams }}</td>
-          <td data-ng-true-value="{{ foodItem.total_grams }}" data-ng-model=" foodItem.food_name ">{{ foodItem.total_grams }}</td>
+          <td data-ng-true-value="{{ foodItem.brand }}" data-ng-model=" foodItem.brand ">{{ foodItem.brand }}</td>
+          <td data-ng-true-value="{{ foodItem.serving_size }}" data-ng-model=" foodItem.serving_size ">{{ foodItem.serving_size }}</td>
+          <td data-ng-true-value="{{ foodItem.total_calories }}" data-ng-model=" foodItem.total_calories ">{{ foodItem.total_calories }}</td>
+          <td data-ng-true-value="{{ foodItem.fat_grams }}" data-ng-model=" foodItem.fat_grams ">{{ foodItem.fat_grams }}</td>
+          <td data-ng-true-value="{{ foodItem.carbohydrate_grams }}" data-ng-model=" foodItem.carbohydrate_grams ">{{ foodItem.carbohydrate_grams }}</td>
+          <td data-ng-true-value="{{ foodItem.protein_grams }}" data-ng-model=" foodItem.protein_grams ">{{ foodItem.protein_grams }}</td>
+          <td data-ng-true-value="{{ foodItem.total_grams }}" data-ng-model=" foodItem.total_grams ">{{ foodItem.total_grams }}</td>
 
 
       </tr>
       </table>
-    </form>
     </div>
    </div> 
