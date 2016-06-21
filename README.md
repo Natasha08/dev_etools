@@ -6,8 +6,8 @@
 <p>#cd & install dependencies</p>
 <code>cd dev_etools && npm install</code><br />
 <p>#create a secret.js file</p>
-<p>#example</p>
-secret.js<br /><br />
+<h5>#example</h5>
+<p>db_secret.js</p>
 <code>var secretKey = 'very long string';</code><br />
 <code>var sessionKey = 'second very long string';</code><br />
 
@@ -15,8 +15,8 @@ secret.js<br /><br />
 <code>module.exports = secretKey;</code><br />
 
 <p>#create a db_secret.js file</p>
-<p>#example</p>
-db_secret.js<br />
+<h5>#example</h5>
+<p>db_secret.js</p>
 <code>function db_secret() {</code><br />
 	<code>var db = {};</code><br />
 	<code>db.user = '';</code><br />
