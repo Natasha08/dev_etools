@@ -7,7 +7,7 @@
 <code>cd dev_etools && npm install</code><br />
 <p>#create a secret.js file</p>
 <p>#example</p>
-secret.js
+secret.js<br /><br />
 <code>var secretKey = 'very long string';</code><br />
 <code>var sessionKey = 'second very long string';</code><br />
 
@@ -16,7 +16,7 @@ secret.js
 
 <p>#create a db_secret.js file</p>
 <p>#example</p>
-db_secret.js
+db_secret.js<br />
 <code>function db_secret() {</code><br />
 	<code>var db = {};</code><br />
 	<code>db.user = '';</code><br />
