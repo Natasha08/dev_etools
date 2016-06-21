@@ -1,30 +1,30 @@
 
 # linuxproject
-<code>git clone git@github.com:Natasha08/dev_etools.git</code>
-<code>cd dev_etools</code>
-<code>npm install</code>
+<code>git clone git@github.com:Natasha08/dev_etools.git</code><br />
+<code>cd dev_etools</code><br />
+<code>npm install</code><br />
 <p>#create a secret.js file</p>
 <p>#example</p>
-<code>var secretKey = 'very long string';</code>
-<code>var sessionKey = 'second very long string';</code>
+<code>var secretKey = 'very long string';</code><br />
+<code>var sessionKey = 'second very long string';</code><br />
 
-<code>module.exports = sessionKey;</code>
-<code>module.exports = secretKey;</code>
+<code>module.exports = sessionKey;</code><br />
+<code>module.exports = secretKey;</code><br />
 
 <p>#create a db_secret.js file</p>
 <p>#example</p>
-<code>function db_secret() {</code>
-	<code>var db = {};</code>
-	<code>db.user = '';</code>
-	<code>db.password = '';</code>
-	<code>db.name = '';</code>
+<code>function db_secret() {</code><br />
+	<code>var db = {};</code><br />
+	<code>db.user = '';</code><br />
+	<code>db.password = '';</code><br />
+	<code>db.name = '';</code><br />
 <code></code>
-<code>return db;</code>
-<code>}</code>
+<code>return db;</code><br />
+<code>}</code><br />
 <code></code>
-<code>module.exports = db_secret;</code>
+<code>module.exports = db_secret;</code><br />
 <p>#start the app</p>
-<code>node ./bin/www</code>
+<code>node ./bin/www</code><br />
 
 <p>#navigate to /url:3000/login</p>
 
