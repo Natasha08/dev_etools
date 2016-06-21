@@ -46,7 +46,22 @@ console.log('Just workouts: '+workouts);
 
     } 
 
+                    $scope.daily = [],
 
+                    $scope.addDaily = function() {
+
+                        $scope.daily.push(
+                    {cal: $scope.daily.cal, 
+                     fat: $scope.daily.fat,
+                     carb: $scope.daily.carb,
+                    protein: $scope.daily.protein}
+
+                        
+                        // $http.post('/efridge', $scope.meals);
+                        
+                    ),
+                    console.log(JSON.stringify($scope.daily))
+}
     	//$rootScope.testRoot = 'This root works!';
 
  }])
@@ -54,10 +69,25 @@ console.log('Just workouts: '+workouts);
 
 
 .controller('AuthController', ['$scope', '$http', 'authService', 'UserName', function($scope, $http, authService, UserName) {
-this.UserName = UserName;
-
+        this.authService = authService;
+        this.UserName = UserName;
 console.log(this.UserName);
 
+
+
+$scope.eLogin = function() {
+
+    authService.eLogin()
+    .then(function(res) {
+         $scope.loginData = res.data;
+         console.log($scope.loginData);
+         $scope.user = {}
+         console.log($scope.user.username);
+         }, function(err) {
+              console.log('err: '+err);
+    
+        })
+  }
 
 // function registerUser() {
 // 		$http({

@@ -73,12 +73,22 @@ var getId = req.user.user_id;
  });
 
 
+
+router.get('/', ensureAuth, function(req, res) {
+
+  res.render('index', {user: req.user});
+
+  
+});
+
+
 router.get('*', function(req, res) {
 
 	res.render('index', {user: req.user});
 
 	
 });
+
 
 
 //logout

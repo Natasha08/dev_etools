@@ -2,24 +2,24 @@
 
 "use strict";
 
-var EfridgeController = function($timeout, efridgeService) {
-  this.foodItems = foodItems;
-};
+// var EfridgeController = function($timeout, efridgeService) {
+//   this.foodItems = foodItems;
+// };
 
 
-EfridgeController.resolve = {
+// EfridgeController.resolve = {
 
-foodItems: [
-      'efridgeService',
-      function(efridgeService) {
-        return efridgeService.getAll()
-    .then(function(response) {
-      var newResponse = response.data;
-      return newResponse
-    });
-  }
-]
-}
+// foodItems: [
+//       'efridgeService',
+//       function(efridgeService) {
+//         return efridgeService.getAll()
+//     .then(function(response) {
+//       var newResponse = response.data;
+//       return newResponse
+//     });
+//   }
+// ]
+// }
 
 var EgymController = function($timeout, egymService) {
   this.workouts = workouts;
@@ -72,7 +72,7 @@ workouts: [
     views: {
       'nav': {
         templateUrl: '/login/partials/loginheader.html',
-        controller: 'LoginController'
+        controller: 'AuthController'
       },
       'btnpanel': {
         templateUrl: '/login/partials/view1.html'
@@ -114,10 +114,10 @@ workouts: [
  
       },           
       'form': {
-        templateUrl: '/efridge/partials/foodindex.html',
-        controllerAs: 'efridgecontroller',
-         controller: 'EfridgeController',
-         resolve: EfridgeController.resolve
+        templateUrl: '/efridge/partials/foodindex.html'//,
+        // controllerAs: 'efridgecontroller',
+        //   controller: 'EfridgeController' //,
+         // resolve: EfridgeController.resolve
       }
 	}
 
@@ -141,8 +141,8 @@ workouts: [
       'FoodData': {
         templateUrl: '/efridge/partials/foodlist.html',
          controllerAs: 'efridgecontroller',
-         controller: 'EfridgeController',
-         resolve: EfridgeController.resolve
+         controller: 'EfridgeController' //,
+         // resolve: EfridgeController.resolve
     
       }
   }
@@ -155,8 +155,8 @@ workouts: [
       'FoodData': {
         templateUrl: '/efridge/partials/meals.html',
          controllerAs: 'efridgecontroller',
-         controller: 'EfridgeController',
-         resolve: EfridgeController.resolve
+         // controller: 'EfridgeController',
+         // resolve: EfridgeController.resolve
     
       }
   }

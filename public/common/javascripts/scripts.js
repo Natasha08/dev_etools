@@ -2,24 +2,24 @@
 
 "use strict";
 
-var EfridgeController = function($timeout, efridgeService) {
-  this.foodItems = foodItems;
-};
+// var EfridgeController = function($timeout, efridgeService) {
+//   this.foodItems = foodItems;
+// };
 
 
-EfridgeController.resolve = {
+// EfridgeController.resolve = {
 
-foodItems: [
-      'efridgeService',
-      function(efridgeService) {
-        return efridgeService.getAll()
-    .then(function(response) {
-      var newResponse = response.data;
-      return newResponse
-    });
-  }
-]
-}
+// foodItems: [
+//       'efridgeService',
+//       function(efridgeService) {
+//         return efridgeService.getAll()
+//     .then(function(response) {
+//       var newResponse = response.data;
+//       return newResponse
+//     });
+//   }
+// ]
+// }
 
 var EgymController = function($timeout, egymService) {
   this.workouts = workouts;
@@ -72,7 +72,7 @@ workouts: [
     views: {
       'nav': {
         templateUrl: '/login/partials/loginheader.html',
-        controller: 'LoginController'
+        controller: 'AuthController'
       },
       'btnpanel': {
         templateUrl: '/login/partials/view1.html'
@@ -114,10 +114,10 @@ workouts: [
  
       },           
       'form': {
-        templateUrl: '/efridge/partials/foodindex.html',
-        controllerAs: 'efridgecontroller',
-         controller: 'EfridgeController',
-         resolve: EfridgeController.resolve
+        templateUrl: '/efridge/partials/foodindex.html'//,
+        // controllerAs: 'efridgecontroller',
+        //   controller: 'EfridgeController' //,
+         // resolve: EfridgeController.resolve
       }
 	}
 
@@ -141,8 +141,8 @@ workouts: [
       'FoodData': {
         templateUrl: '/efridge/partials/foodlist.html',
          controllerAs: 'efridgecontroller',
-         controller: 'EfridgeController',
-         resolve: EfridgeController.resolve
+         controller: 'EfridgeController' //,
+         // resolve: EfridgeController.resolve
     
       }
   }
@@ -155,8 +155,8 @@ workouts: [
       'FoodData': {
         templateUrl: '/efridge/partials/meals.html',
          controllerAs: 'efridgecontroller',
-         controller: 'EfridgeController',
-         resolve: EfridgeController.resolve
+         // controller: 'EfridgeController',
+         // resolve: EfridgeController.resolve
     
       }
   }
@@ -276,7 +276,22 @@ console.log('Just workouts: '+workouts);
 
     } 
 
+                    $scope.daily = [],
 
+                    $scope.addDaily = function() {
+
+                        $scope.daily.push(
+                    {cal: $scope.daily.cal, 
+                     fat: $scope.daily.fat,
+                     carb: $scope.daily.carb,
+                    protein: $scope.daily.protein}
+
+                        
+                        // $http.post('/efridge', $scope.meals);
+                        
+                    ),
+                    console.log(JSON.stringify($scope.daily))
+}
     	//$rootScope.testRoot = 'This root works!';
 
  }])
@@ -284,10 +299,25 @@ console.log('Just workouts: '+workouts);
 
 
 .controller('AuthController', ['$scope', '$http', 'authService', 'UserName', function($scope, $http, authService, UserName) {
-this.UserName = UserName;
-
+        this.authService = authService;
+        this.UserName = UserName;
 console.log(this.UserName);
 
+
+
+$scope.eLogin = function() {
+
+    authService.eLogin()
+    .then(function(res) {
+         $scope.loginData = res.data;
+         console.log($scope.loginData);
+         $scope.user = {}
+         console.log($scope.user.username);
+         }, function(err) {
+              console.log('err: '+err);
+    
+        })
+  }
 
 // function registerUser() {
 // 		$http({
@@ -397,7 +427,7 @@ var authServiceVar = function($http) {
 	//$http.get('http://localhost:3000/efridge').then(successCallback, errorCallback);
 	 var logId = {};
 
- 	 logId.getAll = function() {
+ 	 logId.eLogin = function() {
 	
 	   	return	$http({
 
@@ -424,160 +454,139 @@ var authServiceVar = function($http) {
 //login service
 angular
   .module('myApp')
-   .service('authService',['$http', authServiceVar]) 
+   .service('authService',['$http', '$q', function() { 
 
-
-function login() {
+   		var authService = this;
+   		authService.getAll = function() {
+   			var defer = $q.defer();
 		$http({
 
 				method:'POST',
 				//url:'https://mycolofitness.com/login',
 				url:'http://localhost:3000/login',
 				data:{email:$scope.email, password:$scope.password}})
-				.then(function (response) {
-					//console.log(response);
-					$scope.apiTest = JSON.stringify(response.data);
-					console.log($scope.apiTest);
-
-	 },
-				function (data) {
-					//console.log(response);
-					//console.log(data);
-
-	 
-				})
+   			.then(function(res) {
+   				defer.resolve(res.data);
+   				console.log('authService resolved!');
+   				}, function(err) {
+   				
+   				defer.reject(err);
+   				console.log('Service not resolved: '+err);
+   				})
+		     		return defer.promise;
+		 	}
 				
 
-}
+}]); 
 
-})();
+})();	
 (function(){
 
 "use strict";
 
+
 angular
   .module('myApp')
-  .controller('EfridgeController', ['$scope', '$rootScope', '$http', '$log', '$cookies' , 'efridgeService', 'foodItems', 'UserName', function($scope, $rootScope, $http, $log, $cookies, efridgeService, foodItems, UserName) {
-
-$scope.UserName = this.UserName;
-this.foodItems = foodItems.data;
-
-$scope.foodItems = this.foodItems;
-$scope.user = {
-
-	foodItems: ['foodItem']
-	} 
-//console.log('foodItems stringified: '+JSON.stringify($scope.foodItems));
+  .controller('EfridgeController', ['$scope', '$http', 'efridgeService', 'UserName', function($scope, $http, efridgeService, UserName) {
+	  	
 
 
+  	$scope.init = function() {
+  		this.efridgeService = efridgeService;
+  		$scope.getAll();
 
-function logFoodCal() {
-	alert('foodCal.Items');
-}
+  	}
 
-  					$scope.daily = [],
+$scope.getAll = function() {
 
-    				$scope.addDaily = function() {
+  	efridgeService.getAll()
+  	.then(function(res) {
+  		 $scope.foodItems = res.data;
+  		 console.log($scope.foodItems);
+		 $scope.user = {}
 
-    					$scope.daily.push(
-					{cal: $scope.daily.cal, 
-					 fat: $scope.daily.fat,
-					 carb: $scope.daily.carb,
-					protein: $scope.daily.protein}
-
-						
-    					// $http.post('/efridge', $scope.meals);
-    					
-    				),
-    				console.log(JSON.stringify($scope.daily))
-    				},
+  		 }, function(err) {
+  		      console.log('err: '+err);
+  	
+  	    })
+  }
 
 
-			//$scope.winYa = $rootScope.testRoot;
+  $scope.uncheckAll = function() {
+    $scope.user.foodItems = [];
+  };
+  $scope.checkAll = function() {
+    $scope.user.foodItems = angular.copy($scope.foodItems);
+  };
 
-        $scope.IsHiddenForm = true;
-    	$scope.ShowHideForm = function () {
-        //If DIV is hidden it will be visible and vice versa.
-        $scope.IsHiddenForm = !$scope.IsHiddenForm;
-        $scope.IsHidden = true;
-        $scope.IsHiddenMeal = true;
-    }
-        $scope.IsHiddenMeal = true;
-    	$scope.ShowHideMeal = function () {
-        //If DIV is hidden it will be visible and vice versa.
-        $scope.IsHiddenMeal = !$scope.IsHiddenMeal;
-        $scope.IsHidden = true;
-        $scope.IsHiddenForm = true;
-    }    
 
-        $scope.IsHidden = true;
-    $scope.ShowHide = function () {
-        //If DIV is hidden it will be visible and vice versa.
-        $scope.IsHidden = !$scope.IsHidden;
-        $scope.IsHiddenForm = true;
-        $scope.IsHiddenMeal = true;
-    }
+  		$scope.macros = [];
+  		$scope.addMacro = function() {
+  			$scope.macros.push({
+  				foodName: $scope.user.foodItems
+  			})
+  			alert(JSON.stringify($scope.macros));
+  		}
+
+
+  	$scope.init();
 
 
 
-  					$scope.macros = [],
+ }]);
 
-    				$scope.addMacro = function() {
+//   					$scope.macros = [],
 
-    					$scope.macros.push(
-					{cal: $scope.fMacro.food_name, 
-					 fat: $scope.fMacro.fat_grams,
-					 carb: $scope.fMacro.carb_grams,
-					protein: $scope.fMacro.protein_grams}
+//     				$scope.addMacro = function() {
 
-
-
-    					// $http.post('/efridge', $scope.meals);
-    					
-    				)}
-				//console.log($scope.macros);
-
-	function foodForm()  {
-
-		$http({
-
-				method:'POST',
-				//url:'https://mycolofitness.com/foodform'
-				url:'http://localhost:3000/foodform'})
-				//data:{email:$scope.email, password:$scope.password}
-				.then(function (response) {
-					//console.log(response);
-					//$scope.userTest = response;
-					$scope.UserF = response.data;
-					//$scope.UserFIdFood = $scope.User.user_id;
-
-					//console.log($scope.userTests.user_id);
+//     					$scope.macros.push(
+// 					{cal: $scope.fMacro.food_name, 
+// 					 fat: $scope.fMacro.fat_grams,
+// 					 carb: $scope.fMacro.carb_grams,
+// 					protein: $scope.fMacro.protein_grams}
 
 
-});	
 
-		$http({
-
-				method:'POST',
-				//url:'https://mycolofitness.com/foodform'
-				url:'http://localhost:3000/macroform'})
-				//data:{email:$scope.email, password:$scope.password}
-				.then(function (response) {
-					//console.log(response);
-					//$scope.userTest = response;
-					$scope.UserB = response.data;
-					//$scope.UserFIdFood = $scope.User.user_id;
-
-					//console.log($scope.userTests.user_id);
+// function logFoodCal() {
+// 	alert('foodCal.Items');
+// }
 
 
-});	
 
 
-}
 
 
- }])
+
+
+
+
+
+
+
+//   					$scope.macros = [],
+
+//     				$scope.addMacro = function() {
+
+//     					$scope.macros.push(
+// 					{cal: $scope.fMacro.food_name, 
+// 					 fat: $scope.fMacro.fat_grams,
+// 					 carb: $scope.fMacro.carb_grams,
+// 					protein: $scope.fMacro.protein_grams}
+
+
+
+
+//         $scope.IsHidden = true;
+//     $scope.ShowHide = function () {
+//         //If DIV is hidden it will be visible and vice versa.
+//         $scope.IsHidden = !$scope.IsHidden;
+//         $scope.IsHiddenForm = true;
+//         $scope.IsHiddenMeal = true;
+//     }
+
+
+
+
 
 
 
@@ -591,87 +600,187 @@ function logFoodCal() {
 	// 	console.log(value);
 
 
+// angular
+//   .module('myApp')
+//   .value('Title', "Efridge");
+
+
 (function(){
 
 "use strict";
 
-var efridgeServiceVar = function($http) {
+//efridge service
+angular
+  .module('myApp')
+   .service('efridgeService',['$http', '$q', function($http, $q) {
+
+	var efridgeService = this;
+ efridgeService.foodItems = {};
+
+	efridgeService.getAll = function() {
+    	var defer = $q.defer();
+    	
+		$http.get('http://localhost:3000/efridge')
+		     .then(function(res) {
+   				defer.resolve(res.data);
+   				console.log('service resolved!');
+   			}, 
+   			function(err) {
+   				
+   				defer.reject(err);
+   				console.log('Service not resolved: '+err);
+   			})
+		     return defer.promise;
+		 }
 
 
-	//$http.get('http://localhost:3000/efridge').then(successCallback, errorCallback);
-	 var efridge = {};
+   }]);		     
 
- 	 efridge.getAll = function() {
+
+// 	 var efridge = {};
+
+//  	 efridge.getAll = function() {
 	
-	   	return	$http({
+// 	   	return	$http({
 
-				  method:'GET',
-				  //url:'https://mycolofitness.com/efridge',
-				  url:'http://localhost:3000/efridge'})
+// 				  method:'GET',
+// 				  //url:'https://mycolofitness.com/efridge',
+// 				  url:'http://localhost:3000/efridge'})
 	
-	}
-    return efridge;           // <--------- do not go on a new line after return
+// 	}
+//     return efridge;           // <--------- do not go on a new line after return
  
- }
+//  }
 
-
-
-
-var egymServiceVar = function($http) {
-
-
-	//$http.get('http://localhost:3000/efridge').then(successCallback, errorCallback);
-	 var egym = {};
-
- 	 egym.getAll = function() {
-	
-	   	return	$http({
-
-				  method:'GET',
-				  //url:'https://mycolofitness.com/egym',
-				  url:'http://localhost:3000/egym'})
-	
-	}
-    return egym;           // <--------- do not go on a new line after return
- 
- }
-
-
-
- 
-
+//    }]);
 
 
 //egym service
-angular
-  .module('myApp')
-   .service('egymService',['$http', egymServiceVar]) 
+// angular
+//   .module('myApp')
+//    .service('efridgeService',['$http', '$q', function($http, $q) {
 
-//egym service
-angular
-  .module('myApp')
-   .service('efridgeService',['$http', efridgeServiceVar])
+//    		var efridgeService = this;
+//    		efridgeService.foodItems = {};
+
+//    		efridgeService.getAll = function() {
+//    			var defer = $q.defer();
+
+//    			$http.get('http://localhost:3000/efridge')
+
+//    			.sucess(function(res) {
+
+//    				efridgeService.foodItems = res;
+//    				console.log('service call: '+efridgeService.foodItems);
+//    				defer.resolve(res);
+//    			})
+//    			.error(function(err, status) {
+//    				defer.reject(err);
+//    				$scope.errorCallback = err;
+//    			})
+
+//    			return defer.promise;
+//    		}
+
+//    		efridgeService.createEfridgeService = function(efridgeService) {
+//    			var defer = $q.defer();
+
+//    			$http.post('http://localhost:3000/efridge', efridgeService)
+
+//    			return defer.promise;
+//    		}
+
+
+//    		return efridgeService;
+
+//    }]);
 
 
 
-var EfridgeController = function($timeout, efridgeService) {
-  this.foodItems = foodItems;
-};
 
 
-EfridgeController.resolve = {
 
-foodItems: [
-      'efridgeService',
-      function(efridgeService) {
-        return efridgeService.getAll()
-    .then(function(response) {
-      var newResponse = response.data;
-      return newResponse
-    });
-  }
-]
-}
+
+
+
+
+// var efridgeServiceVar = function($http) {
+
+
+// 	//$http.get('http://localhost:3000/efridge').then(successCallback, errorCallback);
+// 	 var efridge = {};
+
+//  	 efridge.getAll = function() {
+	
+// 	   	return	$http({
+
+// 				  method:'GET',
+// 				  //url:'https://mycolofitness.com/efridge',
+// 				  url:'http://localhost:3000/efridge'})
+	
+// 	}
+//     return efridge;           // <--------- do not go on a new line after return
+ 
+//  }
+
+
+
+
+// var egymServiceVar = function($http) {
+
+
+// 	//$http.get('http://localhost:3000/efridge').then(successCallback, errorCallback);
+// 	 var egym = {};
+
+//  	 egym.getAll = function() {
+	
+// 	   	return	$http({
+
+// 				  method:'GET',
+// 				  //url:'https://mycolofitness.com/egym',
+// 				  url:'http://localhost:3000/egym'})
+	
+// 	}
+//     return egym;           // <--------- do not go on a new line after return
+ 
+//  }
+
+
+
+ 
+
+
+
+// //egym service
+// angular
+//   .module('myApp')
+//    .service('egymService',['$http', egymServiceVar]) 
+
+// //egym service
+// angular
+//   .module('myApp')
+//    .service('efridgeService',['$http', efridgeServiceVar])
+
+
+
+// var EfridgeController = function($timeout, efridgeService) {
+//   this.foodItems = foodItems;
+// };
+
+
+// EfridgeController.resolve = {
+
+// foodItems: [
+//       'efridgeService',
+//       function(efridgeService) {
+//         return efridgeService.getAll()
+//     .then(function(response) {
+//       var newResponse = response.data;
+//       return newResponse
+//     });
+//   }
+// ]
+// }
 
 
 })();
