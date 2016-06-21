@@ -3,11 +3,19 @@
     <head> 
      <% include ./common/partials/head.html %>
     </head>
-    <body class="col-md-12">
+    <div class="col-md-12 container-fluid content"
+    <body>
       <div data-ui-view="nav"></div>
       <div data-ui-view="btnpanel"></div>
       <div data-ui-view="form"></div>
       <% include ./common/partials/js_scripts.html %>   
-      <% include ./common/partials/footer.html %>
+
   </body>
+  </div>
+  <div class="footer">
+  <footer id="footer">
+      <% include ./common/partials/footer.html %>
+  </footer>
+  <div>
+
 </html>

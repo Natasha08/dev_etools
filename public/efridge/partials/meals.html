@@ -5,49 +5,7 @@
 
 <!-- Building blocks for the create-a-meal section -->
 <div class="typingWell">
-<!--   <ul>
-      <li data-ng-repeat = "u in user.foodItems | orderBy: 'u'">{{u.food_name }}:<br />
-      {{u.total_calories }}</li>
 
-
-
-      <input type="text" data-ng-model = "u.food_name" value="'{{u.food_name }}'"></input>
-      <input type="text" data-ng-model = "u.total_calories"></input>
-      <input type="text" data-ng-model = "u.food_name"></input>$scope.foodItems[1]
-      <button data-ng-click="" class="btn btn primary" disabled>Calc</button>
-      <button data-ng-click="" class="btn btn primary" disabled>Submit</button>
-
-      <li data-ng-repeat = "foodItem in foodItems | filter:filter.meal | orderBy: 'foodItem'">Name: {{ foodItem.food_name }} <br />Total Cal: {{ foodItem.total_calories}} Fat: {{foodItem.fat_grams}}</li>      
-  </ul>
- -->
-      <table class="table table-bordered table-hover">
-      <tr class="table_header">
-          <!-- <th>Add</th> -->
-          <th>Name of Food</th>
-          <th>Brand Name</th>
-          <th>Serving Size</th>
-          <th>Total Calories</th>
-          <th>Fat(g)</th>
-          <th>Carbs(g)</th>
-          <th>Protein(g)</th>
-          <th>Total (g)[macros]</th>
-          
-      </tr>        
-      <tr data-ng-model = "u.foodItems" data-ng-repeat = "u in user.foodItems | orderBy: 'u'">
-          
-          <td> {{ u.food_name }} </td>
-          <td>{{ u.brand }}</td>
-          <td>{{ u.serving_size }}</td>
-          <td>{{ u.total_calories }}</td>
-          <td>{{ u.fat_grams }}</td>
-          <td>{{ u.carbohydrate_grams }}</td>
-          <td>{{ u.protein_grams }}</td>
-          <td>{{ u.total_grams }}</td>
-      </tr>
-
-      </table>
-
-      <button type="submit" class="btn btn-primary" data-ng-click="logFoodCal()">LogIt</button>
 </div>   
 </div>
 

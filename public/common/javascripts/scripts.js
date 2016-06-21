@@ -465,6 +465,8 @@ angular
   	$scope.init = function() {
   		this.efridgeService = efridgeService;
   		$scope.getAll();
+      $scope.IsHidden = true;
+      $scope.isDisabled = false;
 
   	}
 
@@ -491,15 +493,46 @@ $scope.getAll = function() {
   };
 
 
-  		$scope.macros = [];
+
+    $scope.disableButton = function() {
+        $scope.isDisabled = true;
+    }
+
   		$scope.addMacro = function() {
-  			$scope.macros.push({
-  				foodName: $scope.user.foodItems
-  			})
-  			alert(JSON.stringify($scope.macros));
-  		}
+              $scope.macros = [];
+
+  angular.forEach($scope.user.foodItems, function(value) {
+  this.push(value);
+}, $scope.macros);
+
+  $scope.IsHidden = false;
+  $scope.isDisabled = true;
+  console.log('updated macros: '+JSON.stringify($scope.macros));
 
 
+     //console.log(key + ': ' + JSON.stringify(value));
+}
+  		// 		foodName: $scope.user.foodItems
+
+  		// 	})
+    //     $scope.IsHidden = false;
+  		// 	console.log(JSON.stringify($scope.macros));
+  		// }
+      $scope.clearMacro = function() {
+        $scope.IsHidden = true;
+        $scope.macros = [];
+        $scope.isDisabled = false;
+      }
+
+
+
+// $scope.mealCalc = function() {
+//       $scope.meal = [];
+//   angular.forEach($scope.macros, function(value, key) {
+
+//      console.log(key + ': ' + value);
+// });
+// }
   	$scope.init();
 
 
