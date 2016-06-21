@@ -475,11 +475,11 @@ $scope.getAll = function() {
   	efridgeService.getAll()
   	.then(function(res) {
   		 $scope.foodItems = res.data;
-  		 console.log($scope.foodItems);
+  		 //console.log($scope.foodItems);
 		 $scope.user = {}
 
   		 }, function(err) {
-  		      console.log('err: '+err);
+  		      //console.log('err: '+err);
   	
   	    })
   }
@@ -507,7 +507,7 @@ $scope.getAll = function() {
 
   $scope.IsHidden = false;
   $scope.isDisabled = true;
-  console.log('updated macros: '+JSON.stringify($scope.macros));
+  //console.log('updated macros: '+JSON.stringify($scope.macros));
 
 
      //console.log(key + ': ' + JSON.stringify(value));
@@ -627,12 +627,12 @@ angular
 		$http.get('http://localhost:3000/efridge')
 		     .then(function(res) {
    				defer.resolve(res.data);
-   				console.log('service resolved!');
+   				//console.log('service resolved!');
    			}, 
    			function(err) {
    				
    				defer.reject(err);
-   				console.log('Service not resolved: '+err);
+   				//console.log('Service not resolved: '+err);
    			})
 		     return defer.promise;
 		 }
