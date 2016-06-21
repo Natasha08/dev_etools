@@ -22,11 +22,11 @@ $scope.getAll = function() {
   	efridgeService.getAll()
   	.then(function(res) {
   		 $scope.foodItems = res.data;
-  		 console.log($scope.foodItems);
+  		 //console.log($scope.foodItems);
 		 $scope.user = {}
 
   		 }, function(err) {
-  		      console.log('err: '+err);
+  		      //console.log('err: '+err);
   	
   	    })
   }
@@ -54,7 +54,7 @@ $scope.getAll = function() {
 
   $scope.IsHidden = false;
   $scope.isDisabled = true;
-  console.log('updated macros: '+JSON.stringify($scope.macros));
+  //console.log('updated macros: '+JSON.stringify($scope.macros));
 
 
      //console.log(key + ': ' + JSON.stringify(value));
