@@ -3,11 +3,11 @@
 
 <p>#clone repo</p>
 <code>git clone git@github.com:Natasha08/dev_etools.git</code><br />
-<p>#cd && install dependencies</p>
+<p>#cd & install dependencies</p>
 <code>cd dev_etools && npm install</code><br />
 <p>#create a secret.js file</p>
 <p>#example</p>
-<span>secret.js</span>
+secret.js
 <code>var secretKey = 'very long string';</code><br />
 <code>var sessionKey = 'second very long string';</code><br />
 
@@ -16,7 +16,7 @@
 
 <p>#create a db_secret.js file</p>
 <p>#example</p>
-<span>db_secret.js</span>
+db_secret.js
 <code>function db_secret() {</code><br />
 	<code>var db = {};</code><br />
 	<code>db.user = '';</code><br />
