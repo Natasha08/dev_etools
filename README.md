@@ -5,31 +5,26 @@
 <code>npm install</code>
 <p>#create a secret.js file</p>
 <p>#example</p>
-<code>
-var secretKey = 'very long string';
-var sessionKey = 'second very long string';
+<code>var secretKey = 'very long string';</code>
+<code>var sessionKey = 'second very long string';</code>
 
-module.exports = sessionKey;
-module.exports = secretKey;
-</code>
+<code>module.exports = sessionKey;</code>
+<code>module.exports = secretKey;</code>
+
 <p>#create a db_secret.js file</p>
 <p>#example</p>
-<code>
-function db_secret() {
-	var db = {};
-	db.user = '';
-	db.password = '';
-	db.name = '';
-
-	return db;
-}
-
-module.exports = db_secret;
-</code>
+<code>function db_secret() {</code>
+	<code>var db = {};</code>
+	<code>db.user = '';</code>
+	<code>db.password = '';</code>
+	<code>db.name = '';</code>
+<code></code>
+<code>return db;</code>
+<code>}</code>
+<code></code>
+<code>module.exports = db_secret;</code>
 <p>#start the app</p>
-<code>
-node ./bin/www
-</code>
+<code>node ./bin/www</code>
 
 <p>#navigate to /url:3000/login</p>
 
