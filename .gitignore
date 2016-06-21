@@ -17,7 +17,7 @@ db_secret.*
 *.secret
 
 ## sublime ##
-.sublime-workspace
+*.sublime-workspace
 
 #.sql files#
 *.sql
