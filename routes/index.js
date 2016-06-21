@@ -35,10 +35,10 @@ router.get('/efridge', ensureAuth, function(req, res) {
  
 
     if (err) {
-     console.log(err);
+     //console.log(err);
   
     } else {
-      console.log('Well efridge is connected!');
+      //console.log('Well efridge is connected!');
       //where user_id = '+user_id,
       connection.query('select * from  efridge where user_id = '+getId, function (err,rows) {
 
@@ -60,7 +60,7 @@ var getId = req.user.user_id;
      console.log(err);
   
     } else {
-      console.log('Well egym is connected!');
+      //console.log('Well egym is connected!');
       //where user_id = '+user_id,
       connection.query('select * from  egym where user_id = '+getId, function (err,rows) {
 
@@ -105,10 +105,10 @@ router.get('*', function(req, res) {
 router.post('/foodform', function(req, res) {
   pool.getConnection(function(err,connection) {
 	if (err) {
-		console.error( err);
+		//console.error( err);
 		return;
 	} else {
-		console.log('Successful Connection!');
+		//console.log('Successful Connection!');
 
        var efridge = {
 
@@ -125,7 +125,7 @@ router.post('/foodform', function(req, res) {
 
        connection.query('insert into efridge set ?', efridge, function (err, result) {
 	       if (err) {
-		      console.error();
+		      //console.error();
 
 	       } else {
 

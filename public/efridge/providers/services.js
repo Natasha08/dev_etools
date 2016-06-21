@@ -16,12 +16,12 @@ angular
 		$http.get('http://localhost:3000/efridge')
 		     .then(function(res) {
    				defer.resolve(res.data);
-   				console.log('service resolved!');
+   				//console.log('service resolved!');
    			}, 
    			function(err) {
    				
    				defer.reject(err);
-   				console.log('Service not resolved: '+err);
+   				//console.log('Service not resolved: '+err);
    			})
 		     return defer.promise;
 		 }
