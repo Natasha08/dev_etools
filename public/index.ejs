@@ -1,21 +1,18 @@
 <!DOCTYPE html>
   <html data-ng-app="myApp">
     <head> 
-     <% include ./common/partials/head.html %>
+     <% include ./modules/common/partials/head.html %>
     </head>
-    <div class="col-md-12 container-fluid content"
-    <body>
-      <div data-ui-view="nav"></div>
-      <div data-ui-view="btnpanel"></div>
-      <div data-ui-view="form"></div>
-      <% include ./common/partials/js_scripts.html %>   
-
-  </body>
-  </div>
-  <div class="footer">
-  <footer id="footer">
-      <% include ./common/partials/footer.html %>
-  </footer>
-  <div>
-
+      <body class="content">
+        <header>
+            <div data-ui-view="nav"></div>
+        </header>  
+          <div data-ui-view="btnpanel"></div>
+          <div data-ui-view="form"></div>
+          <% include ./modules/common/partials/js_scripts.html %> 
+      </body>
+      <div class="clearfooter"></div>
+          <div class="footer"
+          <div data-ui-view="footer"></div>
+        </div>
 </html>

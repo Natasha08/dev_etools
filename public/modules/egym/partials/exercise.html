@@ -1,0 +1,69 @@
+<!-- toggle button for workout form -->
+<div class="well container-fluid">
+      <button type="button" class="btn btn-md" id="btnGym" data-ng-click="ShowHide()">Log Workout</button> 
+      <button type="button" class="btn btn-md" id="btnGymdata" data-ng-click="ShowHideWorkout()">View Workouts</button>
+ <a ui-sref="egym" class="btn btn-md">Log Workout</a>
+ <a ui-sref="UserName" class="btn btn-md">Username link!</a>
+ <a ui-sref="egym" class="btn btn-md">View Workouts</a><br />
+
+</div>
+
+<!-- workout form -->
+<div class="well" id="workProfile" data-ng-hide="IsHidden">
+	<form action="/egym" method="post" id="registerForm">
+	<h2>Good job on your workout! Create a workout entry and track your progress</h2>
+		<div class="form-group row">
+    	 <label for="date" class="col-sm-2 form-control-label">Date</label>
+    		<div class="col-sm-10">
+       		 <input type="date" class="form-control textInput" name="date" id="date"></input>
+    		</div>
+		</div>
+		<div class="form-group row">
+    	 <label for="workout_day" class="col-sm-2 form-control-label">Workout Day</label>
+    		<div class="col-sm-10">
+       		 <input type="text" class="form-control textInput" id="workout_day"></input>
+    		</div>
+		</div>
+		<div class="form-group row">
+    	 <label for="keylift1" class="col-sm-2 form-control-label">Key Lift</label>
+    		<div class="col-sm-10">
+    		<span>Enter a user name (at least 4 characters)</span>
+       		 <input type="text" class="form-control textInput" id="keylift1" name="keylift1"></input>
+    		</div>
+		</div>
+		<div class="form-group row">
+    	 <label for="reps1" class="col-sm-2 form-control-label">Reps</label>
+    		<div class="col-sm-10">
+    		<span>Enter Password (min. 6 characters, 2 numbers)</span>
+       		 <input type="number" class="form-control textInput" id="reps1" name="reps1"></input>
+    		</div>
+		</div>
+    <div class="form-group row">
+       <label for="reps2" class="col-sm-2 form-control-label">Reps</label>
+        <div class="col-sm-10">
+        <span>Enter Password (min. 6 characters, 2 numbers)</span>
+           <input type="number" class="form-control textInput" id="reps2" name="reps2"></input>
+        </div>
+    </div>
+    <div class="form-group row">
+       <label for="reps3" class="col-sm-2 form-control-label">Reps</label>
+        <div class="col-sm-10">
+        <span>Enter Password (min. 6 characters, 2 numbers)</span>
+           <input type="number" class="form-control textInput" id="reps3" name="reps3"></input>
+        </div>
+    </div>
+    <div class="form-group row">
+       <label for="keylift2" class="col-sm-2 form-control-label">Key Lift</label>
+        <div class="col-sm-10">
+        <span>Enter Password (min. 6 characters, 2 numbers)</span>
+           <input type="text" class="form-control textInput" id="keylift2" name="keylift2"></input>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="exerciseSubmit" type="submit" class="btn btn-secondary">Submit</button>
+          </div>
+    </div>
+    </form>
+</div>

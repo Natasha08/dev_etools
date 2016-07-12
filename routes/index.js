@@ -24,7 +24,7 @@ var ensureAuth = function(req, res, next) {
 
 router.get('/logout', function(req, res) {
   req.logout();
-  res.redirect('/login');
+  res.redirect('/');
 });
 
 
@@ -74,20 +74,20 @@ var getId = req.user.user_id;
 
 
 
-router.get('/', ensureAuth, function(req, res) {
+// router.get('/', function(req, res) {
 
-  res.render('index', {user: req.user});
+//   res.render('index', {user: req.user});
 
   
-});
+// });
 
 
-router.get('*', function(req, res) {
+// router.get('*', function(req, res) {
 
-	res.render('index', {user: req.user});
+// 	res.render('index', {user: req.user});
 
 	
-});
+// });
 
 
 
@@ -180,7 +180,7 @@ router.post('/register', function(req, res, next) {
 
        } else {
 
-        res.redirect('/login');
+        res.redirect('/');
 
        };
 
