@@ -6,8 +6,11 @@
     "lesscon": "lessc public/stylesheets/concat.less public/stylesheets/styles.css"
   },
   "dependencies": {
+    "angular": "^1.5.7",
     "angular-local-storage": "^0.2.7",
+    "angular-ui-router": "^0.3.1",
     "body-parser": "~1.13.2",
+    "chai": "^3.5.0",
     "checklist-model": "^0.9.0",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
@@ -18,6 +21,7 @@
     "jsonwebtoken": "^7.0.0",
     "jwt-simple": "^0.5.0",
     "less-middleware": "1.0.x",
+    "mocha": "^2.5.3",
     "morgan": "~1.6.1",
     "mysql": "~2.10.2",
     "passport": "~0.3.2",
@@ -25,20 +29,28 @@
     "passport-http-bearer": "^1.0.1",
     "passport-local": "~1.0.0",
     "sendgrid": "~2.0.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "sinon": "^1.17.4"
   },
   "devDependencies": {
-    "grunt": "~1.0.1",
-    "grunt-contrib-concat": "~1.0.1",
-    "grunt-contrib-watch": "~1.0.0",
-    "grunt-contrib-uglify": "~1.0.1",
-    "uniq": "~1.0.1",
-    "fly": "~1.2.4",
-    "grunt-contrib-clean": "~1.0.0",
-    "flightplan": "~0.6.14",
+    "angular-mocks": "^1.5.7",
     "browserify": "~13.0.1",
+    "flightplan": "~0.6.14",
+    "fly": "~1.2.4",
+    "grunt": "~1.0.1",
+    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-concat": "~1.0.1",
     "grunt-contrib-cssmin": "~1.0.1",
-    "grunt-stripcomments": "~0.5.0"
+    "grunt-contrib-uglify": "~1.0.1",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-stripcomments": "~0.5.0",
+    "jasmine-core": "^2.4.1",
+    "jsdom": "^9.4.1",
+    "karma": "^1.1.0",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "mocha-jsdom": "^1.1.0",
+    "uniq": "~1.0.1"
   },
   "description": "Node Express project with mysql. A tool to create meals and track workouts.",
   "repository": {

@@ -1,1 +1,21 @@
-.container{background-color:green}
+/**********************************************
+				Footer
+**********************************************/
+#footer {
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  padding-top: 3%;
+  background-color: #6a877b;
+}
+.social-icon {
+  height: auto;
+  width: 5%;
+}
+@media only screen and (max-width: 600px) {
+  .social-icon {
+    height: auto;
+    width: 7%;
+  }
+}

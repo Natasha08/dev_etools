@@ -32,12 +32,12 @@ body {
 
 .content {
 /**	background-color: @main_color; **/
-	padding-bottom: 400px;
+	
 
 }
 
 p.instruct {
-	background-color: white;
+	background-color: @plainColor;
 	padding: 10px;
 	display: inline-block;
 }
@@ -46,17 +46,49 @@ p.instruct {
 					Nav Bar
 **********************************************/
 
-.navbar-default {
-    background-color: @plainColor;
+
+.brandName strong, {
+	color: black;
+	font-size: 1.5em;
+    
 }
-.navStyle {
-    background-color: @main_color;
+
+.navText p {
+	color: black;
+	text-align: center;	
 }
+
+.navName p {
+	color: black;
+	font-size: 0.8em;
+}
+
+#collapseBtn {
+	background-color: @main_color;
+}
+
+.nav,
+.navbar-nav,
+.navbar-right,
+.navbar-left li a {
+    color: rbga(0,0,0,1);
+}
+
+#email, 
+#password {
+	background-color: @prime_color;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-default .navbar-nav > .active > a:focus {
-    color: green;
-    background-color: @main_color;
+    color: black;
+
 
 }
 #userName:focus,
@@ -82,6 +114,7 @@ ul {
 
 .btn:active,
 .btn-lg:active,
+.btn-md:active,
 .btn-primary:active,
 .btn:focus,
 .btn:hover {
@@ -189,36 +222,6 @@ div.row {
 	padding: 10px;
 }
 
-/**********************************************
-				Footer
-**********************************************/
-
-
-.footer {
-	position: relative;
-    width:100%;
-    height: 12em;
-    bottom:0px;
-    padding-top: 5px;
-    background-color: @main_color;
-    display: flex;
-    overflow: hidden;
-
-  } 
-
-  #footer {
-    width:100%;
-    text-align: center;
-    padding-top: 20%;
-
-  } 
-  .social-icon {
-  	height: auto;
-  	width: 5%;
-  }
-
-
-
 
 
 /**********************************************
@@ -248,7 +251,13 @@ div.row {
 
 }
 
+@media only screen and (min-width: 550px) {
 
+.navName p {
+	display: inline-block;
+}
+
+}
 
 
 //LESS variables
@@ -264,5 +273,46 @@ div.row {
 /**********************************************
 				Footer
 **********************************************/
+.clearfooter {
+  height: 300px;
+}
+
+  #footer {  
+    position: relative;
+    bottom: 0px;
+    width:100%;
+    text-align: center;
+    padding-top: 3%;
+    background-color: @main_color;
 
 
+}
+
+  .social-icon {
+  	height: auto;
+  	width: 5%;
+  }
+
+ @media only screen and (max-width: 506px) {
+
+  .social-icon {
+    height: auto;
+    width: 7%;
+  }
+
+  .clearfooter {
+  height: 100px;
+}
+
+}
+ @media only screen and (max-width: 1200px) {
+
+  .social-icon {
+    height: auto;
+    width: 7%;
+  }
+
+  .clearfooter {
+  height: 125px;
+}
+}

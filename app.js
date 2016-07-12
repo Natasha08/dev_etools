@@ -18,7 +18,6 @@ var LocalStrategy   = require('passport-local').Strategy;
 
 var routes = require('./routes/index');
 
-
 var app = express();
 
 var hour = 3600000;
@@ -46,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  app.use(passport.session());
 
 //access-control origins
-//var origin = ['https://mycolofitness.com']
+// var origin = ['https://mycolofitness.com']
 
 var origin = ['http://localhost']
 
@@ -71,10 +70,7 @@ passport.use('local-login', new LocalStrategy({
 
     function(req, email, password, done) { // callback with email and password from our form
 
-
-  pool.query("SELECT * FROM `users` WHERE `email` = '" + email + "'",function(err,user){
-  
-
+      pool.query("SELECT * FROM `users` WHERE `email` = '" + email + "'",function(err,user){
 //if not connected to a users db
         if (err)
             return done(err); 
@@ -131,13 +127,16 @@ var ensureAuth = function(req, res, next) {
   }
 };
 
-app.post('/login', passport.authenticate('local-login', { session: true, successRedirect: '/', failureRedirect: '/login' }),
-      function(req, res) {
-        //res.redirect('/');//+req.user.firstname);
-        res.status(200).send(req.user.username);
 
-      });
+app.post('/home', passport.authenticate('local-login', { session: true, failureRedirect: '/' }) , 
+ function(req, res) {
+  res.status(200).send({data: req.user.username});
 
+ });
+
+app.get('/:UserName', function(req,res) {
+  res.status(200).send('Success!');
+});
 
 //route to test if the user is logged in or not
 app.get('/loggedin', ensureAuth, function(req, res) {
@@ -145,9 +144,12 @@ app.get('/loggedin', ensureAuth, function(req, res) {
 });
 
 app.get('/account', ensureAuth, function(req, res){
-      res.json(req.user.username);
+  
+      res.status(200).send({data: req.user.username});
 
 });
+
+
 
 
 //use the routes specified earlier
@@ -164,18 +166,18 @@ app.use(function(req, res, next) {
 
 //development error handler
 //will print stacktrace
-// if (app.get('env') === 'development') {
-//   app.use(function(err, req, res, next) {
-//     res.status(err.status || 500);
-//     res.render('error', {
-//       message: err.message,
-//       error: err
-//     });
-//   });
-// }
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
 
-production error handler
-no stacktraces leaked to user
+//production error handler
+//no stacktraces leaked to user
 app.use(function(err, req, res, next) {
  res.status(err.status || 500);
  res.render('error', {
