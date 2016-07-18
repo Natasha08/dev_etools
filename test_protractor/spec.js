@@ -17,7 +17,7 @@ describe('Fitness App', function() {
       expect(browser.getTitle()).toEqual('MyColoFitness');
     });
 
-    it('should add one and two', function() {
+    it('should call the login function', function() {
       email.sendKeys('natasha08@me.com');
       password.sendKeys('moo');
       
