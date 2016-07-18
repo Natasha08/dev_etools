@@ -40,13 +40,13 @@
 // }
 
 angular
-//.module('myApp', ['checklist-model', 'ui.router', 'ui.bootstrap', 'ngCookies'])
-.module('myApp', [])
+// .module('myApp', ['checklist-model', 'ui.router', 'ui.bootstrap', 'ngCookies'])
+.module('myApp', ['checklist-model', 'ui.router'])
 
 //.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', 'UserName', function($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider, UserName) {
-// .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', function($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {
+//.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', function($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {
   
-// $urlRouterProvider.otherwise('/');
+// //$urlRouterProvider.otherwise('/');
 // $httpProvider.defaults.withCredentials = true;
 // // use the HTML5 History API
 // $locationProvider.html5Mode(true);
@@ -57,13 +57,34 @@ angular
 // }
 
 //  $stateProvider
-//    .state('home', {
-//    url: '/',
+//      .state('main', {
+//     url: '/main',
+//     views: {
+//       'nav': {
+//         templateUrl: '/modules/common/partials/nav.html',
+//         // controllerAs: 'authcontroller',
+//         controller: 'LoginController' //,
+//         // resolve: AuthController.resolve   
+
+//       },
+//       'btnpanel': {
+//         templateUrl: '/modules/common/partials/daily.html',
+//         //controllerAs: 'homecontroller',
+//         controller: 'HomeController'
+//       },
+//        'footer': {
+//         templateUrl: '/modules/common/partials/footer.html'
+//    } 
+
+//       }  
+//   })
+//    .state('login', {
+//    url: '/login',
 //    views: {
 //      'nav': {
 //        templateUrl: '/common/partials/nav.html',
 //        // controllerAs: 'authcontroller',
-//        controller: 'AuthController' //,
+//        controller: 'LoginController' //,
 //        // resolve: AuthController.resolve   
 
 //      },
@@ -85,7 +106,7 @@ angular
 //         }
 //     })
 
-// 	.state('main', {
+// 	.state('home', {
 // 		url: '/',	
 //     views: {
 //       'nav': {
@@ -205,44 +226,21 @@ angular
 
 //   })  		
 
-//     .state('home', {
-//     url: '/home',
-//     views: {
-//       'nav': {
-//         templateUrl: '/modules/common/partials/nav.html',
-//         // controllerAs: 'authcontroller',
-//         controller: 'LoginController' //,
-//         // resolve: AuthController.resolve   
-
-//       },
-//       'btnpanel': {
-//         templateUrl: '/modules/common/partials/daily.html',
-//         //controllerAs: 'homecontroller',
-//         controller: 'HomeController'
-//       },
-//        'footer': {
-//         templateUrl: '/modules/common/partials/footer.html'
-//    } 
-
-//       }  
-//   })
-
-
 //    $httpProvider.interceptors.push(function($q, $location) {
 //          return {
-//        response: function(response) {
+//          response: function(response) {
 //          //console.log('success! And here is your response object: '+JSON.stringify(response.data));
 //          return response;
 //        },
-//           responseError: function(response) {
-//           if (response.status === 401) {
-//          $location.url('/');
-//         console.log('failure! And here is your response object: '+JSON.stringify(response.config));
-        
-//           } else
-//           console.log('Rejection!: '+response.data);
-//           return $q.reject(response);
-//         }
+// 	      responseError: function(response) {
+// 	      if (response.status === 401) {
+// 	      $location.url('/');
+// 	      console.log('failure! And here is your response object: '+JSON.stringify(response.config));
+	    
+// 	      } else
+// 	      console.log('Rejection!: '+response.data);
+// 	      return $q.reject(response);
+// 	    }
 //       };
 //  });
 
@@ -339,12 +337,12 @@ angular
 
 angular
   .module('myApp')
-  .controller('LoginController', ['$scope', 'authService', 'ErrFactory', 'userData', function LoginController($scope, authService, ErrFactory, userData) {
+  .controller('LoginController', ['$scope', 'authService', 'ErrFactory', 'userData', '$state', function LoginController($scope, authService, ErrFactory, userData, $state) {
 
     $scope.init = function init() {
     this.authService = authService;
     this.userData = userData;
-      var Err = new ErrFactory();
+      $scope.Err = new ErrFactory();
       $scope.IsHidden = true;
       // var User = [];
 
@@ -352,8 +350,8 @@ angular
     }
 
  //   hardcode userdata
-        $scope.email = 'loginemail@email.com';
-        $scope.password = 'loginpassword';
+        // $scope.email = 'loginemail@email.com';
+        // $scope.password = 'loginpassword';
 //console.log(efridgeService);
         userData.email = $scope.email;
         userData.password = $scope.password;
@@ -364,20 +362,22 @@ angular
 
 $scope.getAll = function() {
  // $scope.username= [];
-
     authService.eLogin()
-    .then(function(data) {
-       var Err = undefined;   
+    .then(function(data) {  
        $scope.username = data;
        userData.username = data.username;
+       //$state.go('main');
+        $state.go('main');
+       $window.location.href = '/main';
        
     })
     .catch(function(err) {
-            console.log(Err.fail);
+            //console.log(Err.fail);
             console.log(err);  
-            $scope.errorTest = 'this is an error';  
+            $scope.errorFail = " Err.fail not working...but this error is!"+err; 
+            //$window.location.href = '/' 
         })
-    return $scope.username;
+    //return $scope.username;
 };
 
     $scope.init();
@@ -466,10 +466,11 @@ angular
     .service('authService',['$http', '$q', 'userData', function authService($http, $q, userData) { 
 //console.log(logData);
    		var authService = this;
+      this.userData = userData;
 
    authService.eLogin = function() {
       var defer = $q.defer();
-      var url = 'http://localhost:3000/home';
+      var url = 'http://localhost:3000/login';
     
          $http.post(url, userData)
     // $http.get('https://mycolofitness.com/account')
@@ -528,38 +529,34 @@ angular
 	  .controller('EfridgeController', ['$scope', 'efridgeService', 'ErrFactory', function EfridgeController($scope, efridgeService, ErrFactory) {
 
   	$scope.init = function init() {
-  	this.efridgeService = efridgeService;
-      // var Err = new ErrFactory();
+  	  this.efridgeService = efridgeService;
       var Err = new ErrFactory();
-      $scope.Err = Err;
       $scope.IsHidden = true;
       $scope.foodItems = [];
-      //$scope.isDisabled = false;
   	}
-//console.log(efridgeService);
-$scope.getAll = function() {
-  $scope.foodItems= [];
+    $scope.getAll = function() {
+      $scope.foodItems= {};
 
-  	efridgeService.getAll()
-  	.then(function(data) {   
-  		 $scope.foodItems = data;
-		   $scope.user = {};
 
-    })
-    .catch(function(err) {
-  		      console.log(Err.fail);
-            console.log(err);  
-            $scope.errorTest = 'this is an error';	
-  	    })
+  	  efridgeService.getAll()
+  	  .then(function(data) {   
+  		$scope.foodItems = data;
+		  $scope.user = {};
+
+      })
+    .catch(function(err) { 
+      $scope.err = Err.fail;	
+  	  })
     return $scope.foodItems;
-};
+    };
 
-  $scope.uncheckAll = function() {
-    $scope.user.foodItems = [];
-  };
-  $scope.checkAll = function() {
-    $scope.user.foodItems = angular.copy($scope.foodItems);
-  };
+    $scope.uncheckAll = function() {
+      $scope.user.foodItems = [];
+      return $scope.user.foodItems;
+    };
+    $scope.checkAll = function() {
+      $scope.user.foodItems = angular.copy($scope.foodItems);
+    };
 
 
 
@@ -591,7 +588,7 @@ $scope.getAll = function() {
 
 
 
- }]);
+  }]);
 
 //   					$scope.macros = [],
 
@@ -706,6 +703,100 @@ angular
 
 "use strict";
 
+describe('auth Service', function() {
+    var data,
+        authService,
+        authRequestHandler,
+        Err,
+        ErrFactory,
+        promise,
+        scope,
+        userData,      
+        $http,
+        $httpBackend,
+        $q;
+        
+    beforeEach(angular.mock.module('myApp'));
+
+    beforeEach(angular.mock.inject(function(_$rootScope_, _$http_, _$q_, _$httpBackend_, _authService_, _ErrFactory_, _userData_) {
+        userData = _userData_;
+        data = ({ username: 'athena' });
+        authService = _authService_;
+        ErrFactory = _ErrFactory_;
+        Err = new ErrFactory();
+        scope = _$rootScope_.$new();
+        $q = _$q_;
+        $http = _$http_;
+        $httpBackend = _$httpBackend_;    
+
+        authRequestHandler = $httpBackend.when('http://localhost:3000/login')
+        .respond(200, data);
+    }));
+
+    describe('Mock BackEnd', function() {
+        it('Checks that the  BackEnd (response) is defined', function() {                            
+            $httpBackend.expectPOST('http://localhost:3000/login').respond(200, {data: data});
+            authService.eLogin()
+            .then(function(res) {
+                expect(res).toBeDefined();
+                //console.log(res.data);
+            },
+            function(err) {
+            }); 
+            $httpBackend.flush();  
+        });
+
+        it('should return an forbid message when service call response is 401', function() {
+            $httpBackend.when('http://localhost:3000/login').respond(401, '');                            
+            $httpBackend.expectPOST('http://localhost:3000/login').respond(401, ''); 
+   
+            authService.eLogin()
+            .then(function(res) {
+            },
+            function(res) {
+                // console.log(Err.forbid);
+                expect(Err.forbid).toBe('Sorry, that access is forbidden');
+            }); 
+            $httpBackend.flush();  
+        });  
+
+        it('should return a promise', function () {
+            expect(authService.eLogin().then).toBeDefined();
+
+        });
+
+        it('should get something', function() {
+            $httpBackend.expectPOST('http://localhost:3000/login').respond(200, {data: data});
+            promise = authService.eLogin();
+
+            promise.then(function(res) {
+            expect(res.data).toEqual({username: "athena"}); 
+            // console.log(res.data);   
+        });
+            $httpBackend.flush();
+      });    
+
+        it('should get something', function() {
+            //console.log(userData); 
+            $httpBackend.expectPOST('http://localhost:3000/login').respond(200, {data: data});
+            promise = authService.eLogin();
+
+            promise.then(function(res) {
+            expect(res.data).toEqual({username: "athena"}); 
+  
+        });
+            $httpBackend.flush();
+      });                
+
+      });
+    });
+
+
+},{}]},{},[1]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
+"use strict";
+
 describe('Login Controller', function() {
     var controller,
         data,
@@ -779,7 +870,7 @@ describe('Login Controller', function() {
         $scope.getAll();
 
         $scope.$apply();
-        console.log($scope.username);
+        //console.log($scope.username);
         expect($scope.username).toBe(data);
 
   }); 
@@ -843,320 +934,6 @@ describe('Login Controller', function() {
 //         expect(UserName).toEqual("default");
 //     });    
 // });
-
-
-},{}]},{},[1]);
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
-"use strict";
-
-describe('Efridge Controller', function() {
-    var controller,
-        data,
-        defer,
-        efridgeService,
-        err,
-        Err,
-        ErrFactory,
-        foodItems,
-        promise,
-        q,
-        userData,
-        UserName,       
-        $scope,
-        $controller;
-
-
-    beforeEach(angular.mock.module('myApp'));
-
-    beforeEach(angular.mock.inject(function( _UserName_, _ErrFactory_, _userData_) {
-        userData = _userData_;
-        ErrFactory = _ErrFactory_;
-        Err = new ErrFactory();
-        UserName = _UserName_;
-    }));    
-
-    beforeEach(angular.mock.inject(function(_$controller_, _$rootScope_, _$q_, _efridgeService_) {
-        data = {food_name: "banana"};
-        efridgeService = _efridgeService_;
-        $scope = _$rootScope_.$new();
-        $controller = _$controller_;
-        q = _$q_;
-        defer = q.defer();
-
-
-        defer.resolve(data);
-   spyOn(efridgeService, 'getAll').and.returnValue(defer.promise);
-
-
-    // Init the controller       
-        controller = $controller('EfridgeController', {
-            $scope: $scope,
-            efridgeService: efridgeService
-        });
-        $scope.init();
-    }));
-
-    // afterEach(function(){
-    //     scope.$apply();
-    // });
-
-    describe('View Buttons', function() { 
-        it('Checks that EfridgeController is defined', function() {
-            expect(controller).toBeDefined();
-        });
-
-        it('Sets $scope.IsHidden to true', function() {                                
-            expect($scope.IsHidden).toEqual(true);
-        });
-
-        it('Checks that scope.uncheckAll is a function', function() {
-            expect(typeof $scope.uncheckAll).toEqual('function');
-        });    
-    });
-
-    describe('Efridge Service', function() { 
-        it('Should call be defined', function() {   
-             expect(efridgeService.getAll).toBeDefined();
-        }); 
-
-  it('should resolve promise', function () {
-        $scope.getAll();
-
-        $scope.$apply();
-        //console.log($scope.foodItems);
-        expect($scope.foodItems).toBe(data);
-        console.log(userData);
-
-  });   
-  
-    it('user obj should be defined', function () {
-//this should look more like above, but have to define the username in the controller first or it wont work
-        efridgeService.getAll()
-        .then(function(data) {
-            $scope.foodItems = data;
-            $scope.user = {username: 'natasha', email: 'workhard@email.com'};
-        })
-
-        $scope.$apply();
-        expect($scope.user).toEqual({username: 'natasha', email: 'workhard@email.com'});
-
-  });  
-
-    });
-});
-
-},{}]},{},[1]);
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
-"use strict";
-
-describe('Efridge Factory', function() {
-    var Err,
-        ErrFactory,
-        userData;
-        
-    beforeEach(angular.mock.module('myApp'));
-
-    beforeEach(angular.mock.inject(function(_ErrFactory_, _userData_) {
-        userData = _userData_;
-         ErrFactory = _ErrFactory_;         
-         Err = new ErrFactory();
-    }));
-
-    describe('Err', function() { 
-        it('Checks that Err is defined', function() {
-            expect(Err).toBeDefined();
-            //console.log(userData);
-        });
-
-        it('property Err.fail is "Failed.."', function() {                                
-            expect(Err.fail).toBe('Failed...');
-        });
-
-        it('property Err.forbid is "Sorry, that access is forbidden"', function() {                                
-            expect(Err.forbid).toBe('Sorry, that access is forbidden');
-        });     
-
-        it('property Err.disabled is "That function is disabled"', function() {                                
-            expect(Err.disabled).toBe('That function is disabled');
-        });            
-   
-    });
-});
-
-
-},{}]},{},[1]);
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
-"use strict";
-
-describe('Efridge Service', function() {
-    var data,
-        efridgeService,
-        efridgeRequestHandler,
-        Err,
-        ErrFactory,
-        promise,
-        scope,      
-        $http,
-        $httpBackend,
-        $q;
-        
-    beforeEach(angular.mock.module('myApp'));
-
-    beforeEach(angular.mock.inject(function(_$rootScope_, _$http_, _$q_, _$httpBackend_, _efridgeService_,_ErrFactory_) {
-        data = {food_name: "banana"};
-        efridgeService = _efridgeService_;
-        ErrFactory = _ErrFactory_;
-        Err = new ErrFactory();
-        scope = _$rootScope_.$new();
-        $q = _$q_;
-        $http = _$http_;
-        $httpBackend = _$httpBackend_;    
-
-        efridgeRequestHandler = $httpBackend.when('http://localhost:3000/efridge')
-        .respond(200, data);
-    }));
-
-    describe('Mock BackEnd', function() {
-        it('Checks that the  BackEnd (response) is defined', function() {                            
-            $httpBackend.expectGET('http://localhost:3000/efridge').respond(200, {data: data});
-            efridgeService.getAll()
-            .then(function(res) {
-                expect(res).toBeDefined();
-            },
-            function(err) {
-            }); 
-            $httpBackend.flush();  
-        });
-
-        it('should return an forbid message when service call response is 401', function() {
-            $httpBackend.when('http://localhost:3000/efridge').respond(401, '');                            
-            $httpBackend.expectGET('http://localhost:3000/efridge').respond(401, ''); 
-   
-            efridgeService.getAll()
-            .then(function(res) {
-            },
-            function(res) {
-                // console.log(Err.forbid);
-                expect(Err.forbid).toBe('Sorry, that access is forbidden');
-            }); 
-            $httpBackend.flush();  
-        });  
-
-        it('should return a promise', function () {
-            expect(efridgeService.getAll().then).toBeDefined();
-
-        });
-
-        it('should get something', function() {
-            $httpBackend.expectGET('http://localhost:3000/efridge').respond(200, {data: data});
-            promise = efridgeService.getAll();
-
-            promise.then(function(res) {
-            expect(res.data).toEqual({food_name: "banana"}); 
-            // console.log(res.data);   
-        });
-            $httpBackend.flush();
-      });            
-
-      });
-    });
-
-
-},{}]},{},[1]);
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
-"use strict";
-
-describe('auth Service', function() {
-    var data,
-        authService,
-        authRequestHandler,
-        Err,
-        ErrFactory,
-        promise,
-        scope,
-        userData,      
-        $http,
-        $httpBackend,
-        $q;
-        
-    beforeEach(angular.mock.module('myApp'));
-
-    beforeEach(angular.mock.inject(function(_$rootScope_, _$http_, _$q_, _$httpBackend_, _authService_, _ErrFactory_, _userData_) {
-        userData = _userData_;
-        data = ({ username: 'athena' });
-        authService = _authService_;
-        ErrFactory = _ErrFactory_;
-        Err = new ErrFactory();
-        scope = _$rootScope_.$new();
-        $q = _$q_;
-        $http = _$http_;
-        $httpBackend = _$httpBackend_;    
-
-        authRequestHandler = $httpBackend.when('http://localhost:3000/home')
-        .respond(200, data);
-    }));
-
-    describe('Mock BackEnd', function() {
-        it('Checks that the  BackEnd (response) is defined', function() {                            
-            $httpBackend.expectPOST('http://localhost:3000/home').respond(200, {data: data});
-            authService.eLogin()
-            .then(function(res) {
-                expect(res).toBeDefined();
-                //console.log(res.data);
-            },
-            function(err) {
-            }); 
-            $httpBackend.flush();  
-        });
-
-        it('should return an forbid message when service call response is 401', function() {
-            $httpBackend.when('http://localhost:3000/home').respond(401, '');                            
-            $httpBackend.expectPOST('http://localhost:3000/home').respond(401, ''); 
-   
-            authService.eLogin()
-            .then(function(res) {
-            },
-            function(res) {
-                // console.log(Err.forbid);
-                expect(Err.forbid).toBe('Sorry, that access is forbidden');
-            }); 
-            $httpBackend.flush();  
-        });  
-
-        it('should return a promise', function () {
-            expect(authService.eLogin().then).toBeDefined();
-
-        });
-
-        it('should get something', function() {
-            $httpBackend.expectPOST('http://localhost:3000/home').respond(200, {data: data});
-            promise = authService.eLogin();
-
-            promise.then(function(res) {
-            expect(res.data).toEqual({username: "athena"}); 
-            // console.log(res.data);   
-        });
-            $httpBackend.flush();
-      });    
-
-        it('should get something', function() {
-            console.log(userData); 
-            $httpBackend.expectPOST('http://localhost:3000/home').respond(200, {data: data});
-            promise = authService.eLogin();
-
-            promise.then(function(res) {
-            expect(res.data).toEqual({username: "athena"}); 
-  
-        });
-            $httpBackend.flush();
-      });                
-
-      });
-    });
 
 
 },{}]},{},[1]);

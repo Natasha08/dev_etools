@@ -18,22 +18,23 @@ grunt.initConfig({
 //puts all files listed except '!' in one file, designated @dest:
 
 //uncomment concat for Testing
+
+// , 'public/spec/controllers/LoginControllerSpec.js', 'public/spec/controllers/EfridgeControllerSpec.js', 'public/spec/factories/efridgeFactorySpec.js', 'public/spec/services/efridgeServiceSpec.js', 'public/spec/services/authServiceSpec.js'
+
 concat: {
-    mochajs: {
-    src: ['public/app.js', 'lib/checklist-model.js', 'lib/angular-ui-router.js', 'public/modules/efridge/EfridgeController.js', 'public/modules/efridge/providers/services.js', 'public/modules/efridge/providers/factories.js', 'public/modules/login/providers/constants.js'],
-    dest: 'test/build/scripts.js',
+    jasminejs: {
+    src: ['public/app.js', 'public/modules/login/providers/constants.js', 'public/modules/login/providers/factories.js', 'public/modules/login/LoginController.js', 'public/modules/login/providers/services.js', 'public/modules/efridge/EfridgeController.js', 'public/modules/login/providers/constants.js', 'public/modules/efridge/providers/services.js', 'public/modules/efridge/providers/factories.js', 'public/spec/services/authServiceSpec.js', 'public/spec/controllers/LoginControllerSpec.js'], 
+    dest: 'public/spec/build/scripts.js',
   },
+    mochajs: {
+    src: ['public/app.js', 'lib/checklist-model.js', 'lib/angular-ui-router.js', 'public/modules/efridge/EfridgeController.js', 'public/modules/efridge/providers/services.js', 'public/modules/efridge/providers/factories.js', 'public/modules/login/providers/constants.js', 'test/controllers/repository.js', 'public/modules/login/providers/services.js', 'public/modules/login/LoginController.js'],
+    dest: 'test/build/scripts.js',
+  },  
 },
-// concat: {
-//     jasminejs: {
-//     src: ['public/app.js', 'public/modules/login/providers/constants.js', 'public/modules/login/providers/factories.js', 'public/modules/login/LoginController.js', 'public/modules/login/providers/services.js', 'public/modules/efridge/EfridgeController.js', 'public/modules/login/providers/constants.js', 'public/modules/efridge/providers/services.js', 'public/modules/efridge/providers/factories.js', 'public/spec/controllers/LoginControllerSpec.js', 'public/spec/controllers/EfridgeControllerSpec.js', 'public/spec/factories/efridgeFactorySpec.js', 'public/spec/services/efridgeServiceSpec.js', 'public/spec/services/authServiceSpec.js'], 
-//     dest: 'public/spec/build/scripts.js',
-//   },
-// },
 //uncomment concat for PRODUCTION
  // concat: {
  //    js: {
- //    src: ['public/app.js', 'public/modules/common/javascripts/controller.js', 'public/modules/login/LoginController.js', 'public/modules/login/providers/*.js', 'public/modules/efridge/EfridgeController.js', 'public/modules/efridge/providers/*.js', 'public/modules/egym/EgymController.js', 'public/modules/egym/providers/*.js',], 
+ //    src: ['public/app.js', 'public/modules/common/javascripts/controller.js', 'public/modules/login/providers/*.js', 'public/modules/login/LoginController.js', 'public/modules/efridge/EfridgeController.js', 'public/modules/efridge/providers/*.js', 'public/modules/egym/EgymController.js', 'public/modules/egym/providers/*.js',], 
  //    dest: 'public/modules/common/javascripts/scripts.js',
  //  },  
 
@@ -53,7 +54,7 @@ concat: {
   //   tasks: ['concat'],
   // },  
 
-
+// 
  uglify: {
     my_target: {
       files: {

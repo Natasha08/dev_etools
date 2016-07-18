@@ -15,20 +15,32 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [ 
-        'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js',
-        'lib/angular-mocks.js',
-        'public/spec/build/scripts.js',
-        'lib/checklist-model.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js',
-        'https://angular-ui.github.io/bootstrap/ui-bootstrap-1.3.3.min.js',
-        'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.js'
+         'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js',
+         'lib/angular-mocks.js',
+         // 'public/spec/build/scripts.js',
+         'public/app.js',
+         'public/modules/login/providers/constants.js', 
+         'public/modules/login/providers/factories.js', 
+         'public/modules/login/LoginController.js', 
+         'public/modules/login/providers/services.js', 
+         'public/modules/efridge/EfridgeController.js',
+         'public/modules/login/providers/constants.js',
+         'public/modules/efridge/providers/services.js',
+         'public/modules/efridge/providers/factories.js',
+         'public/spec/services/authServiceSpec.js', 
+         'public/spec/controllers/LoginControllerSpec.js',
+         'lib/checklist-model.js',
+         'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js',
+         'https://angular-ui.github.io/bootstrap/ui-bootstrap-1.3.3.min.js',
+         'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.js'
 
     ],
 
     // list of files to exclude
     exclude: [
         'node_modules',
-        'routes'
+        'routes',
+        'test'
     ],
 
 

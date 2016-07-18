@@ -46,7 +46,7 @@ angular
 //.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', 'UserName', function($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider, UserName) {
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', function($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {
   
-// $urlRouterProvider.otherwise('/');
+// //$urlRouterProvider.otherwise('/');
 // $httpProvider.defaults.withCredentials = true;
 // // use the HTML5 History API
 // $locationProvider.html5Mode(true);
@@ -56,24 +56,45 @@ angular
 // $scope.isCollapsed = true;
 // }
 
-//  $stateProvider
-//    .state('home', {
-//    url: '/',
-//    views: {
-//      'nav': {
-//        templateUrl: '/common/partials/nav.html',
-//        // controllerAs: 'authcontroller',
-//        controller: 'AuthController' //,
-//        // resolve: AuthController.resolve   
+ $stateProvider
+     .state('main', {
+    url: '/main',
+    views: {
+      'nav': {
+        templateUrl: '/modules/common/partials/nav.html',
+        // controllerAs: 'authcontroller',
+        controller: 'LoginController' //,
+        // resolve: AuthController.resolve   
 
-//      },
-//      'btnpanel': {
-//        templateUrl: '/common/partials/daily.html',
-//        controllerAs: 'homecontroller',
-//        controller: 'HomeController'
-//      }
-//      }  
-//  })
+      },
+      'btnpanel': {
+        templateUrl: '/modules/common/partials/daily.html',
+        //controllerAs: 'homecontroller',
+        controller: 'HomeController'
+      },
+       'footer': {
+        templateUrl: '/modules/common/partials/footer.html'
+   } 
+
+      }  
+  })
+   .state('login', {
+   url: '/login',
+   views: {
+     'nav': {
+       templateUrl: '/modules/login/partials/loginheader.html',
+       // controllerAs: 'authcontroller',
+       controller: 'LoginController' //,
+       // resolve: AuthController.resolve   
+
+     },
+     'btnpanel': {
+       templateUrl: '/common/partials/daily.html',
+       controllerAs: 'homecontroller',
+       controller: 'HomeController'
+     }
+     }  
+ })
 
 // $stateProvider
 //     .state('contacts.detail', {
@@ -85,26 +106,26 @@ angular
 //         }
 //     })
 
-// 	.state('main', {
-// 		url: '/',	
-//     views: {
-//       'nav': {
-//         templateUrl: '/modules/login/partials/loginheader.html',
-//         controller: 'LoginController'
-//       },
-//       'btnpanel': {
-//         templateUrl: '/modules/login/partials/view1.html'
-//       },      
-//       'form': {
-//         templateUrl: '/modules/login/partials/register.html',
-//         controller: 'RegisterController'
-//       },
-//       'footer': {
-//         templateUrl: '/common/modules/partials/footer.html'
-//    }      
+	.state('home', {
+		url: '/',	
+    views: {
+      'nav': {
+        templateUrl: '/modules/login/partials/loginheader.html',
+        controller: 'LoginController'
+      },
+      'btnpanel': {
+        templateUrl: '/modules/login/partials/view1.html'
+      },      
+      'form': {
+        templateUrl: '/modules/login/partials/register.html',
+        controller: 'RegisterController'
+      },
+      'footer': {
+        templateUrl: '/common/modules/partials/footer.html'
+   }      
 
-// 	}
-// })
+	}
+})
 
 
 // 		.state('exercise', {
@@ -205,44 +226,21 @@ angular
 
 //   })  		
 
-//     .state('home', {
-//     url: '/home',
-//     views: {
-//       'nav': {
-//         templateUrl: '/modules/common/partials/nav.html',
-//         // controllerAs: 'authcontroller',
-//         controller: 'LoginController' //,
-//         // resolve: AuthController.resolve   
-
-//       },
-//       'btnpanel': {
-//         templateUrl: '/modules/common/partials/daily.html',
-//         //controllerAs: 'homecontroller',
-//         controller: 'HomeController'
-//       },
-//        'footer': {
-//         templateUrl: '/modules/common/partials/footer.html'
-//    } 
-
-//       }  
-//   })
-
-
 //    $httpProvider.interceptors.push(function($q, $location) {
 //          return {
-//        response: function(response) {
+//          response: function(response) {
 //          //console.log('success! And here is your response object: '+JSON.stringify(response.data));
 //          return response;
 //        },
-//           responseError: function(response) {
-//           if (response.status === 401) {
-//          $location.url('/');
-//         console.log('failure! And here is your response object: '+JSON.stringify(response.config));
-        
-//           } else
-//           console.log('Rejection!: '+response.data);
-//           return $q.reject(response);
-//         }
+// 	      responseError: function(response) {
+// 	      if (response.status === 401) {
+// 	      $location.url('/');
+// 	      console.log('failure! And here is your response object: '+JSON.stringify(response.config));
+	    
+// 	      } else
+// 	      console.log('Rejection!: '+response.data);
+// 	      return $q.reject(response);
+// 	    }
 //       };
 //  });
 

@@ -23,16 +23,19 @@ describe('Efridge Factory', function() {
             //console.log(userData);
         });
 
-        it('property Err.fail is "Failed.."', function() {                                
-            expect(Err.fail).to.equal('Failed...');
+        it('property Err.fail is "Failed.."', function() {
+            let err = Err.fail;                                
+            expect(err).to.equal('Failed...');
         });
 
-        it('property Err.forbid is "Sorry, that access is forbidden"', function() {                                
-            expect(Err.forbid).to.equal('Sorry, that access is forbidden');
+        it('property Err.forbid is "Sorry, that access is forbidden"', function() {  
+            let err = Err.forbid;                              
+            expect(err).to.equal('Sorry, that access is forbidden');
         });     
 
-        it('property Err.disabled is "That function is disabled"', function() {                                
-            expect(Err.disabled).to.equal('That function is disabled');
+        it('property Err.disabled is "That function is disabled"', function() {  
+            let err = Err.disabled;                              
+            expect(err).to.equal('That function is disabled');
         });            
    
     });

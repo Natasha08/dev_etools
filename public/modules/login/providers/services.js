@@ -35,10 +35,11 @@ angular
     .service('authService',['$http', '$q', 'userData', function authService($http, $q, userData) { 
 //console.log(logData);
    		var authService = this;
+      this.userData = userData;
 
    authService.eLogin = function() {
       var defer = $q.defer();
-      var url = 'http://localhost:3000/home';
+      var url = 'http://localhost:3000/login';
     
          $http.post(url, userData)
     // $http.get('https://mycolofitness.com/account')

@@ -128,10 +128,10 @@ var ensureAuth = function(req, res, next) {
 };
 
 
-app.post('/home', passport.authenticate('local-login', { session: true, failureRedirect: '/' }) , 
+app.post('/login', passport.authenticate('local-login', { session: true, failureRedirect: '/' }) , 
  function(req, res) {
-  res.status(200).send({data: req.user.username});
-
+  //res.status(200).send({data: req.user.username});
+  res.render('index');
  });
 
 app.get('/:UserName', function(req,res) {

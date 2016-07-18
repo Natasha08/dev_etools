@@ -39,52 +39,74 @@
 // ]
 // }
 
- angular
- .module('myApp', ['checklist-model', 'ui.router', 'ui.bootstrap', 'ngCookies'])
+angular
+// .module('myApp', ['checklist-model', 'ui.router', 'ui.bootstrap', 'ngCookies'])
+.module('myApp', ['checklist-model', 'ui.router'])
 
 //.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', 'UserName', function($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider, UserName) {
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', function($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {
-	  
-    $urlRouterProvider.otherwise('/');
-    $httpProvider.defaults.withCredentials = true;
-    // use the HTML5 History API
-    $locationProvider.html5Mode(true);
+  
+//$urlRouterProvider.otherwise('/');
+$httpProvider.defaults.withCredentials = true;
+// use the HTML5 History API
+$locationProvider.html5Mode(true);
 
 
 function NavBarCtrl($scope) {
-    $scope.isCollapsed = true;
+$scope.isCollapsed = true;
 }
 
-	 $stateProvider
- //    .state('home', {
- //    url: '/',
- //    views: {
- //      'nav': {
- //        templateUrl: '/common/partials/nav.html',
- //        // controllerAs: 'authcontroller',
- //        controller: 'AuthController' //,
- //        // resolve: AuthController.resolve   
- 
- //      },
- //      'btnpanel': {
- //        templateUrl: '/common/partials/daily.html',
- //        controllerAs: 'homecontroller',
- //        controller: 'HomeController'
- //      }
- //      }  
- //  })
+ $stateProvider
+     .state('main', {
+    url: '/main',
+    views: {
+      'nav': {
+        templateUrl: '/modules/common/partials/nav.html',
+        // controllerAs: 'authcontroller',
+        controller: 'LoginController' //,
+        // resolve: AuthController.resolve   
 
-// $stateProvider
-//     .state('contacts.detail', {
-//         url: "/contacts/:contactId",
-//         templateUrl: 'contacts.detail.html',
-//         controller: function ($stateParams) {
-//             // If we got here from a url of /contacts/42
-//             expect($stateParams).toBe({contactId: "42"});
-//         }
-//     })
+      },
+      'btnpanel': {
+        templateUrl: '/modules/common/partials/daily.html',
+        //controllerAs: 'homecontroller',
+        controller: 'HomeController'
+      },
+       'footer': {
+        templateUrl: '/modules/common/partials/footer.html'
+   } 
 
-	.state('main', {
+      }  
+  })
+   .state('login', {
+   url: '/login',
+   views: {
+     'nav': {
+       templateUrl: '/common/partials/nav.html',
+       // controllerAs: 'authcontroller',
+       controller: 'LoginController' //,
+       // resolve: AuthController.resolve   
+
+     },
+     'btnpanel': {
+       templateUrl: '/common/partials/daily.html',
+       controllerAs: 'homecontroller',
+       controller: 'HomeController'
+     }
+     }  
+ })
+
+$stateProvider
+    .state('contacts.detail', {
+        url: "/contacts/:contactId",
+        templateUrl: 'contacts.detail.html',
+        controller: function ($stateParams) {
+            // If we got here from a url of /contacts/42
+            expect($stateParams).toBe({contactId: "42"});
+        }
+    })
+
+	.state('home', {
 		url: '/',	
     views: {
       'nav': {
@@ -134,7 +156,7 @@ function NavBarCtrl($scope) {
         // controllerAs: 'authcontroller',
         controller: 'LoginController' //,
         // resolve: AuthController.resolve   
- 
+
       },           
       'form': {
         templateUrl: '/modules/efridge/partials/foodindex.html'//,
@@ -152,7 +174,7 @@ function NavBarCtrl($scope) {
       'FoodData': {
         templateUrl: '/modules/efridge/partials/foodform.html' //,
          // controller: 'FoodFormController'
-    
+
       }
   }
 
@@ -166,7 +188,7 @@ function NavBarCtrl($scope) {
          controllerAs: 'efridgecontroller',
          controller: 'EfridgeController' //,
          // resolve: EfridgeController.resolve
-    
+
       }
   }
 
@@ -180,7 +202,7 @@ function NavBarCtrl($scope) {
          controllerAs: 'efridgecontroller',
          // controller: 'EfridgeController',
          // resolve: EfridgeController.resolve
-    
+
       }
   }
 
@@ -204,50 +226,27 @@ function NavBarCtrl($scope) {
 
   })  		
 
-    .state('home', {
-    url: '/home',
-    views: {
-      'nav': {
-        templateUrl: '/modules/common/partials/nav.html',
-        // controllerAs: 'authcontroller',
-        controller: 'LoginController' //,
-        // resolve: AuthController.resolve   
- 
-      },
-      'btnpanel': {
-        templateUrl: '/modules/common/partials/daily.html',
-        //controllerAs: 'homecontroller',
-        controller: 'HomeController'
-      },
-       'footer': {
-        templateUrl: '/modules/common/partials/footer.html'
-   } 
-
-      }  
-  })
-
-
    $httpProvider.interceptors.push(function($q, $location) {
          return {
-       response: function(response) {
+         response: function(response) {
          //console.log('success! And here is your response object: '+JSON.stringify(response.data));
          return response;
        },
-          responseError: function(response) {
-          if (response.status === 401) {
-         $location.url('/');
-        console.log('failure! And here is your response object: '+JSON.stringify(response.config));
-            
-          } else
-          console.log('Rejection!: '+response.data);
-          return $q.reject(response);
-        }
+	      responseError: function(response) {
+	      if (response.status === 401) {
+	      $location.url('/');
+	      console.log('failure! And here is your response object: '+JSON.stringify(response.config));
+	    
+	      } else
+	      console.log('Rejection!: '+response.data);
+	      return $q.reject(response);
+	    }
       };
  });
 
 
 
- }]);
+}]);
 
 })();
 
@@ -362,103 +361,6 @@ $scope.UserName = this.UserName;
 })();
 (function(){
 
-"use strict";
-
-
-angular
-  .module('myApp')
-  .controller('LoginController', ['$scope', 'authService', 'ErrFactory', 'userData', function LoginController($scope, authService, ErrFactory, userData) {
-
-    $scope.init = function init() {
-    this.authService = authService;
-    this.userData = userData;
-      var Err = new ErrFactory();
-      $scope.IsHidden = true;
-      // var User = [];
-
-      //$scope.isDisabled = false;
-    }
-
- //   hardcode userdata
-        $scope.email = 'loginemail@email.com';
-        $scope.password = 'loginpassword';
-//console.log(efridgeService);
-        userData.email = $scope.email;
-        userData.password = $scope.password;
-// userData = {
-//         email: $scope.email,
-//       password: $scope.password
-//}
-
-$scope.getAll = function() {
- // $scope.username= [];
-
-    authService.eLogin()
-    .then(function(data) {
-       var Err = undefined;   
-       $scope.username = data;
-       userData.username = data.username;
-       console.log(userData);
-    })
-    .catch(function(err) {
-            console.log(Err.fail);
-            console.log(err);  
-            $scope.errorTest = 'this is an error';  
-        })
-    return $scope.username;
-};
-
-    $scope.init();
-
-
-
- }])
-
-  .controller('RegisterController', ['$scope', 'UserName', function RegisterController($scope, UserName) {
-
-
-
-    $scope.init = function() {
-        $scope.IsHidden = true;
-        var tester = UserName;
-    };
-        		
-    	  $scope.ShowHide = function () {
-          //If DIV is hidden it will be visible and vice versa.
-          $scope.IsHidden = !$scope.IsHidden;
-    	  }
-    $scope.init();  
- }]);
-// 	function registerUser() {
-// 		$http({
-
-// 				method:'POST',
-// 				 // url:'https://mycolofitness.com/register',
-// 				url:'http://localhost:3000/register',
-// 				data:{email:$scope.email, password:$scope.password}})
-// 				.then(function (response) {
-// 					//console.log(response);
-// 					$scope.apiTest = JSON.stringify(response.data);
-// 					//console.log($scope.apiTest);
-
-// 	 },
-// 				function (data) {
-// 					//console.log(response);
-// 					//console.log(data);
-
-	 
-// 				}
-// 				)
-
-// }
-
-
-
-
-})();
-
-(function(){
-
 angular
   .module('myApp')
   .constant('UserName', "default");
@@ -550,10 +452,11 @@ angular
     .service('authService',['$http', '$q', 'userData', function authService($http, $q, userData) { 
 //console.log(logData);
    		var authService = this;
+      this.userData = userData;
 
    authService.eLogin = function() {
       var defer = $q.defer();
-      var url = 'http://localhost:3000/home';
+      var url = 'http://localhost:3000/login';
     
          $http.post(url, userData)
     // $http.get('https://mycolofitness.com/account')
@@ -610,42 +513,135 @@ angular
 
 angular
   .module('myApp')
-  // .controller('EfridgeController', ['$scope', '$http', 'efridgeService', 'UserName', function($scope, $http, efridgeService, UserName) {
+  .controller('LoginController', ['$scope', 'authService', 'ErrFactory', 'userData', '$state', function LoginController($scope, authService, ErrFactory, userData, $state) {
+
+    $scope.init = function init() {
+    this.authService = authService;
+    this.userData = userData;
+      $scope.Err = new ErrFactory();
+      $scope.IsHidden = true;
+      // var User = [];
+
+      //$scope.isDisabled = false;
+    }
+
+ //   hardcode userdata
+        // $scope.email = 'loginemail@email.com';
+        // $scope.password = 'loginpassword';
+//console.log(efridgeService);
+        userData.email = $scope.email;
+        userData.password = $scope.password;
+// userData = {
+//         email: $scope.email,
+//       password: $scope.password
+//}
+
+$scope.getAll = function(userData) {
+ // $scope.username= [];
+    authService.eLogin()
+    .then(function(data) {  
+       $scope.username = data;
+       userData.username = data.username;
+       //$state.go('main');
+        $state.go('main');
+       $window.location.href = '/main';
+       
+    })
+    .catch(function(err) {
+            //console.log(Err.fail);
+            console.log(err);  
+            $scope.errorFail = " Err.fail not working...but this error is!"+err; 
+            //$window.location.href = '/' 
+        })
+    //return $scope.username;
+};
+
+    $scope.init();
+
+
+
+ }])
+
+  .controller('RegisterController', ['$scope', 'UserName', function RegisterController($scope, UserName) {
+
+
+
+    $scope.init = function() {
+        $scope.IsHidden = true;
+        var tester = UserName;
+    };
+        		
+    	  $scope.ShowHide = function () {
+          //If DIV is hidden it will be visible and vice versa.
+          $scope.IsHidden = !$scope.IsHidden;
+    	  }
+    $scope.init();  
+ }]);
+// 	function registerUser() {
+// 		$http({
+
+// 				method:'POST',
+// 				 // url:'https://mycolofitness.com/register',
+// 				url:'http://localhost:3000/register',
+// 				data:{email:$scope.email, password:$scope.password}})
+// 				.then(function (response) {
+// 					//console.log(response);
+// 					$scope.apiTest = JSON.stringify(response.data);
+// 					//console.log($scope.apiTest);
+
+// 	 },
+// 				function (data) {
+// 					//console.log(response);
+// 					//console.log(data);
+
+	 
+// 				}
+// 				)
+
+// }
+
+
+
+
+})();
+
+(function(){
+
+"use strict";
+
+angular
+  .module('myApp')
 	  .controller('EfridgeController', ['$scope', 'efridgeService', 'ErrFactory', function EfridgeController($scope, efridgeService, ErrFactory) {
 
   	$scope.init = function init() {
-  	this.efridgeService = efridgeService;
-      // var Err = new ErrFactory();
+  	  this.efridgeService = efridgeService;
       var Err = new ErrFactory();
-      $scope.Err = Err;
       $scope.IsHidden = true;
       $scope.foodItems = [];
-      //$scope.isDisabled = false;
   	}
-//console.log(efridgeService);
-$scope.getAll = function() {
-  $scope.foodItems= [];
+    $scope.getAll = function() {
+      $scope.foodItems= {};
 
-  	efridgeService.getAll()
-  	.then(function(data) {   
-  		 $scope.foodItems = data;
-		 $scope.user = {};
 
-    })
-    .catch(function(err) {
-  		      console.log(Err.fail);
-            console.log(err);  
-            $scope.errorTest = 'this is an error';	
-  	    })
+  	  efridgeService.getAll()
+  	  .then(function(data) {   
+  		$scope.foodItems = data;
+		  $scope.user = {};
+
+      })
+    .catch(function(err) { 
+      $scope.err = Err.fail;	
+  	  })
     return $scope.foodItems;
-};
+    };
 
-  $scope.uncheckAll = function() {
-    $scope.user.foodItems = [];
-  };
-  $scope.checkAll = function() {
-    $scope.user.foodItems = angular.copy($scope.foodItems);
-  };
+    $scope.uncheckAll = function() {
+      $scope.user.foodItems = [];
+      return $scope.user.foodItems;
+    };
+    $scope.checkAll = function() {
+      $scope.user.foodItems = angular.copy($scope.foodItems);
+    };
 
 
 
@@ -677,7 +673,7 @@ $scope.getAll = function() {
 
 
 
- }]);
+  }]);
 
 //   					$scope.macros = [],
 

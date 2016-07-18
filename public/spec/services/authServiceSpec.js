@@ -28,13 +28,13 @@ describe('auth Service', function() {
         $http = _$http_;
         $httpBackend = _$httpBackend_;    
 
-        authRequestHandler = $httpBackend.when('http://localhost:3000/home')
+        authRequestHandler = $httpBackend.when('http://localhost:3000/login')
         .respond(200, data);
     }));
 
     describe('Mock BackEnd', function() {
         it('Checks that the  BackEnd (response) is defined', function() {                            
-            $httpBackend.expectPOST('http://localhost:3000/home').respond(200, {data: data});
+            $httpBackend.expectPOST('http://localhost:3000/login').respond(200, {data: data});
             authService.eLogin()
             .then(function(res) {
                 expect(res).toBeDefined();
@@ -46,8 +46,8 @@ describe('auth Service', function() {
         });
 
         it('should return an forbid message when service call response is 401', function() {
-            $httpBackend.when('http://localhost:3000/home').respond(401, '');                            
-            $httpBackend.expectPOST('http://localhost:3000/home').respond(401, ''); 
+            $httpBackend.when('http://localhost:3000/login').respond(401, '');                            
+            $httpBackend.expectPOST('http://localhost:3000/login').respond(401, ''); 
    
             authService.eLogin()
             .then(function(res) {
@@ -65,7 +65,7 @@ describe('auth Service', function() {
         });
 
         it('should get something', function() {
-            $httpBackend.expectPOST('http://localhost:3000/home').respond(200, {data: data});
+            $httpBackend.expectPOST('http://localhost:3000/login').respond(200, {data: data});
             promise = authService.eLogin();
 
             promise.then(function(res) {
@@ -76,8 +76,8 @@ describe('auth Service', function() {
       });    
 
         it('should get something', function() {
-            console.log(userData); 
-            $httpBackend.expectPOST('http://localhost:3000/home').respond(200, {data: data});
+            //console.log(userData); 
+            $httpBackend.expectPOST('http://localhost:3000/login').respond(200, {data: data});
             promise = authService.eLogin();
 
             promise.then(function(res) {
