@@ -5,25 +5,26 @@ var sinon = require('sinon');
 require('../test-helper');
 require('../build/scripts');
 
-describe('efridgeService', function() {
+describe.only('authService', function() {
  
   var ctrl,
       data,
       defer,
-      efridgeService,
-      efridgeRequestHandler,
+      authService,
+      authRequestHandler,
       Err,
       ErrFactory,
       promise,
       server,
+      userData,
       $http,
       $q;
 
   beforeEach(ngModule('myApp'));
 
-  beforeEach(inject(function(_$http_, _$q_, _efridgeService_,_ErrFactory_) {
-      data = {food_name: "banana"};
-      efridgeService = _efridgeService_;
+  beforeEach(inject(function(_$http_, _$q_, _authService_, _ErrFactory_, userData) {
+      let data = {username: "DragonMaster"};
+      authService = _authService_;
       ErrFactory = _ErrFactory_;
       Err = new ErrFactory();;
       $q = _$q_;

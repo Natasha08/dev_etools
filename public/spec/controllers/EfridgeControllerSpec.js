@@ -76,9 +76,9 @@ describe('Efridge Controller', function() {
         $scope.getAll();
 
         $scope.$apply();
-        //console.log($scope.foodItems);
+        console.log($scope.foodItems);
         expect($scope.foodItems).toBe(data);
-        console.log(userData);
+        //console.log(userData);
 
   });   
   
@@ -87,6 +87,7 @@ describe('Efridge Controller', function() {
         efridgeService.getAll()
         .then(function(data) {
             $scope.foodItems = data;
+            console.log($scope.foodItems);
             $scope.user = {username: 'natasha', email: 'workhard@email.com'};
         })
 

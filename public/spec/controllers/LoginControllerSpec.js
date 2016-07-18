@@ -72,11 +72,13 @@ describe('Login Controller', function() {
         }); 
 
   it('should resolve promise', function () {
-        $scope.getAll();
+       // $scope.getAll();
 
         $scope.$apply();
+       // getAll();
         console.log($scope.username);
-        expect($scope.username).toBe(data);
+        console.log(authService.eLogin());
+       // expect($scope.username).toBe(data);
 
   }); 
 

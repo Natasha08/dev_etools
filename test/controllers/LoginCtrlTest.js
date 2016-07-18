@@ -6,7 +6,7 @@ var sinon = require('sinon');
 require('../test-helper');
 require('../build/scripts');
 
-describe('EfridgeController', function() {
+describe('Login Controller', function() {
   beforeEach(ngModule('myApp'));
 
   var Err,
@@ -19,23 +19,23 @@ describe('EfridgeController', function() {
   }));    
 
   var ctrl,    
-      efridgeService,
+      authService,
       $scope;
 
-  beforeEach(inject(function($controller, $rootScope, $q, _efridgeService_) {
-      let data = {food_name: "banana"};
+  beforeEach(inject(function($controller, $rootScope, $q, _authService_) {
+      let data = {username: "DragonMaster"};
       let defer = $q.defer();
       let promise = defer.promise;
 
       defer.resolve(data);      
-      efridgeService = _efridgeService_;   
+      authService = _authService_;   
       $scope = $rootScope.$new();
 
-      ctrl = $controller('EfridgeController', {
+      ctrl = $controller('LoginController', {
       $scope: $scope
       });
             
-      sinon.stub(efridgeService, 'getAll', function(){
+      sinon.stub(authService, 'eLogin', function(){
       return $q.when(promise);
   });
 
@@ -52,8 +52,8 @@ describe('EfridgeController', function() {
       expect(hidden).to.be.true;
     });
 
-    it('should define efridgeService', function() {
-      let service = efridgeService.getAll;
+    it('should define authService', function() {
+      let service = authService.getAll;
       expect(service).to.be.defined;
     });
 
@@ -63,13 +63,18 @@ describe('EfridgeController', function() {
     });   
 
      it('resolve a promise', function() {
-      let foodItems = $scope.foodItems;
+      let username = $scope.username;
 
       $scope.getAll();
-      $scope.$apply();
-      console.log($scope.foodItems);
 
-      expect(foodItems).to.eql.data;
+      $scope.$apply();
+            $scope.email = 'natasha08@me.com';
+      $scope.password = 'poo';
+      userData.email = $scope.email;
+      userData.password = $scope.password;
+      console.log($scope.username);
+
+      expect(username).to.eql.data;
     });   
   });
 }); 

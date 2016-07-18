@@ -5,12 +5,12 @@
 
 angular
   .module('myApp')
-  .controller('LoginController', ['$scope', 'authService', 'ErrFactory', 'userData', function LoginController($scope, authService, ErrFactory, userData) {
+  .controller('LoginController', ['$scope', 'authService', 'ErrFactory', 'userData', '$state', function LoginController($scope, authService, ErrFactory, userData, $state) {
 
     $scope.init = function init() {
     this.authService = authService;
     this.userData = userData;
-      var Err = new ErrFactory();
+      $scope.Err = new ErrFactory();
       $scope.IsHidden = true;
       // var User = [];
 
@@ -18,8 +18,8 @@ angular
     }
 
  //   hardcode userdata
-        $scope.email = 'loginemail@email.com';
-        $scope.password = 'loginpassword';
+        // $scope.email = 'loginemail@email.com';
+        // $scope.password = 'loginpassword';
 //console.log(efridgeService);
         userData.email = $scope.email;
         userData.password = $scope.password;
@@ -30,20 +30,22 @@ angular
 
 $scope.getAll = function() {
  // $scope.username= [];
-
     authService.eLogin()
-    .then(function(data) {
-       var Err = undefined;   
+    .then(function(data) {  
        $scope.username = data;
        userData.username = data.username;
+       //$state.go('main');
+        $state.go('main');
+      // $window.location.href = '/main';
        
     })
     .catch(function(err) {
-            console.log(Err.fail);
+            //console.log(Err.fail);
             console.log(err);  
-            $scope.errorTest = 'this is an error';  
+            $scope.errorFail = " Err.fail not working...but this error is!"+err; 
+            //$window.location.href = '/' 
         })
-    return $scope.username;
+    //return $scope.username;
 };
 
     $scope.init();

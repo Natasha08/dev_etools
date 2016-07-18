@@ -7,38 +7,34 @@ angular
 	  .controller('EfridgeController', ['$scope', 'efridgeService', 'ErrFactory', function EfridgeController($scope, efridgeService, ErrFactory) {
 
   	$scope.init = function init() {
-  	this.efridgeService = efridgeService;
-      // var Err = new ErrFactory();
+  	  this.efridgeService = efridgeService;
       var Err = new ErrFactory();
-      $scope.Err = Err;
       $scope.IsHidden = true;
       $scope.foodItems = [];
-      //$scope.isDisabled = false;
   	}
-//console.log(efridgeService);
-$scope.getAll = function() {
-  $scope.foodItems= [];
+    $scope.getAll = function() {
+      $scope.foodItems= {};
 
-  	efridgeService.getAll()
-  	.then(function(data) {   
-  		 $scope.foodItems = data;
-		   $scope.user = {};
 
-    })
-    .catch(function(err) {
-  		      console.log(Err.fail);
-            console.log(err);  
-            $scope.errorTest = 'this is an error';	
-  	    })
+  	  efridgeService.getAll()
+  	  .then(function(data) {   
+  		$scope.foodItems = data;
+		  $scope.user = {};
+
+      })
+    .catch(function(err) { 
+      $scope.err = Err.fail;	
+  	  })
     return $scope.foodItems;
-};
+    };
 
-  $scope.uncheckAll = function() {
-    $scope.user.foodItems = [];
-  };
-  $scope.checkAll = function() {
-    $scope.user.foodItems = angular.copy($scope.foodItems);
-  };
+    $scope.uncheckAll = function() {
+      $scope.user.foodItems = [];
+      return $scope.user.foodItems;
+    };
+    $scope.checkAll = function() {
+      $scope.user.foodItems = angular.copy($scope.foodItems);
+    };
 
 
 
@@ -70,7 +66,7 @@ $scope.getAll = function() {
 
 
 
- }]);
+  }]);
 
 //   					$scope.macros = [],
 
