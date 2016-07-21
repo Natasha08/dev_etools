@@ -7,7 +7,7 @@
 <code>cd dev_etools && npm install</code><br />
 <p>#create a secret.js file</p>
 <h5>#example</h5>
-<p>db_secret.js</p>
+<em>secret.js</em>
 <code>var secretKey = 'very long string';</code><br />
 <code>var sessionKey = 'second very long string';</code><br />
 
@@ -16,7 +16,7 @@
 
 <p>#create a db_secret.js file</p>
 <h5>#example</h5>
-<p>db_secret.js</p>
+<em>db_secret.js</em>
 <code>function db_secret() {</code><br />
 	<code>var db = {};</code><br />
 	<code>db.user = '';</code><br />
@@ -47,7 +47,7 @@
 
 <h4>Package.json</h4>
 <p># converts concat.less >> build/styles.css</p>
-<code>npm run lesscon</code> 
+<code>npm run lesscon</code>
 
 <p># this will browserify the concat client-side js('grunt' default will concat js files)</p>
 <code>npm run build</code>
@@ -66,4 +66,3 @@
 
 # dev_etools
 Future dev server, will become staging server.
-
