@@ -1,6 +1,10 @@
 # dev_etools
 [![CircleCI](https://circleci.com/gh/Natasha08/dev_etools/tree/master.svg?style=svg)](https://circleci.com/gh/Natasha08/dev_etools/tree/master)
 
+https://circleci.com/gh/:Natasha08/:dev_etools/tree/:master.svg?style=shield&circle-token=:circle-token
+
+
+
 Nutrition and workout app
 
 Node vs. 4.4.7
