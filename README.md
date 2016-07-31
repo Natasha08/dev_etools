@@ -10,7 +10,7 @@ Nutrition and workout app
 <code> apt-get install mysql server</code>
 <p>#create a secret.js file</p><br />
 <h5>#example</h5>
-<em>secret.js</em>
+<em>secret.js</em><br />
 <code>var secretKey = 'very long string';</code><br />
 <code>var sessionKey = 'second very long string';</code><br />
 <p>#use <a href ="https://gist.github.com/Natasha08/db413a074ed10a767ea9ddbeabe5b340">this gist</a> to create tables to get started. Set user permissions to db & associated tables for 'your_user_name'@'localhost'.</p>
