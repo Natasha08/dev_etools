@@ -2,10 +2,15 @@
 
 Nutrition and workout app
 
-#Node vs. 4.4.7
+Node vs. 4.4.7
 
 <h2>Navigation<h2>
 <a href ="#clone-repo">Clone Repo<a>
+<a href ="#secret-js">Express Session and Cookie Keys<a>
+<a href ="#db-secret">Database access file and schema<a>
+<a href ="#start-app">Starting the app<a>
+<a href ="#testing">Testing<a>
+<a href ="#grunt">Grunt Commands<a>
 
 This app uses node version 4.4.7 and express middleware with angularjs.
 Using the curl method to install node:
@@ -27,7 +32,8 @@ This project uses the mysql database
 <p>The default database name is freetools. The tables are users, efridge & egym (see gist below)</p>
 
 #create a secret.js file
-
+<a href"#secret-js"></a>
+This file will handle the secret keys for the express session and cookie generation on the api-server side of the app. Place this file in your root directory.
 <h5>#example</h5>
 <em>secret.js</em><br />
 <code>var secretKey = 'very long string';</code><br />
@@ -38,7 +44,7 @@ This project uses the mysql database
 <code>module.exports = secretKey;</code><br />
 
 #create a db_secret.js file
-
+<a href"#db-secret"></a>
 <h5>#example</h5>
 <em>db_secret.js</em><br />
 <code>function db_secret() {</code><br />
@@ -51,12 +57,16 @@ This project uses the mysql database
 <code>}</code><br />
 <code></code>
 <code>module.exports = db_secret;</code><br />
+
 #start the app
+<a href"#start-app"></a>
+
 <code>sudo nodemon</code><br />
 
 <p>#navigate to 'http://localhost:3000/'</p>
 
 #Testing
+<a href"#testing"></a>
 
 This project is exploring several testing suites. The most current uses jasmine/karma for unit testing, and protractor for end-to-end testing.
 <h4>Jasmine/Karma Testing</h4>
@@ -74,7 +84,9 @@ Follow the instructions in the helper.me file in the root directory to install p
 <code>mocha test/factories</code>
 <code>mocha test/services</code>
 
-<h4>Grunt commands</h4>
+#Grunt commands
+<a href"#grunt"></a>
+
 <h5>[production]</h5>
 <code>grunt</code>
 <p>#runs default tasks 'concat', 'uglify', 'cssmin', including require.js</p>
