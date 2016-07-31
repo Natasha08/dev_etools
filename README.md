@@ -35,7 +35,7 @@ Nutrition and workout app
 <p>#start the app</p>
 <code>sudo nodemon</code><br />
 
-<p>#navigate to /url:3000</p>
+<p>#navigate to 'http://localhost:3000/'</p>
 
 <p>#example</p>
 <h4>Grunt commands</h4>
