@@ -23,7 +23,7 @@
     "less-middleware": "1.0.x",
     "mocha": "^2.5.3",
     "morgan": "~1.6.1",
-    "mysql": "~2.10.2",
+    "mysql": "^2.10.2",
     "passport": "~0.3.2",
     "passport-http": "^0.3.0",
     "passport-http-bearer": "^1.0.1",

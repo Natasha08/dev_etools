@@ -1,15 +1,19 @@
-
-# linuxproject
+# dev_etools
+Nutrition and workout app
 
 <p>#clone repo</p>
 <code>git clone git@github.com:Natasha08/dev_etools.git</code><br />
 <p>#cd & install dependencies</p>
 <code>cd dev_etools && npm install</code><br />
-<p>#create a secret.js file</p>
+<code>npm install -g nodemon</code><br />
+<p>This project uses the mysql database</p>
+<code> apt-get install mysql server</code>
+<p>#create a secret.js file</p><br />
 <h5>#example</h5>
 <em>secret.js</em>
 <code>var secretKey = 'very long string';</code><br />
 <code>var sessionKey = 'second very long string';</code><br />
+<p>#use <a href ="https://gist.github.com/Natasha08/db413a074ed10a767ea9ddbeabe5b340">this gist</a> to create tables to get started. Set user permissions to db & associated tables for 'your_user_name'@'localhost'.</p>
 
 <code>module.exports = sessionKey;</code><br />
 <code>module.exports = secretKey;</code><br />
@@ -28,9 +32,9 @@
 <code></code>
 <code>module.exports = db_secret;</code><br />
 <p>#start the app</p>
-<code>node ./bin/www</code><br />
+<code>sudo nodemon</code><br />
 
-<p>#navigate to /url:3000/login</p>
+<p>#navigate to /url:3000</p>
 
 <p>#example</p>
 <h4>Grunt commands</h4>
@@ -63,6 +67,3 @@
 <p>#modified code for flightplan to work with forever</p>
 <code>remote.exec('forever stop ~/'+appName+'/'+startFile, {failsafe: true});</code>
 <code>remote.exec('forever start ~/'+appName+'/'+startFile);</code>
-
-# dev_etools
-Future dev server, will become staging server.
