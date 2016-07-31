@@ -5,13 +5,6 @@
 
 node_modules/
 
-authUser.js
-newSalt.js
-password.js
-updateUser.js
-test.js
-users.js
-hashes.js
 secret.*
 db_secret.*
 *.secret
@@ -24,4 +17,3 @@ db_secret.*
 
 *.msu
 *.conf
-testscripts/*
