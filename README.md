@@ -31,7 +31,7 @@ This project uses the mysql database
 <code> apt-get install mysql server</code>
 <p>The default database name is freetools. The tables are users, efridge & egym (see gist below)</p>
 
-#create a secret.js file
+#Express Session and Cookie Keys
 <a href="#express-session-and-cookie-keys"></a>
 This file will handle the secret keys for the express session and cookie generation on the api-server side of the app. Place this file in your root directory.
 <h5>#example</h5>
@@ -43,7 +43,7 @@ This file will handle the secret keys for the express session and cookie generat
 <code>module.exports = sessionKey;</code><br />
 <code>module.exports = secretKey;</code><br />
 
-#create a db_secret.js file
+#Database access file and schema
 <a href="#database-access-file-and-schema"></a>
 <h5>#example</h5>
 <em>db_secret.js</em><br />
@@ -58,7 +58,7 @@ This file will handle the secret keys for the express session and cookie generat
 <code></code>
 <code>module.exports = db_secret;</code><br />
 
-#start the app
+#Start the app
 <a href="#start-the-app"></a>
 
 <code>sudo nodemon</code><br />
