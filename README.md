@@ -14,9 +14,9 @@ Node vs. 4.4.7
 
 This app uses node version 4.4.7 and express middleware with angularjs.
 Using the curl method to install node:
-<code> apt-get install curl</code></code>
-<code>sudo-E bash -</code>
-<code>apt-get install -y nodejs</code>
+<code> apt-get install curl</code><br/>
+<code>sudo-E bash -</code><br/>
+<code>apt-get install -y nodejs</code><br/>
 <p>See https://github.com/nodesource/distributions for more information</p>
 
 
