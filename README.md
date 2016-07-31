@@ -5,8 +5,7 @@ Nutrition and workout app
 #Node vs. 4.4.7
 
 <h2>Navigation<h2>
-<a href ="#clone-repo"><a>
-
+<a href ="#clone-repo">Clone Repo<a>
 
 This app uses node version 4.4.7 and express middleware with angularjs.
 Using the curl method to install node:
@@ -33,7 +32,7 @@ This project uses the mysql database
 <em>secret.js</em><br />
 <code>var secretKey = 'very long string';</code><br />
 <code>var sessionKey = 'second very long string';</code><br />
-<p>#use <a href ="https://gist.github.com/Natasha08/db413a074ed10a767ea9ddbeabe5b340">this gist</a> to create tables to get started. Set user permissions to db & associated tables for 'your_user_name'@'localhost'.</p>
+<p>#use <a href ="https://gist.github.com/Natasha08/db413a074ed10a767ea9ddbeabe5b340">this gist</a> to create tables and get started. Set user permissions to db & associated tables for 'your_user_name'@'localhost'.</p>
 
 <code>module.exports = sessionKey;</code><br />
 <code>module.exports = secretKey;</code><br />
