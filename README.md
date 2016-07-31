@@ -8,7 +8,7 @@ Node vs. 4.4.7
 <a href ="#clone-repo">Clone Repo</a><br />
 <a href ="#secret-js">Express Session and Cookie Keys</a><br />
 <a href ="#db-secret">Database access file and schema</a><br />
-<a href ="#start-app">Starting the app</a><br />
+<a href ="#start-the-app">Start the app</a><br />
 <a href ="#testing">Testing</a><br />
 <a href ="#grunt">Grunt Commands</a><br />
 
@@ -59,7 +59,7 @@ This file will handle the secret keys for the express session and cookie generat
 <code>module.exports = db_secret;</code><br />
 
 #start the app
-<a href="#start-app"></a>
+<a href="#start-the-app"></a>
 
 <code>sudo nodemon</code><br />
 
