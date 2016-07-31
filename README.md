@@ -81,10 +81,10 @@ Then <code>karma start</code> to run tests.
 Follow the instructions in <a href = "https://gist.github.com/Natasha08/f5ebab4086e424fed32d5334a337e092">helper.me </a> to install protractor and setup the selenium server. Then <code>cd test_protractor</code> and <code> protractor conf</code> to run tests.
 
 <h4>Mocha/Chai Testing</h4>
-<code>npm install -g mocha </code>
-<code>mocha test/controllers</code>
-<code>mocha test/factories</code>
-<code>mocha test/services</code>
+<code>npm install -g mocha </code><br />
+<code>mocha test/controllers</code><br />
+<code>mocha test/factories</code><br />
+<code>mocha test/services</code><br />
 
 #Grunt commands
 <a href="#grunt-commands"></a>
