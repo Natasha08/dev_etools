@@ -42,10 +42,10 @@ This file will handle the secret keys for the express session and cookie generat
 <em>secret.js</em><br />
 <code> var secretKey = 'very long string';</code><br />
 <code> var sessionKey = 'second very long string';</code><br />
-<p>#use <a href ="https://gist.github.com/Natasha08/db413a074ed10a767ea9ddbeabe5b340">this gist</a> to create tables and get started. Set user permissions to db & associated tables for 'your_user_name'@'localhost'.</p>
-
 <code> module.exports = sessionKey;</code><br />
 <code> module.exports = secretKey;</code><br />
+
+<p>#use <a href ="https://gist.github.com/Natasha08/db413a074ed10a767ea9ddbeabe5b340">this gist</a> to create tables and get started. Set user permissions to db & associated tables for 'your_user_name'@'localhost'.</p>
 
 #Database access file and schema
 <a href="#database-access-file-and-schema"></a>
