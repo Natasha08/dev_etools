@@ -5,12 +5,12 @@ Nutrition and workout app
 Node vs. 4.4.7
 
 <h2>Navigation<h2>
-<a href ="#clone-repo">Clone Repo<a><br />
-<a href ="#secret-js">Express Session and Cookie Keys<a><br />
-<a href ="#db-secret">Database access file and schema<a><br />
-<a href ="#start-app">Starting the app<a><br />
-<a href ="#testing">Testing<a><br />
-<a href ="#grunt">Grunt Commands<a><br />
+<a href ="#clone-repo">Clone Repo</a><br />
+<a href ="#secret-js">Express Session and Cookie Keys</a><br />
+<a href ="#db-secret">Database access file and schema</a><br />
+<a href ="#start-app">Starting the app</a><br />
+<a href ="#testing">Testing</a><br />
+<a href ="#grunt">Grunt Commands</a><br />
 
 This app uses node version 4.4.7 and express middleware with angularjs.
 Using the curl method to install node:
