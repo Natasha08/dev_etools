@@ -8,6 +8,7 @@ Nutrition and workout app
 <code>npm install -g nodemon</code><br />
 <p>This project uses the mysql database</p>
 <code> apt-get install mysql server</code>
+<p>The default database name is freetools. The tables are users, efridge & egym (see gist below)</p>
 <p>#create a secret.js file</p>
 <h5>#example</h5>
 <em>secret.js</em><br />
