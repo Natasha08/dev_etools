@@ -84,6 +84,7 @@ Follow the instructions in <a href = "https://gist.github.com/Natasha08/f5ebab40
 <code>npm install -g mocha </code><br />
 
 Running the tests:
+<br />
 <code>mocha test/controllers</code><br />
 <code>mocha test/factories</code><br />
 <code>mocha test/services</code><br />
