@@ -1,6 +1,11 @@
 # dev_etools
 Nutrition and workout app
-
+<p>This app uses node version 4.4.7 and express middleware with angularjs.</p>
+<p>Using the curl method to install node:
+<code> apt-get install curl
+sudo-E bash -
+apt-get install -y nodejs</code>
+See https://github.com/nodesource/distributions for more information</p>
 <p>#clone repo</p>
 <code>git clone git@github.com:Natasha08/dev_etools.git</code><br />
 <p>#cd & install dependencies</p>
