@@ -13,7 +13,7 @@ Node vs. 4.4.7
 <a href ="#grunt-commands">Grunt Commands</a><br />
 
 This app uses node version 4.4.7 and express middleware with angularjs.
-Using the curl method to install node:
+Using the curl method to install node:<br/>
 <code> apt-get install curl</code><br/>
 <code>sudo-E bash -</code><br/>
 <code>apt-get install -y nodejs</code><br/>
