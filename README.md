@@ -8,7 +8,7 @@ Nutrition and workout app
 <code>npm install -g nodemon</code><br />
 <p>This project uses the mysql database</p>
 <code> apt-get install mysql server</code>
-<p>#create a secret.js file</p><br />
+<p>#create a secret.js file</p>
 <h5>#example</h5>
 <em>secret.js</em><br />
 <code>var secretKey = 'very long string';</code><br />
