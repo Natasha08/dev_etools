@@ -20,7 +20,7 @@ Nutrition and workout app
 
 <p>#create a db_secret.js file</p>
 <h5>#example</h5>
-<em>db_secret.js</em>
+<em>db_secret.js</em><br />
 <code>function db_secret() {</code><br />
 	<code>var db = {};</code><br />
 	<code>db.user = '';</code><br />
