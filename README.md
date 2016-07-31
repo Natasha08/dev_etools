@@ -76,7 +76,7 @@ This project is exploring several testing suites. The most current uses jasmine/
 Then <code>karma start</code> to run tests.
 
 <h4>Protractor Testing</h4>
-Follow the instructions in <a href = "https://gist.github.com/Natasha08/f5ebab4086e424fed32d5334a337e092">helper.me </a>file to install protractor and setup the selenium server. Then <code>cd test_protractor</code> and <code> protractor conf</code> to run tests.
+Follow the instructions in <a href = "https://gist.github.com/Natasha08/f5ebab4086e424fed32d5334a337e092">helper.me </a> to install protractor and setup the selenium server. Then <code>cd test_protractor</code> and <code> protractor conf</code> to run tests.
 
 <h4>Mocha/Chai Testing</h4>
 <code>npm install -g mocha </code>
