@@ -6,11 +6,11 @@ Node vs. 4.4.7
 
 <h2>Navigation<h2>
 <a href ="#clone-repo">Clone Repo</a><br />
-<a href ="#secret-js">Express Session and Cookie Keys</a><br />
-<a href ="#db-secret">Database access file and schema</a><br />
+<a href ="#express-session-and-cookie-keys">Express Session and Cookie Keys</a><br />
+<a href ="#database-access-file-and-schema">Database access file and schema</a><br />
 <a href ="#start-the-app">Start the app</a><br />
 <a href ="#testing">Testing</a><br />
-<a href ="#grunt">Grunt Commands</a><br />
+<a href ="#grunt-commands">Grunt Commands</a><br />
 
 This app uses node version 4.4.7 and express middleware with angularjs.
 Using the curl method to install node:
@@ -32,7 +32,7 @@ This project uses the mysql database
 <p>The default database name is freetools. The tables are users, efridge & egym (see gist below)</p>
 
 #create a secret.js file
-<a href="#secret-js"></a>
+<a href="#express-session-and-cookie-keys"></a>
 This file will handle the secret keys for the express session and cookie generation on the api-server side of the app. Place this file in your root directory.
 <h5>#example</h5>
 <em>secret.js</em><br />
@@ -44,7 +44,7 @@ This file will handle the secret keys for the express session and cookie generat
 <code>module.exports = secretKey;</code><br />
 
 #create a db_secret.js file
-<a href="#db-secret"></a>
+<a href="#database-access-file-and-schema"></a>
 <h5>#example</h5>
 <em>db_secret.js</em><br />
 <code>function db_secret() {</code><br />
@@ -85,7 +85,7 @@ Follow the instructions in the helper.me file in the root directory to install p
 <code>mocha test/services</code>
 
 #Grunt commands
-<a href="#grunt"></a>
+<a href="#grunt-commands"></a>
 
 <h5>[production]</h5>
 <code>grunt</code>
