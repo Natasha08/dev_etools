@@ -13,14 +13,15 @@ Node vs. 4.4.7
 <a href ="#grunt-commands">Grunt Commands</a><br />
 
 This app uses node version 4.4.7 and express middleware with angularjs.
-Using the curl method to install node:<br/>
+Using the curl method to install node:
+<br />
 <code>apt-get install curl</code><br/>
 <code>sudo-E bash -</code><br/>
 <code>apt-get install -y nodejs</code><br/>
 <p>See https://github.com/nodesource/distributions for more information</p>
 
 
-#clone repo
+#Clone Repo
 <a href="#clone-repo"></a>
 <code>git clone git@github.com:Natasha08/dev_etools.git</code><br />
 <p>#cd & install dependencies</p>
@@ -45,6 +46,7 @@ This file will handle the secret keys for the express session and cookie generat
 
 #Database access file and schema
 <a href="#database-access-file-and-schema"></a>
+This file will contain your secret info to access the database, typically a mysql user you have given privileges to modify the relevant database/associated tables. 
 <h5>#example</h5>
 <em>db_secret.js</em><br />
 <code>function db_secret() {</code><br />
@@ -63,16 +65,16 @@ This file will handle the secret keys for the express session and cookie generat
 
 <code>sudo nodemon</code><br />
 
-<p>#navigate to 'http://localhost:3000/'</p>
+<p>#navigate to http://localhost:3000</p>
 
 #Testing
 <a href="#testing"></a>
 
 This project is exploring several testing suites. The most current uses jasmine/karma for unit testing, and protractor for end-to-end testing.
 <h4>Jasmine/Karma Testing</h4>
-<code>npm install -g karma</code>
-<code>npm install -g karma/jasmine</code>
-<code>npm install -g karma-chrome-launcher</code>
+<code>npm install -g karma</code><br />
+<code>npm install -g karma/jasmine</code><br />
+<code>npm install -g karma-chrome-launcher</code><br />
 Then <code>karma start</code> to run tests.
 
 <h4>Protractor Testing</h4>
