@@ -46,7 +46,7 @@ This file will handle the secret keys for the express session and cookie generat
 
 #Database access file and schema
 <a href="#database-access-file-and-schema"></a>
-This file will contain your secret info to access the database, typically a mysql user you have given privileges to modify the relevant database/associated tables. 
+This file will contain your secret info to access the database, typically a mysql user you have given privileges to modify the relevant database/associated tables. Place this file in your root directory.
 <h5>#example</h5>
 <em>db_secret.js</em><br />
 <code>function db_secret() {</code><br />
@@ -82,6 +82,8 @@ Follow the instructions in <a href = "https://gist.github.com/Natasha08/f5ebab40
 
 <h4>Mocha/Chai Testing</h4>
 <code>npm install -g mocha </code><br />
+
+Running the tests:
 <code>mocha test/controllers</code><br />
 <code>mocha test/factories</code><br />
 <code>mocha test/services</code><br />
