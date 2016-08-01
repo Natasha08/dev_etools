@@ -77,8 +77,7 @@ This file will contain your secret info to access the database, typically a mysq
 This project is exploring several testing suites. The most current uses jasmine/karma for unit testing (this suite is also run by Circle CI), and protractor for end-to-end testing. The test coverage is a work in progress, and is INCOMPLETE.
 <h3>Jasmine/Karma Testing</h3>
 <code>$ npm install -g karma</code><br />
-<code>$ npm install -g karma/jasmine</code><br />
-<code>$ npm install -g karma-chrome-launcher</code><br />
+<code>$ npm install -g karma-cli</code><br />
 Then <code>$ karma start</code> to run tests.
 
 <h4>Protractor Testing</h4>
