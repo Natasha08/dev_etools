@@ -68,9 +68,14 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
+    plugins: [
+      'karma-jasmine',
+      'karma-chrome-launcher'
+    ],
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
+    usePolling: true,
 
     // Concurrency level
     // how many browser should be started simultaneous
