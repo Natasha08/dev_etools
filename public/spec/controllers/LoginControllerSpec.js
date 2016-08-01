@@ -3,31 +3,34 @@
 "use strict";
 
 describe('Login Controller', function() {
-  var controller,
-      data,
-      defer,
-      authService,
-      err,
-      Err,
-      ErrFactory,
-      promise,
-      q,
-      userData,
-      User,
-      UserName,
-      username,
-      $scope,
-      $controller;
+  var  Err,
+       ErrFactory,
+       User,
+       UserName,
+       $state;
 
   beforeEach(angular.mock.module('myApp'));
 
-  beforeEach(angular.mock.inject(function( _UserName_, _ErrFactory_, _userData_) {
+  beforeEach(angular.mock.inject(function( _UserName_, _ErrFactory_, _userData_, _$state_) {
     ErrFactory = _ErrFactory_;
     Err = new ErrFactory();
     userData = _userData_;
     UserName = _UserName_;
     User = {};
+    $state = _$state_;
   }));
+
+  var controller,
+      data,
+      defer,
+      authService,
+      err,
+      promise,
+      q,
+      userData,
+      username,
+      $scope,
+      $controller;
 
   beforeEach(angular.mock.inject(function(_$controller_, _$rootScope_, _$q_, _authService_) {
     data = {
@@ -55,6 +58,8 @@ describe('Login Controller', function() {
   describe('View Buttons', function() {
     it('Checks that LoginController is defined', function() {
       expect(controller).toBeDefined();
+      $state.current = 'main';
+      console.log("$STATE", $state.current);
       // console.log(controller);
     });
 

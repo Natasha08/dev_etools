@@ -66,7 +66,7 @@ describe('auth Service', function() {
 
         it('should get something', function() {
             $httpBackend.expectPOST('http://localhost:3000/login').respond(200, {data: data});
-            promise = authService.eLogin();
+            let promise = authService.eLogin();
 
             promise.then(function(res) {
             expect(res.data).toEqual({username: "athena"});
@@ -78,7 +78,7 @@ describe('auth Service', function() {
         it('should get something', function() {
             //console.log(userData);
             $httpBackend.expectPOST('http://localhost:3000/login').respond(200, {data: data});
-            promise = authService.eLogin();
+            let promise = authService.eLogin();
 
             promise.then(function(res) {
             expect(res.data).toEqual({username: "athena"});
