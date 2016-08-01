@@ -3,31 +3,33 @@
 "use strict";
 
 describe('Efridge Controller', function() {
-    var controller,
-        data,
-        defer,
-        efridgeService,
-        err,
-        Err,
-        ErrFactory,
-        foodItems,
-        promise,
-        q,
-        userData,
-        UserName,       
-        $scope,
-        $controller;
-
+  var Err,
+      ErrFactory,
+      userData,
+      UserName;
 
     beforeEach(angular.mock.module('myApp'));
 
+    //inject userData, Errfactory and UserName
     beforeEach(angular.mock.inject(function( _UserName_, _ErrFactory_, _userData_) {
         userData = _userData_;
         ErrFactory = _ErrFactory_;
         Err = new ErrFactory();
         UserName = _UserName_;
-    }));    
+    }));
 
+  var controller,
+      data,
+      defer,
+      efridgeService,
+      err,
+      foodItems,
+      promise,
+      q,
+      $scope,
+      $controller;
+
+    //inject scope and efridgeService
     beforeEach(angular.mock.inject(function(_$controller_, _$rootScope_, _$q_, _efridgeService_) {
         data = {food_name: "banana"};
         efridgeService = _efridgeService_;
@@ -40,8 +42,7 @@ describe('Efridge Controller', function() {
         defer.resolve(data);
         spyOn(efridgeService, 'getAll').and.returnValue(defer.promise);
 
-
-    // Init the controller       
+        // Init the controller
         controller = $controller('EfridgeController', {
             $scope: $scope,
             efridgeService: efridgeService
@@ -49,54 +50,46 @@ describe('Efridge Controller', function() {
         $scope.init();
     }));
 
-    // afterEach(function(){
-    //     scope.$apply();
-    // });
+    describe('View Buttons', function() {
+      it('Checks that EfridgeController is defined', function() {
+        expect(controller).toBeDefined();
+      });
 
-    describe('View Buttons', function() { 
-        it('Checks that EfridgeController is defined', function() {
-            expect(controller).toBeDefined();
-        });
+      it('Sets $scope.IsHidden to true', function() {
+        expect($scope.IsHidden).toEqual(true);
+      });
 
-        it('Sets $scope.IsHidden to true', function() {                                
-            expect($scope.IsHidden).toEqual(true);
-        });
-
-        it('Checks that scope.uncheckAll is a function', function() {
-            expect(typeof $scope.uncheckAll).toEqual('function');
-        });    
+      it('Checks that scope.uncheckAll is a function', function() {
+        expect(typeof $scope.uncheckAll).toEqual('function');
+      });
     });
 
-    describe('Efridge Service', function() { 
-        it('Should call be defined', function() {   
-             expect(efridgeService.getAll).toBeDefined();
-        }); 
+    describe('Efridge Service', function() {
+      it('Should call be defined', function() {
+        expect(efridgeService.getAll).toBeDefined();
+      });
 
-  it('should resolve promise', function () {
+      it('should resolve promise', function () {
         $scope.getAll();
 
         $scope.$apply();
-        console.log($scope.foodItems);
         expect($scope.foodItems).toBe(data);
         //console.log(userData);
 
-  });   
-  
-    it('user obj should be defined', function () {
-//this should look more like above, but have to define the username in the controller first or it wont work
+      });
+
+      it('user obj should be defined', function () {
+        //this should look more like above, but have to define the username in the controller first or it wont work
         efridgeService.getAll()
-        .then(function(data) {
-            $scope.foodItems = data;
-            console.log($scope.foodItems);
-            $scope.user = {username: 'natasha', email: 'workhard@email.com'};
+         .then(function(data) {
+           $scope.foodItems = data;
+           $scope.user = {username: 'natasha', email: 'workhard@email.com'};
         })
 
         $scope.$apply();
         expect($scope.user).toEqual({username: 'natasha', email: 'workhard@email.com'});
-
-  });  
-
+      });
     });
-});
+ });
 
 },{}]},{},[1]);
