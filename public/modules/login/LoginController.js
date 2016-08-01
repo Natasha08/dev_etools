@@ -10,64 +10,52 @@ angular
     $scope.init = function init() {
     this.authService = authService;
     this.userData = userData;
-      $scope.Err = new ErrFactory();
-      $scope.IsHidden = true;
+    $scope.Err = new ErrFactory();
+    $scope.IsHidden = true;
       // var User = [];
 
       //$scope.isDisabled = false;
     }
 
- //   hardcode userdata
-        // $scope.email = 'loginemail@email.com';
-        // $scope.password = 'loginpassword';
-//console.log(efridgeService);
-        userData.email = $scope.email;
-        userData.password = $scope.password;
-// userData = {
-//         email: $scope.email,
-//       password: $scope.password
-//}
+   //hardcode userdata
+    $scope.email = 'loginemail@email.com';
+    $scope.password = 'loginpassword';
+  //console.log(efridgeService);
+    userData.email = $scope.email;
+    userData.password = $scope.password;
 
-$scope.getAll = function() {
- // $scope.username= [];
-    authService.eLogin()
-    .then(function(data) {  
-       $scope.username = data;
-       userData.username = data.username;
-       //$state.go('main');
-        $state.go('main');
-      // $window.location.href = '/main';
-       
-    })
-    .catch(function(err) {
-            //console.log(Err.fail);
-            console.log(err);  
-            $scope.errorFail = " Err.fail not working...but this error is!"+err; 
-            //$window.location.href = '/' 
-        })
-    //return $scope.username;
-};
+   $scope.getAll = function() {
+   //$scope.username= [];
+     authService.eLogin()
+       .then(function(data) {
+         userData.username = data.username;
+         //$state.go('main');
+         $state.go('main');
+         //$window.location.href = '/main';
+       })
+       .catch(function(err) {
+         //console.log(Err.fail);
+         console.log(err);
+         $scope.errorFail = " Err.fail not working...but this error is!"+err;
+         //$window.location.href = '/'
+       })
+    };
 
     $scope.init();
-
-
-
  }])
 
   .controller('RegisterController', ['$scope', 'UserName', function RegisterController($scope, UserName) {
-
-
 
     $scope.init = function() {
         $scope.IsHidden = true;
         var tester = UserName;
     };
-        		
-    	  $scope.ShowHide = function () {
-          //If DIV is hidden it will be visible and vice versa.
-          $scope.IsHidden = !$scope.IsHidden;
-    	  }
-    $scope.init();  
+
+	  $scope.ShowHide = function () {
+      //If DIV is hidden it will be visible and vice versa.
+      $scope.IsHidden = !$scope.IsHidden;
+	  }
+    $scope.init();
  }]);
 // 	function registerUser() {
 // 		$http({
@@ -86,7 +74,7 @@ $scope.getAll = function() {
 // 					//console.log(response);
 // 					//console.log(data);
 
-	 
+
 // 				}
 // 				)
 
