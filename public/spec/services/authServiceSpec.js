@@ -10,11 +10,11 @@ describe('auth Service', function() {
         ErrFactory,
         promise,
         scope,
-        userData,      
+        userData,
         $http,
         $httpBackend,
         $q;
-        
+
     beforeEach(angular.mock.module('myApp'));
 
     beforeEach(angular.mock.inject(function(_$rootScope_, _$http_, _$q_, _$httpBackend_, _authService_, _ErrFactory_, _userData_) {
@@ -26,14 +26,14 @@ describe('auth Service', function() {
         scope = _$rootScope_.$new();
         $q = _$q_;
         $http = _$http_;
-        $httpBackend = _$httpBackend_;    
+        $httpBackend = _$httpBackend_;
 
         authRequestHandler = $httpBackend.when('http://localhost:3000/login')
         .respond(200, data);
     }));
 
     describe('Mock BackEnd', function() {
-        it('Checks that the  BackEnd (response) is defined', function() {                            
+        it('Checks that the  BackEnd (response) is defined', function() {
             $httpBackend.expectPOST('http://localhost:3000/login').respond(200, {data: data});
             authService.eLogin()
             .then(function(res) {
@@ -41,23 +41,23 @@ describe('auth Service', function() {
                 //console.log(res.data);
             },
             function(err) {
-            }); 
-            $httpBackend.flush();  
+            });
+            $httpBackend.flush();
         });
 
         it('should return an forbid message when service call response is 401', function() {
-            $httpBackend.when('http://localhost:3000/login').respond(401, '');                            
-            $httpBackend.expectPOST('http://localhost:3000/login').respond(401, ''); 
-   
+            $httpBackend.when('http://localhost:3000/login').respond(401, '');
+            $httpBackend.expectPOST('http://localhost:3000/login').respond(401, '');
+
             authService.eLogin()
-            .then(function(res) {
-            },
-            function(res) {
-                // console.log(Err.forbid);
+              .then(function(res) {
+              },
+              function(err) {
+                console.log(Err.forbid);
                 expect(Err.forbid).toBe('Sorry, that access is forbidden');
-            }); 
-            $httpBackend.flush();  
-        });  
+              });
+              $httpBackend.flush();
+           });
 
         it('should return a promise', function () {
             expect(authService.eLogin().then).toBeDefined();
@@ -69,23 +69,23 @@ describe('auth Service', function() {
             promise = authService.eLogin();
 
             promise.then(function(res) {
-            expect(res.data).toEqual({username: "athena"}); 
-            // console.log(res.data);   
+            expect(res.data).toEqual({username: "athena"});
+            // console.log(res.data);
         });
             $httpBackend.flush();
-      });    
+      });
 
         it('should get something', function() {
-            //console.log(userData); 
+            //console.log(userData);
             $httpBackend.expectPOST('http://localhost:3000/login').respond(200, {data: data});
             promise = authService.eLogin();
 
             promise.then(function(res) {
-            expect(res.data).toEqual({username: "athena"}); 
-  
+            expect(res.data).toEqual({username: "athena"});
+
         });
             $httpBackend.flush();
-      });                
+      });
 
       });
     });
