@@ -1,0 +1,9 @@
+
+dependencies:
+  pre:
+    - npm install -g karma
+    - npm install -g karma-cli
+
+machine:
+  node:
+    version: 4.4.7
