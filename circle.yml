@@ -6,3 +6,9 @@ dependencies:
   pre:
     - npm install -g karma
     - npm install -g karma-cli
+
+install: 
+ - npm install -g codecov
+ 
+script: 
+ - istanbul cover node_modules\jasmine\bin\jasmine.js  
