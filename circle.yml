@@ -1,9 +1,20 @@
+machine:
+  node:
+    version: 4.4.7
 
 dependencies:
   pre:
     - npm install -g karma
     - npm install -g karma-cli
 
-machine:
-  node:
-    version: 4.4.7
+dependencies:
+    override:
+        - pip install git+git://github.com/Zemanta/ci-metric-push.git#cipush
+
+test:
+    override:
+        - coverage run tests.py # this command also emits JUnit XML files
+
+    post:
+        - coverage xml
+        - pushci coverage "coverage.xml" -b librato -c circle -s backend_suite
