@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lesscon": "lessc public/stylesheets/concat.less public/stylesheets/styles.css"
+    "lesscon": "lessc public/stylesheets/concat.less public/stylesheets/styles.css",
+    "codecov": "codecov"
   },
   "dependencies": {
     "angular": "^1.5.7",
