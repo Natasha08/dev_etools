@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Sat Jul 02 2016 11:33:21 GMT-0600 (MDT)
 
-module.exports = function(config) {
+module.exports = function karmaConfig (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -10,7 +10,17 @@ module.exports = function(config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
-
+    
+    reporters: [
+      'coverage'
+      ],
+      
+    coverageReporter: {
+      reporters: [
+        {type:'lcovonly', subdir: '.'},
+        {type: 'json', subdir: '.'},
+        ]
+    },  
     // list of files / patterns to load in the browser
     files: [
          'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js',
