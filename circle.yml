@@ -9,10 +9,3 @@ dependencies:
 
 install: 
  - npm install -g codecov
- 
-script: 
- - istanbul cover node_modules\jasmine\bin\jasmine.js  
- 
-test:
-  post:
-    - bash <(curl -s https://codecov.io/bash)
