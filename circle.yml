@@ -8,3 +8,6 @@ dependencies:
     - npm install -g karma-cli
     - npm install -g codecov
 
+test:
+  post:
+    - bash <(curl -s https://codecov.io/bash)
