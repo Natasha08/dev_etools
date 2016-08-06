@@ -10,17 +10,17 @@ module.exports = function karmaConfig (config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
-    
+
     reporters: [
       'coverage'
       ],
-      
+
     coverageReporter: {
       reporters: [
         {type:'lcovonly', subdir: '.'},
         {type: 'json', subdir: '.'},
         ]
-    },  
+    },
     // list of files / patterns to load in the browser
     files: [
          'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js',
