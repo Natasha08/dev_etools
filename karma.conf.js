@@ -21,7 +21,7 @@ module.exports = function karmaConfig (config) {
         {type: 'json', subdir: '.'},
         ]
     },
-    
+
     // list of files / patterns to load in the browser
     files: [
          'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js',
@@ -56,7 +56,7 @@ module.exports = function karmaConfig (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-
+      '**/public/*.js': 'coverage'
     },
 
     // test results reporter to use
