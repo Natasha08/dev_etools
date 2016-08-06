@@ -1,5 +1,6 @@
 # dev_etools 
 ![CircleCI](https://circleci.com/gh/Natasha08/dev_etools/tree/master.svg?style=shield&circle-token=:circle-token)
+[![codecov](https://codecov.io/gh/Natasha08/dev_etools/branch/master/graph/badge.svg)](https://codecov.io/gh/Natasha08/dev_etools)
 
 Nutrition and workout app: <br />
    visit <a href = "https://mycolofitness.com/login">the dev server</a> for a live running version, or follow the instructions below to run a copy on your Linux machine.
