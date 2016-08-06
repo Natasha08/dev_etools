@@ -1,4 +1,4 @@
-# dev_etools 
+# dev_etools
 ![CircleCI](https://circleci.com/gh/Natasha08/dev_etools/tree/master.svg?style=shield&circle-token=:circle-token)
 
 Nutrition and workout app: <br />
@@ -66,7 +66,7 @@ This file will contain your secret info to access the database, typically a mysq
 #Start the app
 <a href="#start-the-app"></a>
 
-<code>$ sudo nodemon</code><br />
+<code>$ npm start</code><br />
 
 <p>#navigate to http://localhost:3000</p>
 

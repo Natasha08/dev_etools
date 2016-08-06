@@ -2,7 +2,7 @@
   "name": "etools",
   "version": "1.0.0",
   "description": "![CircleCI](https://circleci.com/gh/Natasha08/dev_etools/tree/master.svg?style=shield&circle-token=:circle-token)",
-  "main": "Gruntfile.js",
+  "main": "./bin/www",
   "directories": {
     "test": "test"
   },
@@ -59,7 +59,10 @@
     "mocha": "^2.5.3"
   },
   "scripts": {
-    "test": "karma start --single-run && cat ./coverage/lcov.info | ./node_modules/.bin/codecov"
+    "report-coverage": "codecov",
+    "test": "karma start --single-run && cat ./coverage/lcov.info | ./node_modules/.bin/codecov",
+    "start": "sudo nodemon"
+
   },
   "repository": {
     "type": "git",
