@@ -43,18 +43,17 @@ angular
 // .module('myApp', ['checklist-model', 'ui.router', 'ui.bootstrap', 'ngCookies'])
 .module('myApp', ['checklist-model', 'ui.router'])
 
-//.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', 'UserName', function($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider, UserName) {
 .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$httpProvider', function($urlRouterProvider, $stateProvider, $locationProvider, $httpProvider) {
-  
-// //$urlRouterProvider.otherwise('/');
-// $httpProvider.defaults.withCredentials = true;
-// // use the HTML5 History API
+
+//$urlRouterProvider.otherwise('/');
+$httpProvider.defaults.withCredentials = true;
+// use the HTML5 History API
 // $locationProvider.html5Mode(true);
 
 
-// function NavBarCtrl($scope) {
-// $scope.isCollapsed = true;
-// }
+function NavBarCtrl($scope) {
+$scope.isCollapsed = true;
+}
 
  $stateProvider
      .state('main', {
@@ -64,7 +63,7 @@ angular
         templateUrl: '/modules/common/partials/nav.html',
         // controllerAs: 'authcontroller',
         controller: 'LoginController' //,
-        // resolve: AuthController.resolve   
+        // resolve: AuthController.resolve
 
       },
       'btnpanel': {
@@ -74,9 +73,9 @@ angular
       },
        'footer': {
         templateUrl: '/modules/common/partials/footer.html'
-   } 
+   }
 
-      }  
+      }
   })
    .state('login', {
    url: '/login',
@@ -85,7 +84,7 @@ angular
        templateUrl: '/modules/login/partials/loginheader.html',
        // controllerAs: 'authcontroller',
        controller: 'LoginController' //,
-       // resolve: AuthController.resolve   
+       // resolve: AuthController.resolve
 
      },
      'btnpanel': {
@@ -93,7 +92,7 @@ angular
        controllerAs: 'homecontroller',
        controller: 'HomeController'
      }
-     }  
+     }
  })
 
 // $stateProvider
@@ -107,7 +106,7 @@ angular
 //     })
 
 	.state('home', {
-		url: '/',	
+		url: '/',
     views: {
       'nav': {
         templateUrl: '/modules/login/partials/loginheader.html',
@@ -115,26 +114,26 @@ angular
       },
       'btnpanel': {
         templateUrl: '/modules/login/partials/view1.html'
-      },      
+      },
       'form': {
         templateUrl: '/modules/login/partials/register.html',
         controller: 'RegisterController'
       },
       'footer': {
         templateUrl: '/common/modules/partials/footer.html'
-   }      
+   }
 
 	}
 })
 
 
 // 		.state('exercise', {
-// 		url: '/exercise',	
+// 		url: '/exercise',
 //     views: {
 //       'nav': {
 //         templateUrl: '/modules/common/partials/nav.html',
 //         controller: 'LoginController'
-//       },     
+//       },
 //     'form': {
 //        templateUrl: '/modules/egym/partials/exercise.html',
 //       //  controllerAs: 'egymcontroller',
@@ -142,22 +141,22 @@ angular
 //       //  resolve: EgymController.resolve
 //       'footer': {
 //         templateUrl: '/modules/common/partials/footer.html'
-//       }      
+//       }
 //     }
 // 	}
 
 // 	})
 
 // 		.state('nutrition', {
-// 		url: '/nutrition',	
+// 		url: '/nutrition',
 //     views: {
 //       'nav': {
 //         templateUrl: '/modules/common/partials/nav.html',
 //         // controllerAs: 'authcontroller',
 //         controller: 'LoginController' //,
-//         // resolve: AuthController.resolve   
+//         // resolve: AuthController.resolve
 
-//       },           
+//       },
 //       'form': {
 //         templateUrl: '/modules/efridge/partials/foodindex.html'//,
 //         // controllerAs: 'efridgecontroller',
@@ -168,9 +167,9 @@ angular
 
 // 	})
 
-//     .state('nutrition.foodprofile', {  
-//     url: '/foodprofile',  
-//     views: {             
+//     .state('nutrition.foodprofile', {
+//     url: '/foodprofile',
+//     views: {
 //       'FoodData': {
 //         templateUrl: '/modules/efridge/partials/foodform.html' //,
 //          // controller: 'FoodFormController'
@@ -178,11 +177,11 @@ angular
 //       }
 //   }
 
-//   })    
+//   })
 
-//     .state('nutrition.foodlist', {  
-//     url: '/foodlist',  
-//     views: {             
+//     .state('nutrition.foodlist', {
+//     url: '/foodlist',
+//     views: {
 //       'FoodData': {
 //         templateUrl: '/modules/efridge/partials/foodlist.html',
 //          controllerAs: 'efridgecontroller',
@@ -192,11 +191,11 @@ angular
 //       }
 //   }
 
-//   }) 
+//   })
 
-//     .state('nutrition.meals', {  
-//     url: '/meals',  
-//     views: {             
+//     .state('nutrition.meals', {
+//     url: '/meals',
+//     views: {
 //       'FoodData': {
 //         templateUrl: '/modules/efridge/partials/meals.html',
 //          controllerAs: 'efridgecontroller',
@@ -206,10 +205,10 @@ angular
 //       }
 //   }
 
-//   })    
+//   })
 
 //       .state('account', {
-//     url: '/account',  
+//     url: '/account',
 //     views: {
 //       'nav': {
 //         templateUrl: '/modules/common/partials/nav.html',
@@ -218,13 +217,13 @@ angular
 //       // 'btnpanel': {
 //       //   templateUrl: '/templates/partials/btnGym.html',
 //       //   controller: 'HomeController'
-//       // },      
+//       // },
 //       'form': {
 //         templateUrl: '/modules/efridge/partials/foodform.html'
 //       }
 //   }
 
-//   })  		
+//   })
 
 //    $httpProvider.interceptors.push(function($q, $location) {
 //          return {
@@ -236,7 +235,7 @@ angular
 // 	      if (response.status === 401) {
 // 	      $location.url('/');
 // 	      console.log('failure! And here is your response object: '+JSON.stringify(response.config));
-	    
+
 // 	      } else
 // 	      console.log('Rejection!: '+response.data);
 // 	      return $q.reject(response);

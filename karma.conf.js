@@ -37,6 +37,7 @@ module.exports = function karmaConfig (config) {
          'public/modules/efridge/providers/factories.js',
          'public/spec/services/authServiceSpec.js',
          'public/spec/controllers/LoginControllerSpec.js',
+         'public/spec/services/configSpec.js',
          'lib/checklist-model.js',
          'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js',
          'https://angular-ui.github.io/bootstrap/ui-bootstrap-1.3.3.min.js',
