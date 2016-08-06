@@ -61,7 +61,7 @@
   "scripts": {
     "report-coverage": "codecov",
     "test": "mocha",
-    "codecov": "istanbul cover karma start --single-run"
+    "karma": "karma start --single-run"
   },
   "repository": {
     "type": "git",
