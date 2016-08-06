@@ -21,6 +21,7 @@ module.exports = function karmaConfig (config) {
         {type: 'json', subdir: '.'},
         ]
     },
+    
     // list of files / patterns to load in the browser
     files: [
          'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js',
