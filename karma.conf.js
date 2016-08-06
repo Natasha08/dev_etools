@@ -61,7 +61,12 @@ module.exports = function karmaConfig (config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
        '**/public/modules/common/javascripts/controller.js': 'coverage',
-       '**/public/modules/efridge/providers/*.js': 'coverage'
+       '**/public/modules/efridge/providers/*.js': 'coverage',
+       '**/public/modules/efridge/EfridgeController.js': 'coverage',
+       '**/public/modules/egym/providers/*.js': 'coverage',
+       '**/public/modules/egym/EgymController.js': 'coverage',
+       '**/public/modules/login/providers/*.js': 'coverage',
+       '**/public/modules/login/LoginController.js': 'coverage'
     },
 
     // test results reporter to use
