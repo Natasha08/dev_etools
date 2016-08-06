@@ -10,7 +10,11 @@ module.exports = function karmaConfig (config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
-
+    plugins: [
+      'karma-jasmine',
+      'karma-coverage',
+      'karma-chrome-launcher'
+    ],
     reporters: [
       'coverage'
       ],
@@ -56,13 +60,14 @@ module.exports = function karmaConfig (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      '**/public/*.js': 'coverage'
+       '**/public/modules/common/javascripts/controller.js': 'coverage',
+       '**/public/modules/efridge/providers/*.js': 'coverage'
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
 
     // web server port
     port: 9876,
@@ -80,10 +85,7 @@ module.exports = function karmaConfig (config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
-    plugins: [
-      'karma-jasmine',
-      'karma-chrome-launcher'
-    ],
+
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
