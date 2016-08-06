@@ -18,13 +18,16 @@ module.exports = function karmaConfig (config) {
     reporters: [
       'coverage'
       ],
-
-    coverageReporter: {
-      reporters: [
-        {type:'lcovonly', subdir: '.'},
-        {type: 'json', subdir: '.'},
-        ]
-    },
+      coverageReporter: {
+        type : 'html',
+        dir : 'coverage/'
+      },
+    // coverageReporter: {
+    //   reporters: [
+    //     {type:'lcovonly', subdir: '.'},
+    //     {type: 'json', subdir: '.'},
+    //     ]
+    // },
 
     // list of files / patterns to load in the browser
     files: [
