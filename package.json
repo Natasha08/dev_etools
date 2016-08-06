@@ -59,8 +59,9 @@
     "mocha": "^2.5.3"
   },
   "scripts": {
+    "report-coverage": "codecov",
     "test": "mocha",
-    "codecov": "istanbul cover karma start --single-run && ./node_modules/.bin/codecov"
+    "codecov": "istanbul cover karma start --single-run"
   },
   "repository": {
     "type": "git",
