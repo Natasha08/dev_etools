@@ -10,12 +10,12 @@ var easyPbkdf2 = require ('easy-pbkdf2')();
 var secretKey = require('../secret');
 const crypto = require('crypto');
 
-// working endpoint for ng (test working) 
+// working endpoint for ng (test working)
 // will add http-bearer to endpoint
 
 
 var ensureAuth = function(req, res, next) {
-  if(!req.isAuthenticated()) 
+  if(!req.isAuthenticated())
     res.sendStatus(401);
   else {
     next();
@@ -28,15 +28,15 @@ router.get('/logout', function(req, res) {
 });
 
 
-router.get('/efridge', ensureAuth, function(req, res) {
+router.get('/efridge', function(req, res) {
 
   pool.getConnection(function(err,connection) {
  	var	getId = req.user.user_id;
- 
+
 
     if (err) {
      //console.log(err);
-  
+
     } else {
       //console.log('Well efridge is connected!');
       //where user_id = '+user_id,
@@ -46,7 +46,7 @@ router.get('/efridge', ensureAuth, function(req, res) {
 
       });
 
-    }}); 
+    }});
 
  });
 
@@ -54,11 +54,11 @@ router.get('/egym',ensureAuth, function(req, res, next) {
 
   pool.getConnection(function(err,connection) {
 var getId = req.user.user_id;
- 
+
 
     if (err) {
      console.log(err);
-  
+
     } else {
       //console.log('Well egym is connected!');
       //where user_id = '+user_id,
@@ -68,7 +68,7 @@ var getId = req.user.user_id;
 
       });
 
-    }}); 
+    }});
 
  });
 
@@ -78,7 +78,7 @@ var getId = req.user.user_id;
 
 //   res.render('index', {user: req.user});
 
-  
+
 // });
 
 
@@ -86,7 +86,7 @@ var getId = req.user.user_id;
 
 // 	res.render('index', {user: req.user});
 
-	
+
 // });
 
 
@@ -96,7 +96,7 @@ var getId = req.user.user_id;
   router.get('*', function(req, res) {
 
 	  res.render('index');
-	
+
 });
 
 
@@ -134,7 +134,7 @@ router.post('/foodform', function(req, res) {
 
       });
 
-  }});	
+  }});
 
 
 });
@@ -157,7 +157,7 @@ router.post('/register', function(req, res, next) {
 
   // //create key using crypto module and convert to hex
   const key = crypto.pbkdf2Sync(password, salt, 100000, 512, 'sha512');
-  var passwordHash = key.toString('hex'); 
+  var passwordHash = key.toString('hex');
   // //console.log(passwordHash);
 
   // //temporary user object
@@ -192,4 +192,4 @@ router.post('/register', function(req, res, next) {
 
 //uncomment this for pool //connection});
 
-module.exports = router;	
+module.exports = router;
