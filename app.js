@@ -5,7 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 //var passport = require('passport');
-// var BearerStrategy = require('passport-http-bearer').Strategy;
+var BearerStrategy = require('passport-http-bearer').Strategy;
 var pool = require('./require.js');
 var easyPbkdf2 = require ('easy-pbkdf2')();
 const crypto = require('crypto');
@@ -47,17 +47,77 @@ app.use(express.static(path.join(__dirname, 'public')));
 //access-control origins
 // var origin = ['https://mycolofitness.com']
 
-var origin = ['http://localhost']
+var origin = ['http://localhost:8080']
 
-//header config 
+//header config
 app.use(function(req, res, next) {
-       res.setHeader('Access-Control-Allow-Origin', origin);
+       res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     next();
 });
 
+
+
+// passport.use('bearer', new BearerStrategy({
+//
+//
+// // override the default local strategy email [make changes to the name on the form also]
+//      usernameField : 'email',
+//      passwordField : 'password',
+//      passReqToCallback : true //pass back the entire request to the callback
+//      },
+//      function(token, done) {
+//  console.log('Well it works at the beginning anyway'),
+//
+//     pool.query("SELECT * FROM users WHERE email` = '"+ email+"'", function(err, user){
+//
+//           if (err)
+//               return done(err);
+//               console.log('Connected?' +err);
+//           if (!rows.length) {
+//               return done(null, false), console.log('no error, and no user either!'); //req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+//             }
+//
+//   //salt/hash/stretch pswd for comparison
+//            const key = crypto.pbkdf2Sync(req.body.password, rows[0].salt, 100000, 512, 'sha512');
+//            var passbuf2 = (key.toString('hex'));
+//
+// //compare passwords
+//     if (!(rows[0].password == passbuf2)) {
+//               return done(null, false),
+//               console.log('something is wrong with the buffers!'); // create the loginMessage and save it to session as flashdata
+//           }
+// //create token to compare to db
+//
+//           if (err) { return done(err); }
+//           if (!user) { return done(null, false); }
+//           return done(null, token);
+//         });
+//
+//       }
+//     ));
+//
+//
+//
+//
+//     app.post('/login', passport.authenticate('bearer', { session: false }),
+//       function(req, res) {
+//         console.log(req);
+//         console.log(res);
+//         res.json(req.user);
+//       });
+
+
+
+
+
+
+
+
+//
+//
 
 
 passport.use('local-login', new LocalStrategy({
@@ -73,16 +133,16 @@ passport.use('local-login', new LocalStrategy({
       pool.query("SELECT * FROM `users` WHERE `email` = '" + email + "'",function(err,user){
 //if not connected to a users db
         if (err)
-            return done(err); 
+            return done(err);
           if (!user.length) {
               return done(null, false), console.log('no error, and no user either!'); //req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
-            } 
+            }
 
             if (!err) {
 
 //temporary user object
       var tempUser = {
-      
+
         //password: req.body.password,
         salt: user[0].user_salt
 
@@ -92,17 +152,17 @@ passport.use('local-login', new LocalStrategy({
       var passbuf2 = (key.toString('hex'));
 
             }
-            
+
 // if the user is found but the password is wrong
-          if (!(user[0].password == passbuf2)) 
+          if (!(user[0].password == passbuf2))
                 return done(null, false), console.log('something is wrong with the buffers!'); // create the loginMessage and save it to session as flashdata
 //if the salt does not match up
           if (!( user[0].user_salt == tempUser.salt))
                 return done(null, false), console.log('saltless');
 // all is well, return successful user
-            return done(null, user[0]), console.log('You are successfully logged in!');         
+            return done(null, user[0]), console.log('You are successfully logged in!');
         });
-        
+
 
 
     }));
@@ -114,24 +174,28 @@ passport.serializeUser(function(user, done) {
 
 // used to deserialize the user
 passport.deserializeUser(function(user_id, done) {
-    pool.query("select * from users where user_id = "+user_id,function(err,user){   
+    pool.query("select * from users where user_id = "+user_id,function(err,user){
           done(err, user[0]);
         });
     });
-
-var ensureAuth = function(req, res, next) {
-  if(!req.isAuthenticated()) 
-    res.sendStatus(401);
-  else {
-    next();
-  }
-};
-
-
-app.post('/login', passport.authenticate('local-login', { session: true, failureRedirect: '/' }) , 
+// //
+// // var ensureAuth = function(req, res, next) {
+// //   if(!req.isAuthenticated())
+// //     res.sendStatus(401);
+// //   else {
+// //     next();
+// //   }
+// // };
+// //
+// //
+app.post('/login', passport.authenticate('local-login', { session: true }) ,
  function(req, res) {
-  //res.status(200).send({data: req.user.username});
-  res.render('index');
+  res.status(200).send({
+    data: {
+    username: req.user.username,
+    config: req.query
+    }
+  });
  });
 
 app.get('/:UserName', function(req,res) {
@@ -139,15 +203,15 @@ app.get('/:UserName', function(req,res) {
 });
 
 //route to test if the user is logged in or not
-app.get('/loggedin', ensureAuth, function(req, res) {
- res.send(req.isAuthenticated()) ? req.user : '0';
-});
-
-app.get('/account', ensureAuth, function(req, res){
-  
-      res.status(200).send({data: req.user.username});
-
-});
+// app.get('/loggedin', ensureAuth, function(req, res) {
+//  res.send(req.isAuthenticated()) ? req.user : '0';
+// });
+//
+// app.get('/account', ensureAuth, function(req, res){
+//
+//       res.status(200).send({data: req.user.username});
+//
+// });
 
 
 
@@ -169,10 +233,11 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
+    res.send(err.message);
+    // res.render('error', {
+    //   message: err.message,
+    //   error: err
+    // });
   });
 }
 
@@ -180,10 +245,11 @@ if (app.get('env') === 'development') {
 //no stacktraces leaked to user
 app.use(function(err, req, res, next) {
  res.status(err.status || 500);
- res.render('error', {
-   message: err.message,
-   error: {}
- });
+ res.send(err.message);
+ // res.render('error', {
+ //   message: err.message,
+ //   error: {}
+ // });
 });
 
 

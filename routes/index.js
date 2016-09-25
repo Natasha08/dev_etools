@@ -93,11 +93,11 @@ var getId = req.user.user_id;
 
 //logout
 
-  router.get('*', function(req, res) {
-
-	  res.render('index');
-
-});
+//   router.get('*', function(req, res) {
+//
+// 	  res.render('index');
+//
+// });
 
 
 
@@ -169,8 +169,6 @@ router.post('/register', function(req, res, next) {
 	   password: passwordHash,
 	  user_salt: salt,
 	  //token: jwt.sign({ username: this.username, email: this.email }, secretKey)
-
-
   }
 
    //create new user in mysql database based on temporary user object
