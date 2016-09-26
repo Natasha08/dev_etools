@@ -61,7 +61,7 @@
   "scripts": {
     "report-coverage": "codecov",
     "test": "karma start --single-run && cat ./coverage/lcov.info | ./node_modules/.bin/codecov",
-    "start": "sudo nodemon"
+    "start": "nodemon"
 
   },
   "repository": {
